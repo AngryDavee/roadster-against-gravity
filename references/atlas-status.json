@@ -1,0 +1,53 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"project_url\": \"https://app.atlas.design/p/edit/fed1d343-f35f-4897-9a64-31b539dabf39?wid=b739e1c3-2a98-4863-9598-967968451284\",\n  \"project_id\": \"fed1d343-f35f-4897-9a64-31b539dabf39\",\n  \"node_count\": 3,\n  \"active_node_count\": 0,\n  \"failed_node_count\": 0,\n  \"nodes\": [\n    {\n      \"node_id\": \"3b318f74-2b3d-4974-832d-dfc107a9b64b\",\n      \"node_type\": \"material_generation\",\n      \"status\": \"idle\",\n      \"has_completed_run\": true,\n      \"selected_run_id\": \"0ea05180-e5ee-43e7-b72f-46367ce3bdfe\",\n      \"error\": null,\n      \"warning\": null,\n      \"last_run_cost_credits\": 7,\n      \"last_run_cached\": false\n    },\n    {\n      \"node_id\": \"94191df7-5849-4c77-b413-9aa2777a68e8\",\n      \"node_type\": \"quality_text_to_image\",\n      \"status\": \"idle\",\n      \"has_completed_run\": true,\n      \"selected_run_id\": \"76c7632c-95cf-457a-9cb7-e562a8a77bf8\",\n      \"error\": null,\n      \"warning\": null,\n      \"last_run_cost_credits\": 8,\n      \"last_run_cached\": false\n    },\n    {\n      \"node_id\": \"f4ee9cb4-1128-4a1c-b36d-922efaa68bd0\",\n      \"node_type\": \"quality_text_to_image\",\n      \"status\": \"idle\",\n      \"has_completed_run\": true,\n      \"selected_run_id\": \"776a47ae-827f-4545-b891-b5deb5542310\",\n      \"error\": null,\n      \"warning\": null,\n      \"last_run_cost_credits\": 8,\n      \"last_run_cached\": false\n    }\n  ],\n  \"active_operation_id\": null\n}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "project_url": "https://app.atlas.design/p/edit/fed1d343-f35f-4897-9a64-31b539dabf39?wid=b739e1c3-2a98-4863-9598-967968451284",
+    "project_id": "fed1d343-f35f-4897-9a64-31b539dabf39",
+    "node_count": 3,
+    "active_node_count": 0,
+    "failed_node_count": 0,
+    "nodes": [
+      {
+        "node_id": "3b318f74-2b3d-4974-832d-dfc107a9b64b",
+        "node_type": "material_generation",
+        "status": "idle",
+        "has_completed_run": true,
+        "selected_run_id": "0ea05180-e5ee-43e7-b72f-46367ce3bdfe",
+        "error": null,
+        "warning": null,
+        "last_run_cost_credits": 7,
+        "last_run_cached": false
+      },
+      {
+        "node_id": "94191df7-5849-4c77-b413-9aa2777a68e8",
+        "node_type": "quality_text_to_image",
+        "status": "idle",
+        "has_completed_run": true,
+        "selected_run_id": "76c7632c-95cf-457a-9cb7-e562a8a77bf8",
+        "error": null,
+        "warning": null,
+        "last_run_cost_credits": 8,
+        "last_run_cached": false
+      },
+      {
+        "node_id": "f4ee9cb4-1128-4a1c-b36d-922efaa68bd0",
+        "node_type": "quality_text_to_image",
+        "status": "idle",
+        "has_completed_run": true,
+        "selected_run_id": "776a47ae-827f-4545-b891-b5deb5542310",
+        "error": null,
+        "warning": null,
+        "last_run_cost_credits": 8,
+        "last_run_cached": false
+      }
+    ],
+    "active_operation_id": null
+  },
+  "isError": false
+}

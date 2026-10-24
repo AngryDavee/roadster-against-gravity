@@ -1,0 +1,211 @@
+{
+  "success": true,
+  "pid": "fed1d343-f35f-4897-9a64-31b539dabf39",
+  "project_url": "https://app.atlas.design/p/edit/fed1d343-f35f-4897-9a64-31b539dabf39?wid=b739e1c3-2a98-4863-9598-967968451284",
+  "outputs": [
+    {
+      "fid": "0df9b1ae-88bb-447b-874d-e78ea5a2680e",
+      "name": "texture",
+      "filename": "texture.png",
+      "mime_type": "image/png",
+      "size_bytes": 1828000,
+      "node_id": "3b318f74-2b3d-4974-832d-dfc107a9b64b",
+      "associated_node_ids": [
+        "3b318f74-2b3d-4974-832d-dfc107a9b64b"
+      ],
+      "run_id": "0ea05180-e5ee-43e7-b72f-46367ce3bdfe",
+      "node_run_ids": [
+        "0ea05180-e5ee-43e7-b72f-46367ce3bdfe"
+      ],
+      "output_field": "output_texture",
+      "role": "texture",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "provenance": {
+        "node_type": "material_generation",
+        "generating_run_id": "2023c59b-d48c-41c6-9563-b7abd64a6434",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {
+        "image_size": "square_hd",
+        "tiling_mode": "both",
+        "upscale_factor": 1.0
+      },
+      "local_path": "references/atlas-outputs/0-texture.png"
+    },
+    {
+      "fid": "3613c8d2-ea84-4390-aff0-b4a068f280c5",
+      "name": "roughness",
+      "filename": "roughness.png",
+      "mime_type": "image/png",
+      "size_bytes": 741039,
+      "node_id": "3b318f74-2b3d-4974-832d-dfc107a9b64b",
+      "associated_node_ids": [
+        "3b318f74-2b3d-4974-832d-dfc107a9b64b"
+      ],
+      "run_id": "0ea05180-e5ee-43e7-b72f-46367ce3bdfe",
+      "node_run_ids": [
+        "0ea05180-e5ee-43e7-b72f-46367ce3bdfe"
+      ],
+      "output_field": "output_roughness",
+      "role": "roughness",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "provenance": {
+        "node_type": "material_generation",
+        "generating_run_id": "2023c59b-d48c-41c6-9563-b7abd64a6434",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {
+        "image_size": "square_hd",
+        "tiling_mode": "both",
+        "upscale_factor": 1.0
+      },
+      "local_path": "references/atlas-outputs/1-roughness.png"
+    },
+    {
+      "fid": "39775123-1831-47b7-afaf-7e6a756ed032",
+      "name": "basecolor",
+      "filename": "basecolor.png",
+      "mime_type": "image/png",
+      "size_bytes": 1758498,
+      "node_id": "3b318f74-2b3d-4974-832d-dfc107a9b64b",
+      "associated_node_ids": [
+        "3b318f74-2b3d-4974-832d-dfc107a9b64b"
+      ],
+      "run_id": "0ea05180-e5ee-43e7-b72f-46367ce3bdfe",
+      "node_run_ids": [
+        "0ea05180-e5ee-43e7-b72f-46367ce3bdfe"
+      ],
+      "output_field": "output_basecolor",
+      "role": "base_color",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "provenance": {
+        "node_type": "material_generation",
+        "generating_run_id": "2023c59b-d48c-41c6-9563-b7abd64a6434",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {
+        "image_size": "square_hd",
+        "tiling_mode": "both",
+        "upscale_factor": 1.0
+      },
+      "local_path": "references/atlas-outputs/2-base_color.png"
+    },
+    {
+      "fid": "4d097977-28d2-4047-9e52-c95c94931b9c",
+      "name": "output",
+      "filename": "output.png",
+      "mime_type": "image/png",
+      "size_bytes": 6069001,
+      "node_id": "f4ee9cb4-1128-4a1c-b36d-922efaa68bd0",
+      "associated_node_ids": [
+        "f4ee9cb4-1128-4a1c-b36d-922efaa68bd0"
+      ],
+      "run_id": "776a47ae-827f-4545-b891-b5deb5542310",
+      "node_run_ids": [
+        "776a47ae-827f-4545-b891-b5deb5542310"
+      ],
+      "output_field": "output_image",
+      "role": "unknown",
+      "dimensions": {
+        "width": 2528,
+        "height": 1696
+      },
+      "provenance": {
+        "node_type": "quality_text_to_image",
+        "generating_run_id": "14a8dbcb-2718-4086-8265-3d27dbaa8a71",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {},
+      "local_path": "references/atlas-outputs/3-unknown.png"
+    },
+    {
+      "fid": "5da91974-acff-4c29-b163-ca79c5d07233",
+      "name": "output",
+      "filename": "output.png",
+      "mime_type": "image/png",
+      "size_bytes": 6270729,
+      "node_id": "94191df7-5849-4c77-b413-9aa2777a68e8",
+      "associated_node_ids": [
+        "94191df7-5849-4c77-b413-9aa2777a68e8"
+      ],
+      "run_id": "76c7632c-95cf-457a-9cb7-e562a8a77bf8",
+      "node_run_ids": [
+        "76c7632c-95cf-457a-9cb7-e562a8a77bf8"
+      ],
+      "output_field": "output_image",
+      "role": "unknown",
+      "dimensions": {
+        "width": 2752,
+        "height": 1536
+      },
+      "provenance": {
+        "node_type": "quality_text_to_image",
+        "generating_run_id": "978b852c-b53c-4991-8ce9-b372739b2156",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {},
+      "local_path": "references/atlas-outputs/4-unknown.png"
+    },
+    {
+      "fid": "f29df611-775b-48f1-b308-30a97437d34a",
+      "name": "normal",
+      "filename": "normal.png",
+      "mime_type": "image/png",
+      "size_bytes": 2036306,
+      "node_id": "3b318f74-2b3d-4974-832d-dfc107a9b64b",
+      "associated_node_ids": [
+        "3b318f74-2b3d-4974-832d-dfc107a9b64b"
+      ],
+      "run_id": "0ea05180-e5ee-43e7-b72f-46367ce3bdfe",
+      "node_run_ids": [
+        "0ea05180-e5ee-43e7-b72f-46367ce3bdfe"
+      ],
+      "output_field": "output_normal",
+      "role": "normal",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "provenance": {
+        "node_type": "material_generation",
+        "generating_run_id": "2023c59b-d48c-41c6-9563-b7abd64a6434",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {
+        "image_size": "square_hd",
+        "tiling_mode": "both",
+        "upscale_factor": 1.0
+      },
+      "local_path": "references/atlas-outputs/5-normal.png"
+    }
+  ],
+  "has_more": false,
+  "next_cursor": null
+}

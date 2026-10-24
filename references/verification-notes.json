@@ -1,0 +1,18 @@
+{
+  "canonical_recipe_commit": "4effad311c5e137bca316257259fe5bffd6737de",
+  "selftest": "Canonical selftest passed during preparation, including deliberate invalid fixtures and hierarchy loader tests.",
+  "asset_verifier_clean": 4,
+  "asset_verifier_total": 6,
+  "warnings": {
+    "pavement": "140 m square surface only 0.184 m high. Side-view coverage is correctly close to zero. Top/scene inspection verifies the useful face; no decorative thickness was added to game the gate.",
+    "ramp": "Broad continuous riding surface and back sheet have lower edge-density than the lattice sides. The original reference is broad gray concrete. Four-side render inspected, warning retained."
+  },
+  "not_claimed": [
+    "pixel-identical reconstruction",
+    "measured manufacturer dimensions",
+    "independent multi-agent candidate generation",
+    "all-green asset verifier",
+    "live competition gate",
+    "audio cue reconstruction"
+  ]
+}

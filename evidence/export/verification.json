@@ -1,0 +1,12 @@
+{
+  "decoded_frames": 1094,
+  "decoded_duration_seconds": 45.62,
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "fps": 23.98,
+  "bytes": 48776504,
+  "sha256": "0c5452c0c99212aaf5200735ddd517985f055ab9debfc39204e93062b363492d",
+  "audio": "none"
+}

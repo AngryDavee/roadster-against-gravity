@@ -1,0 +1,21 @@
+{
+  "name": "roadster-against-gravity",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "check": "node tools/check.mjs",
+    "capture": "node tools/capture.mjs",
+    "recipe:check": "node vendor/404-game-recipe/harness/ship.mjs app",
+    "recipe:selftest": "node vendor/404-game-recipe/harness/selftest/run.mjs && node vendor/404-game-recipe/harness/selftest/loader.mjs",
+    "recipe:verify": "node vendor/404-game-recipe/harness/verify.mjs app/assets --size=400",
+    "test": "node tools/test.mjs"
+  },
+  "engines": {
+    "node": ">=22.12"
+  },
+  "devDependencies": {
+    "puppeteer": "^25.8.0"
+  }
+}

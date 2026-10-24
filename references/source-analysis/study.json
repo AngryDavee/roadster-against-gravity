@@ -1,0 +1,683 @@
+{
+  "title": "Roadster ramp stunt: reference study before production",
+  "analysis_date": "2026-10-23",
+  "status": "Reference analysis complete at shot/event level. Production and style selection not started.",
+  "scope": "Recreate the supplied ramp film using 404 asset modules and Atlas MCP for generated visual references/assets within the recipe contract. Await user texture/animation inspiration before production.",
+  "media": {
+    "width": 3840,
+    "height": 2160,
+    "aspect_ratio": "16:9",
+    "fps_numerator": 24000,
+    "fps_denominator": 1001,
+    "decoded_video_frames": 1094,
+    "first_frame_pts": 0,
+    "last_frame_pts_seconds": 45.587208333,
+    "video_duration_seconds": 45.628916667,
+    "container_duration_seconds": 45.674666667,
+    "audio": "AAC LC, stereo, 48000 Hz; container/audio extends about 45.75 ms beyond video.",
+    "timing_basis": "Zero-based source frame index; t = frame * 1001 / 24000. Frame filenames in all-frames are one-based; keyframe filenames are zero-based.",
+    "analysis_coverage": "Decoded/indexed all 1094 frames. Visually reviewed all five shots on quarter-second contact sheets, denser launch samples and adjacent candidate-cut frames; 21 larger keyframes; both local stills and four supplied inline screenshots; sampled two supplementary official Tesla films.",
+    "audio_review_limit": "Audio stream metadata verified. No listening/transcription or sound-design cue audit completed; do not describe soundtrack details as observed."
+  },
+  "shots": [
+    {
+      "id": "S01",
+      "first_frame": 0,
+      "end_frame_exclusive": 51,
+      "title": "Rear close view at ramp foot",
+      "camera": "Low rear three-quarter view; car approximately central, full ramp height cropped. Very slight framing movement.",
+      "action": "Establish the car before the ascent. No airborne effects. Rear light stays red.",
+      "details": [
+        "Silver body and black glass reflect the red ramp edges.",
+        "Four rear-facing circular outlets, RDSTR plate, deep black rear mechanical cavity and broad tires are visible.",
+        "Ramp center stripe continues onto the foreground pavement. Panel joins, low blocks and a small bracket/camera at the right edge matter."
+      ],
+      "transition": "Hard cut at frame 51 to a distant view; no dissolve.",
+      "start_seconds": 0.0,
+      "end_seconds_exclusive": 2.127125,
+      "duration_seconds": 2.127125
+    },
+    {
+      "id": "S02",
+      "first_frame": 51,
+      "end_frame_exclusive": 419,
+      "title": "Wide ascent, flip, landing and drive-away",
+      "camera": "Distant ground view initially shows the entire ramp. Camera progressively reframes/pans with the car, follows the descent left, then tracks the drive-away. This is one continuous edited shot.",
+      "action": "Wait at foot; climb the curved wall; reach the overhanging lip; rotate away; stabilize on downward jets; descend through a spreading cloud; emerge and drive away.",
+      "details": [
+        "A second stationary light-colored vehicle is visible at far right initially.",
+        "Ramp lower edge changes toward cool white while upper edge remains red; background red strip and floodlights progressively appear.",
+        "The ramp moves toward/right out of frame during the landing follow.",
+        "Vapor briefly obscures the tires and touchdown; do not assign an exact physical contact frame from an occluded image.",
+        "Brightness changes near 13.889 seconds are cloud/lighting motion, not an extra cut."
+      ],
+      "transition": "Hard cut at frame 419 resets the action to departure from the ramp lip.",
+      "start_seconds": 2.127125,
+      "end_seconds_exclusive": 17.475791667,
+      "duration_seconds": 15.348666667
+    },
+    {
+      "id": "S03",
+      "first_frame": 419,
+      "end_frame_exclusive": 656,
+      "title": "Closer slowed replay of rotation and landing",
+      "camera": "Tighter low view of the upper ramp; camera tilts down and follows the descending car, ending with a frontal/three-quarter emergence from vapor.",
+      "action": "Replay starts with the car at the lip and lateral gas visible. Side/underside rotate into view. Jets become predominantly downward; car hangs above the cloud then lowers and emerges.",
+      "details": [
+        "Front white light bar blooms at both corners.",
+        "Large underside panels and channels are visible; this cannot be an unmodeled flat bottom.",
+        "A moving car shadow falls onto the ramp face.",
+        "A lateral jet and multiple downward jets do not all begin together.",
+        "Vapor is lit cyan-white from lamps/headlights and pink-red from floor lighting.",
+        "Changes near 20.270 and 26.443 seconds are movement/illumination, not cuts."
+      ],
+      "transition": "Hard cut at frame 656 jumps back to an airborne position from an elevated close camera.",
+      "start_seconds": 17.475791667,
+      "end_seconds_exclusive": 27.360666667,
+      "duration_seconds": 9.884875
+    },
+    {
+      "id": "S04",
+      "first_frame": 656,
+      "end_frame_exclusive": 743,
+      "title": "Elevated close aerial replay",
+      "camera": "High oblique moving/rolling view beside the ramp lip; pronounced diagonal composition and floodlight flare. Tracks the car downward.",
+      "action": "Car rotates away from the lip, exposes its undertray, becomes upright with black roof visible, then descends over crossed white ground lines into growing vapor.",
+      "details": [
+        "Ramp lip/truss enters from the right edge initially.",
+        "Two bright crossing ground lines form a fixed registration landmark.",
+        "Floodlights produce large white glare and pale green/purple lens artifacts.",
+        "Underbody has rectangular panels, channels and dark structural boundaries.",
+        "Nearby equipment/vehicles are small contextual elements; do not replace them with the earlier five-car stunt lineup."
+      ],
+      "transition": "Hard cut at frame 743 resets to the foot of the ramp in a distant aerial view.",
+      "start_seconds": 27.360666667,
+      "end_seconds_exclusive": 30.989291667,
+      "duration_seconds": 3.628625
+    },
+    {
+      "id": "S05",
+      "first_frame": 743,
+      "end_frame_exclusive": 1094,
+      "title": "Distant aerial replay of the complete maneuver",
+      "camera": "High wide oblique view; nearly fixed with slow drift. Full ramp in upper right, parked car lower right, crossing ground lines through the landing area.",
+      "action": "Another ascent, departure/rotation, jet-assisted descent, landing and drive-away toward lower left. Cloud trails behind and dissipates.",
+      "details": [
+        "Red-lit barrier/viewing area behind the action becomes prominent as lights sweep on.",
+        "Floodlight pools illuminate the ground; maintain the large black negative space.",
+        "Hero car and parked car are separate objects; the parked car does not perform the maneuver.",
+        "Ground shadow tracks the airborne car before vapor masks it.",
+        "Video ends on the wide venue with residual vapor; no closing title or fade-to-black is present."
+      ],
+      "transition": "Final source video frame 1093 at 45.587208 seconds. Its display interval ends at 45.628917 seconds; audio/container continues to 45.674667 seconds.",
+      "start_seconds": 30.989291667,
+      "end_seconds_exclusive": 45.628916667,
+      "duration_seconds": 14.639625
+    }
+  ],
+  "events": [
+    {
+      "shot": "S01",
+      "first_frame": 0,
+      "last_frame": 50,
+      "start_seconds": 0.0,
+      "end_seconds": 2.085416667,
+      "observation": "Opening car/ramp composition; red rear light and edge lights",
+      "confidence": "high"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 51,
+      "last_frame": 84,
+      "start_seconds": 2.127125,
+      "end_seconds": 3.5035,
+      "observation": "Wide reveal and pause at ramp foot",
+      "confidence": "high"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 84,
+      "last_frame": 102,
+      "start_seconds": 3.5035,
+      "end_seconds": 4.25425,
+      "observation": "Ascent becomes clearly apparent",
+      "confidence": "medium; gradual onset"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 120,
+      "last_frame": 180,
+      "start_seconds": 5.005,
+      "end_seconds": 7.5075,
+      "observation": "Car climbs steep face; headlight pool moves up the deck",
+      "confidence": "high"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 156,
+      "last_frame": 192,
+      "start_seconds": 6.5065,
+      "end_seconds": 8.008,
+      "observation": "Lower ramp edges and background lighting become more visible",
+      "confidence": "medium; gradual illumination"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 216,
+      "last_frame": 230,
+      "start_seconds": 9.009,
+      "end_seconds": 9.592916667,
+      "observation": "Car approaches curled upper lip; roof remains visible",
+      "confidence": "high"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 230,
+      "last_frame": 238,
+      "start_seconds": 9.592916667,
+      "end_seconds": 9.926583333,
+      "observation": "Lateral blue-white gas appears near departure; car begins rotating away",
+      "confidence": "medium; overlap and distance"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 238,
+      "last_frame": 254,
+      "start_seconds": 9.926583333,
+      "end_seconds": 10.593916667,
+      "observation": "Aerial rotation and leftward separation from ramp",
+      "confidence": "high"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 254,
+      "last_frame": 266,
+      "start_seconds": 10.593916667,
+      "end_seconds": 11.094416667,
+      "observation": "Car becomes broadly level; downward jets lengthen",
+      "confidence": "high"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 266,
+      "last_frame": 276,
+      "start_seconds": 11.094416667,
+      "end_seconds": 11.5115,
+      "observation": "Jets reach pavement and build an expanding white cloud",
+      "confidence": "high"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 276,
+      "last_frame": 300,
+      "start_seconds": 11.5115,
+      "end_seconds": 12.5125,
+      "observation": "Car suspended above dense rolling vapor, continuing down/left",
+      "confidence": "high"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 300,
+      "last_frame": 318,
+      "start_seconds": 12.5125,
+      "end_seconds": 13.26325,
+      "observation": "Final lowering/contact interval; wheels obscured by cloud",
+      "confidence": "medium; contact not directly visible"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 324,
+      "last_frame": 342,
+      "start_seconds": 13.5135,
+      "end_seconds": 14.26425,
+      "observation": "Car emerges at ground level through remaining vapor",
+      "confidence": "high"
+    },
+    {
+      "shot": "S02",
+      "first_frame": 342,
+      "last_frame": 418,
+      "start_seconds": 14.26425,
+      "end_seconds": 17.434083333,
+      "observation": "Drive-away with trailing vapor; camera tracks",
+      "confidence": "high"
+    },
+    {
+      "shot": "S03",
+      "first_frame": 419,
+      "last_frame": 432,
+      "start_seconds": 17.475791667,
+      "end_seconds": 18.018,
+      "observation": "Replay departure at lip with lateral jet activity",
+      "confidence": "high"
+    },
+    {
+      "shot": "S03",
+      "first_frame": 432,
+      "last_frame": 474,
+      "start_seconds": 18.018,
+      "end_seconds": 19.76975,
+      "observation": "Slowed rotation exposes side then underside",
+      "confidence": "high"
+    },
+    {
+      "shot": "S03",
+      "first_frame": 474,
+      "last_frame": 510,
+      "start_seconds": 19.76975,
+      "end_seconds": 21.27125,
+      "observation": "Front faces camera; lateral and downward jets visible",
+      "confidence": "high"
+    },
+    {
+      "shot": "S03",
+      "first_frame": 510,
+      "last_frame": 528,
+      "start_seconds": 21.27125,
+      "end_seconds": 22.022,
+      "observation": "Downward jets strengthen; moving shadow on ramp",
+      "confidence": "high"
+    },
+    {
+      "shot": "S03",
+      "first_frame": 528,
+      "last_frame": 552,
+      "start_seconds": 22.022,
+      "end_seconds": 23.023,
+      "observation": "Ground vapor blooms outward beneath descending car",
+      "confidence": "high"
+    },
+    {
+      "shot": "S03",
+      "first_frame": 552,
+      "last_frame": 582,
+      "start_seconds": 23.023,
+      "end_seconds": 24.27425,
+      "observation": "Car nearly level above large cloud",
+      "confidence": "high"
+    },
+    {
+      "shot": "S03",
+      "first_frame": 582,
+      "last_frame": 606,
+      "start_seconds": 24.27425,
+      "end_seconds": 25.27525,
+      "observation": "Final lowering into opaque vapor; exact wheel contact hidden",
+      "confidence": "medium"
+    },
+    {
+      "shot": "S03",
+      "first_frame": 606,
+      "last_frame": 636,
+      "start_seconds": 25.27525,
+      "end_seconds": 26.5265,
+      "observation": "Cloud occlusion; headlights become diffuse bright spots",
+      "confidence": "high"
+    },
+    {
+      "shot": "S03",
+      "first_frame": 636,
+      "last_frame": 655,
+      "start_seconds": 26.5265,
+      "end_seconds": 27.318958333,
+      "observation": "Front emerges at ground level",
+      "confidence": "high"
+    },
+    {
+      "shot": "S04",
+      "first_frame": 656,
+      "last_frame": 666,
+      "start_seconds": 27.360666667,
+      "end_seconds": 27.77775,
+      "observation": "Close aerial departure; ramp lip right; car turning",
+      "confidence": "high"
+    },
+    {
+      "shot": "S04",
+      "first_frame": 666,
+      "last_frame": 678,
+      "start_seconds": 27.77775,
+      "end_seconds": 28.27825,
+      "observation": "Undertray exposed; several narrow directional gas streams",
+      "confidence": "high"
+    },
+    {
+      "shot": "S04",
+      "first_frame": 678,
+      "last_frame": 696,
+      "start_seconds": 28.27825,
+      "end_seconds": 29.029,
+      "observation": "Roof turns into view as the car levels",
+      "confidence": "high"
+    },
+    {
+      "shot": "S04",
+      "first_frame": 696,
+      "last_frame": 714,
+      "start_seconds": 29.029,
+      "end_seconds": 29.77975,
+      "observation": "Descent over crossed lines; jets beneath car",
+      "confidence": "high"
+    },
+    {
+      "shot": "S04",
+      "first_frame": 714,
+      "last_frame": 742,
+      "start_seconds": 29.77975,
+      "end_seconds": 30.947583333,
+      "observation": "Cloud expands under the car; shot ends before a clear wheel-contact view",
+      "confidence": "high"
+    },
+    {
+      "shot": "S05",
+      "first_frame": 743,
+      "last_frame": 780,
+      "start_seconds": 30.989291667,
+      "end_seconds": 32.5325,
+      "observation": "Full venue reset; car at ramp foot, second car parked lower right",
+      "confidence": "high"
+    },
+    {
+      "shot": "S05",
+      "first_frame": 780,
+      "last_frame": 834,
+      "start_seconds": 32.5325,
+      "end_seconds": 34.78475,
+      "observation": "Ascent through ramp curve",
+      "confidence": "high"
+    },
+    {
+      "shot": "S05",
+      "first_frame": 834,
+      "last_frame": 906,
+      "start_seconds": 34.78475,
+      "end_seconds": 37.78775,
+      "observation": "Upper-ramp approach; background strip and floodlights brighten",
+      "confidence": "high"
+    },
+    {
+      "shot": "S05",
+      "first_frame": 906,
+      "last_frame": 924,
+      "start_seconds": 37.78775,
+      "end_seconds": 38.5385,
+      "observation": "Departure and rotation high left of ramp lip",
+      "confidence": "medium; small subject"
+    },
+    {
+      "shot": "S05",
+      "first_frame": 924,
+      "last_frame": 942,
+      "start_seconds": 38.5385,
+      "end_seconds": 39.28925,
+      "observation": "Car levels and descends; downward jets visible",
+      "confidence": "high"
+    },
+    {
+      "shot": "S05",
+      "first_frame": 942,
+      "last_frame": 960,
+      "start_seconds": 39.28925,
+      "end_seconds": 40.04,
+      "observation": "Cloud first expands across landing area",
+      "confidence": "high"
+    },
+    {
+      "shot": "S05",
+      "first_frame": 960,
+      "last_frame": 984,
+      "start_seconds": 40.04,
+      "end_seconds": 41.041,
+      "observation": "Lowering/landing zone; cloud hides exact tire contact",
+      "confidence": "medium"
+    },
+    {
+      "shot": "S05",
+      "first_frame": 984,
+      "last_frame": 1044,
+      "start_seconds": 41.041,
+      "end_seconds": 43.5435,
+      "observation": "Drive-away toward lower left, leaving long cloud trail",
+      "confidence": "high"
+    },
+    {
+      "shot": "S05",
+      "first_frame": 1044,
+      "last_frame": 1093,
+      "start_seconds": 43.5435,
+      "end_seconds": 45.587208333,
+      "observation": "Hero exits; vapor thins; parked car and illuminated venue remain",
+      "confidence": "high"
+    }
+  ],
+  "assets": [
+    {
+      "id": "hero_car_body",
+      "appearance": "Silver/white wedge coupe; sharp diagonal fender/hood boundaries; dark lower sill; short pointed nose; broad rear shoulders",
+      "evidence": "user video F0, F492; user images.jpeg; Tesla Track Mode side views",
+      "confidence": "High for visible silhouette; absolute dimensions unverified"
+    },
+    {
+      "id": "glass_and_cabin",
+      "appearance": "Continuous dark windshield/roof canopy; tapered side glass, silver pillars and black glazing borders. No identifiable driver in stunt footage",
+      "evidence": "user F0,F690; user front image; official side views",
+      "confidence": "High for exterior; cabin obscured"
+    },
+    {
+      "id": "front_lighting_and_intake",
+      "appearance": "Thin near-full-width white light bar; strong corner bloom; broad dark lower aperture and splitter",
+      "evidence": "user F492,F642; images.jpeg",
+      "confidence": "High"
+    },
+    {
+      "id": "rear_lighting_and_plate",
+      "appearance": "Continuous red bar in black recess; centered pale RDSTR plate with plate illumination",
+      "evidence": "user F0; Roadster_94.webp",
+      "confidence": "High"
+    },
+    {
+      "id": "wheels_and_tires",
+      "appearance": "Four broad dark tires, sculptural five-arm/star-style rims, inset hubs and dark arches; front wheel steering and wheel spin must be separate from body transform",
+      "evidence": "user image; official Track Mode and launch-film wheel view",
+      "confidence": "High shape; exact tire/rim dimensions unverified"
+    },
+    {
+      "id": "rear_thruster_bank",
+      "appearance": "Four circular rear-facing nozzles in one horizontal row under plate; concentric lips and deep dark bores",
+      "evidence": "user F0; Roadster_94.webp; official launch-film nozzle closeups",
+      "confidence": "High"
+    },
+    {
+      "id": "belly_and_side_thrusters",
+      "appearance": "Distinct lateral attitude jets and downward lifting/braking jets. Nozzle positions require matching visible streams; not all visible rear ports fire downward",
+      "evidence": "user F240,F492,F522,F672; studio rear",
+      "confidence": "High effect direction; full hidden nozzle layout inferred"
+    },
+    {
+      "id": "undertray",
+      "appearance": "Dark rectangular panel grid, longitudinal channels, recesses/structural ribs and wheel cutouts; visible during rotation",
+      "evidence": "user F492,F672; official launch-film underside reference",
+      "confidence": "High broad layout; tiny fittings unresolved"
+    },
+    {
+      "id": "rear_wing_and_aero",
+      "appearance": "Broad articulated rear wing with end plates/supports; studio still shows raised state, opening stunt much lower. Official Track Mode video shows multiple configurations",
+      "evidence": "Roadster_94.webp; user F0; Tesla Track Mode",
+      "confidence": "High; do not impose studio deployment on every stunt shot"
+    },
+    {
+      "id": "ramp_deck",
+      "appearance": "Tall continuous curved ramp with shallow foot transition, near-vertical midsection and overhanging curled lip; pale gray surface, center white stripe, rectangular panel seams and small mottling",
+      "evidence": "all supplied shots; especially F0,F240,F743",
+      "confidence": "High silhouette; metric dimensions and exact profile inferred"
+    },
+    {
+      "id": "ramp_structure",
+      "appearance": "Rear/right triangular lattice supports, verticals, diagonal braces, horizontal crossmembers, feet and upper lip framework",
+      "evidence": "user wide shots and F656",
+      "confidence": "High visible framing; hidden bracing inferred"
+    },
+    {
+      "id": "ramp_edge_lighting",
+      "appearance": "Two thin edge strips, initially red; cool-white lower illumination during ascent, red still visible near top. Preserve luminous core and soft spill",
+      "evidence": "user F0,F240,F492",
+      "confidence": "High; exact control circuit irrelevant"
+    },
+    {
+      "id": "ground_and_markings",
+      "appearance": "Very dark gray paved ground, faint seams, subdued rough reflections; white approach centerline and two crossing long lines in aerial view",
+      "evidence": "user F0,F672,F743",
+      "confidence": "High; visible markings need registration"
+    },
+    {
+      "id": "venue_light_rigs",
+      "appearance": "Banks of intense white lamps on stands/poles; cone-like light pools; sparse distant lamps; timed brightening and camera flare",
+      "evidence": "user wide shots and aerials",
+      "confidence": "High for screen positions; exact fixture models inferred"
+    },
+    {
+      "id": "red_boundary_and_background",
+      "appearance": "Long red luminous horizontal barrier strip; repeated small fixtures and red-lit background canopy/viewing structures revealed by later lighting",
+      "evidence": "user S02,S04,S05",
+      "confidence": "High general arrangement; dark background details uncertain"
+    },
+    {
+      "id": "secondary_vehicles_and_equipment",
+      "appearance": "Stationary light-colored car far right in first wide view/lower right aerial; small equipment vehicles/boxes by lights and ramp",
+      "evidence": "user S02,S04,S05",
+      "confidence": "High presence; do not assert specific model without detail"
+    },
+    {
+      "id": "small_ramp_fixtures",
+      "appearance": "Low rectangular blocks at ramp base, narrow brackets/camera hardware at right edge and subtle cables/support fittings",
+      "evidence": "user F0",
+      "confidence": "Medium; only recreate what is visible"
+    },
+    {
+      "id": "gas_and_cloud_effects",
+      "appearance": "Thin blue-white directional jets expand into turbulent pale clouds on reaching ground; larger uneven lobes roll outward, retain momentum, obscure car, dissipate, pick up cyan/red lighting",
+      "evidence": "all airborne and landing shots",
+      "confidence": "High; exact turbulence is not recoverable from video"
+    }
+  ],
+  "sources": [
+    {
+      "id": "user-video",
+      "url": "app/reference/master.mp4",
+      "role": "Authoritative edit, timing, camera, action and stunt configuration"
+    },
+    {
+      "id": "user-front",
+      "url": "references/user/car-front.jpeg",
+      "role": "Supporting front silhouette; low resolution and cropped, not an orthographic blueprint"
+    },
+    {
+      "id": "user-rear",
+      "url": "references/user/car-rear.webp",
+      "role": "Supporting rear/nozzle/raised-wing detail; configuration differs from opening stunt"
+    },
+    {
+      "id": "tesla-ramp",
+      "url": "https://x.com/Tesla/status/2110913438293647789",
+      "role": "Official ramp clip located through public X syndication metadata; duration 45628 ms, published 2026-10-16. Same ramp sequence as supplied file; not a byte-for-byte hash comparison"
+    },
+    {
+      "id": "tesla-track-mode",
+      "url": "https://x.com/Tesla/status/2110905133785829671",
+      "role": "Official aero configuration film. Inspected sampled frames for side silhouette, front fender aero and rear-wing states"
+    },
+    {
+      "id": "tesla-launch-film",
+      "url": "https://x.com/Tesla/status/2110906094155399277",
+      "role": "Official launch film. Inspected sampled frames for underbody, nozzle lips, body seams, wheel design and light-bar construction"
+    },
+    {
+      "id": "tesla-product",
+      "url": "https://www.tesla.com/roadster?redirect=no",
+      "role": "Official product page; accessible extracted text limited to trim disclaimers. No dimensions/performance claims taken from it"
+    },
+    {
+      "id": "reference-index",
+      "url": "https://superchargeddaily.com/roadster.html",
+      "role": "Discovery index only, used to find primary Tesla posts; no engineering specifications taken from it"
+    },
+    {
+      "id": "reference-gallery",
+      "url": "https://www.autoexpress.co.uk/tesla/roadster/370689/new-tesla-roadster-revealed-2026-pictures",
+      "role": "Supplementary gallery discovered; official films preferred for actual observations"
+    },
+    {
+      "id": "previous-clip",
+      "url": "https://x.com/elonmusk/status/2110913107094606330",
+      "role": "Earlier 15.395-second lineup stunt; NOT the master for this 45.629-second ramp study"
+    },
+    {
+      "id": "404-recipe",
+      "url": "https://github.com/404-Repo/404-game-recipe",
+      "role": "Local pinned recipe reviewed: README.md, 404.md, docs/asset-contract.md and docs/surfaces.md. Commit 4effad311c5e137bca316257259fe5bffd6737de"
+    }
+  ],
+  "visual_priorities": [
+    "Match silhouette, frame composition, black negative space, ramp contour and car scale before micro-detail.",
+    "Keep five shots/four hard cuts at the measured source frames, including the three action resets for alternate views.",
+    "Match actual screen-space trajectory and orientation at anchors; avoid assuming the maneuver is a single pure-axis backflip or uniform angular spin.",
+    "Camera motion and exposure are part of the reference: do not replace each shot with a static generic orbit.",
+    "Preserve separate lateral and downward jet timing. Gas is pale/cyan under lighting; no orange rocket fire is visible in this stunt.",
+    "Clouds must occlude geometry, spread along the ground, continue after jet shutoff and receive venue lighting.",
+    "Include ramp and ground shadows, white light pools, red spill on car/glass, and strong aerial-shot flare.",
+    "Do not add water, mountains, a city skyline, unnecessary stars, crowds in foreground or the earlier five-car lineup.",
+    "Do not bake a raised studio wing or decorative details into every shot where the source does not show them."
+  ],
+  "synchronization_plan": [
+    "Use the supplied MP4 as the sole edit master. Online films and stills supplement shape only.",
+    "Evaluate scene state from absolute source time, not accumulated render-frame dt. Export at 24000/1001 fps; use the indexed presentation timestamps.",
+    "Define a separate action-time mapping for each replay shot. Do not run the stunt four times sequentially in one shared simulation or assume one global slow-motion multiplier.",
+    "Solve camera pose/FOV and car transforms together against ramp lip/base, center stripe, crossing ground lines, car silhouette and fixed lights. Physical dimensions remain estimates until externally verified.",
+    "Keyframe body translation and quaternion rotation; keep wheel spin, suspension, wing configuration and nozzle emitters as separate named parts.",
+    "Make procedural effects deterministic with seeded randomness and time-addressable simulation so scrubbing/rendering the same frame reproduces the same cloud.",
+    "At each cut validate last old-shot frame and first new-shot frame. Then compare event anchors using side-by-side and blended overlays.",
+    "Review the source tail deliberately: 1094 video frames last 45.628917 seconds, while audio/container last 45.674667 seconds. If preserving source audio duration, hold the final image for the remaining interval.",
+    "Treat frame-accurate cut alignment as a measurable target, not proof of pixel-identical recreation. Gradual/occluded events use observation windows."
+  ],
+  "recipe_and_atlas_plan": [
+    "No Unity, Unreal, Blender or downloaded mesh replacement. The 404 approach is editable JavaScript geometry returning Three.js Groups, rendered with Three.js.",
+    "Read user style inspiration first, then fix one shared style statement for all Atlas-generated references.",
+    "For each important 3D asset produce three genuinely independent candidates, render verification views, inspect proportions and choose by evidence. Do not claim this loop has been executed during reference analysis.",
+    "Asset modules remain import/network/file/texture-free under the pinned contract, use explicit materials, real-scale placement, base y=0 and front +Z.",
+    "The pinned recipe surface system generates seeded color/roughness/normal maps at load time; it does not establish permission to load arbitrary image maps. Use Atlas surface imagery as references for that procedural material treatment. Do not silently label external texture imports as strict recipe compliance.",
+    "Preserve animated car hierarchy with the recipe loader keepHierarchy option; merging the complete vehicle would destroy movable wheels/wing/emitters.",
+    "Run recipe selftests and asset verification during production; adapt motion/frame comparisons for this cinematic. A game-jam gate is not automatically evidence that a cinematic matches its reference.",
+    "Keep reference provenance, Atlas project/job/output IDs, candidate choices and verification artifacts. Reference images/video are study inputs, not assets to masquerade as generated 3D.",
+    "Current session exposes no Atlas MCP tools and ATLAS_API_KEY was absent when checked. Connection must be restored and verified before any Atlas generation. No Atlas generation was performed in this analysis."
+  ],
+  "uncertainties": [
+    "Exact vehicle/ramp dimensions, camera lenses, physical coordinates and hidden structure cannot be uniquely recovered from the supplied views.",
+    "A detailed 3D camera/trajectory solve has not been performed; recorded camera descriptions and timing anchors are observations for that later work.",
+    "The isolated rear image uses a deployed-wing configuration; the video controls wing state for the reconstruction.",
+    "Exact wheel-contact instants are concealed by vapor. Windows are recorded instead of invented single-frame certainty.",
+    "Original turbulent gas motion cannot be reproduced pixel-for-pixel from a single video; match onset, direction, volume, footprint, lighting and occlusion.",
+    "Audio listening/cue annotation remains outstanding if soundtrack recreation is part of the final deliverable.",
+    "Final visual style, surface treatment and delivery format await the promised user inspiration."
+  ],
+  "preserved_work": "Existing tidebreak project and canonical 404 recipe were not modified; no push or deployment performed.",
+  "source_file_manifest": [
+    {
+      "path": "app/reference/master.mp4",
+      "bytes": 58419622,
+      "sha256": "9fa8746c3c4bca4a79c79206f445b1d1c27b9a35c1dd54ec1804b9926890eae4",
+      "use": "Reference only"
+    },
+    {
+      "path": "references/user/car-front.jpeg",
+      "bytes": 9098,
+      "sha256": "97cbb78fd1e9f066313be6b1362c5d4a297956fb53d4c85776c677f8e0ac860d",
+      "use": "Reference only"
+    },
+    {
+      "path": "references/user/car-rear.webp",
+      "bytes": 66800,
+      "sha256": "2dec618c74f444ca84654c828ac2cdd611d7bd8e22a866a06e41a134c1a64bc1",
+      "use": "Reference only"
+    }
+  ]
+}

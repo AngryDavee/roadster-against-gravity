@@ -1,0 +1,26 @@
+{
+  "roadster": {
+    "candidate": "roadster_c.js",
+    "reason": "Sectional wedge, mechanical rear/undertray and independent wheels; A too blocky, B canopy frame too heavy."
+  },
+  "ramp": {
+    "candidate": "ramp_c.js",
+    "reason": "Continuous paneled curve and curved truss; refined overhang, ground contact and rear supports after scene review."
+  },
+  "floodlight": {
+    "candidate": "floodlight_b.js",
+    "reason": "Readable recessed lamps and tripod from all four sides; C had weaker side readability."
+  },
+  "boundary": {
+    "candidate": "boundary_c.js",
+    "reason": "Low segmented red LED boundary with bolted feet matches source."
+  },
+  "pavement": {
+    "candidate": "pavement_c.js",
+    "reason": "Continuous slab avoids visible tile gaps; shallow geometry is intentionally evaluated from above in scene."
+  },
+  "servicevan": {
+    "candidate": "servicevan_c.js",
+    "reason": "Faceted cab, windscreen, lights, mirrors and rear doors are readable at aerial scale."
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"operation_id\": \"502ea6ab-4fda-4887-ac7c-d12f4a146962\",\n  \"pid\": \"fed1d343-f35f-4897-9a64-31b539dabf39\",\n  \"status\": \"queued\",\n  \"created_at\": 1792762048.6709988,\n  \"updated_at\": 1792762048.6709988,\n  \"response_text\": \"\",\n  \"error\": null,\n  \"budget\": {\n    \"budget_credits\": 1000,\n    \"budget_revision\": 0,\n    \"cost_credits\": 0,\n    \"reserved_credits\": 0,\n    \"remaining_budget_credits\": 1000,\n    \"budget_exhausted\": false,\n    \"accounting_complete\": false,\n    \"pending_work_count\": 0,\n    \"budget_diagnostic\": null\n  },\n  \"requested_budget_credits\": 1000,\n  \"cost_usd\": null,\n  \"retry_after_seconds\": 2,\n  \"budget_notice\": \"\",\n  \"project_url\": \"https://app.atlas.design/p/edit/fed1d343-f35f-4897-9a64-31b539dabf39?wid=b739e1c3-2a98-4863-9598-967968451284\"\n}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "operation_id": "502ea6ab-4fda-4887-ac7c-d12f4a146962",
+    "pid": "fed1d343-f35f-4897-9a64-31b539dabf39",
+    "status": "queued",
+    "created_at": 1792762048.6709988,
+    "updated_at": 1792762048.6709988,
+    "response_text": "",
+    "error": null,
+    "budget": {
+      "budget_credits": 1000,
+      "budget_revision": 0,
+      "cost_credits": 0,
+      "reserved_credits": 0,
+      "remaining_budget_credits": 1000,
+      "budget_exhausted": false,
+      "accounting_complete": false,
+      "pending_work_count": 0,
+      "budget_diagnostic": null
+    },
+    "requested_budget_credits": 1000,
+    "cost_usd": null,
+    "retry_after_seconds": 2,
+    "budget_notice": "",
+    "project_url": "https://app.atlas.design/p/edit/fed1d343-f35f-4897-9a64-31b539dabf39?wid=b739e1c3-2a98-4863-9598-967968451284"
+  },
+  "isError": false
+}

@@ -1,0 +1,14 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"pid\": \"fed1d343-f35f-4897-9a64-31b539dabf39\",\n  \"project_url\": \"https://app.atlas.design/p/edit/fed1d343-f35f-4897-9a64-31b539dabf39?wid=b739e1c3-2a98-4863-9598-967968451284\"\n}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "pid": "fed1d343-f35f-4897-9a64-31b539dabf39",
+    "project_url": "https://app.atlas.design/p/edit/fed1d343-f35f-4897-9a64-31b539dabf39?wid=b739e1c3-2a98-4863-9598-967968451284"
+  },
+  "isError": false
+}

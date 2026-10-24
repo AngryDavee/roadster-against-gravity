@@ -1,0 +1,237 @@
+[
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 48,
+  "tris": 864,
+  "materials": 5,
+  "size": [
+   5.96,
+   0.292,
+   0.43
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.0336,
+    "edgeDensity": 0.206
+   },
+   "right": {
+    "coverage": 0.0124,
+    "edgeDensity": 0.3733
+   },
+   "back": {
+    "coverage": 0.0452,
+    "edgeDensity": 0.3412
+   },
+   "left": {
+    "coverage": 0.0094,
+    "edgeDensity": 0.4576
+   }
+  },
+  "error": null,
+  "name": "boundary",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 15,
+  "tris": 420,
+  "materials": 3,
+  "size": [
+   2.6,
+   6.634,
+   2.043
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.0373,
+    "edgeDensity": 0.221
+   },
+   "right": {
+    "coverage": 0.0234,
+    "edgeDensity": 0.1007
+   },
+   "back": {
+    "coverage": 0.0183,
+    "edgeDensity": 0.0975
+   },
+   "left": {
+    "coverage": 0.0085,
+    "edgeDensity": 0.2232
+   }
+  },
+  "error": null,
+  "name": "floodlight",
+  "problems": []
+ },
+ {
+  "ok": false,
+  "mounts": null,
+  "meshes": 51,
+  "tris": 612,
+  "materials": 3,
+  "size": [
+   140,
+   0.184,
+   140
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.0002,
+    "edgeDensity": 0
+   },
+   "right": {
+    "coverage": 0.0002,
+    "edgeDensity": 0
+   },
+   "back": {
+    "coverage": 0.061,
+    "edgeDensity": 0.0011
+   },
+   "left": {
+    "coverage": 0.0021,
+    "edgeDensity": 0
+   }
+  },
+  "error": null,
+  "name": "pavement",
+  "problems": [
+   "front face is empty",
+   "right face is empty",
+   "left face is empty"
+  ]
+ },
+ {
+  "ok": false,
+  "mounts": null,
+  "meshes": 926,
+  "tris": 12284,
+  "materials": 5,
+  "size": [
+   8.37,
+   35.679,
+   19.431
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.1343,
+    "edgeDensity": 0.1233
+   },
+   "right": {
+    "coverage": 0.0751,
+    "edgeDensity": 0.3
+   },
+   "back": {
+    "coverage": 0.1159,
+    "edgeDensity": 0.136
+   },
+   "left": {
+    "coverage": 0.0654,
+    "edgeDensity": 0.392
+   }
+  },
+  "error": null,
+  "name": "ramp",
+  "problems": [
+   "front face is nearly featureless next to the others, it was probably never modelled",
+   "back face is nearly featureless next to the others, it was probably never modelled"
+  ]
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 384,
+  "tris": 11304,
+  "materials": 11,
+  "size": [
+   2.207,
+   1.305,
+   4.997
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.1498,
+    "edgeDensity": 0.1689
+   },
+   "right": {
+    "coverage": 0.1879,
+    "edgeDensity": 0.2557
+   },
+   "back": {
+    "coverage": 0.1407,
+    "edgeDensity": 0.2567
+   },
+   "left": {
+    "coverage": 0.1875,
+    "edgeDensity": 0.2608
+   }
+  },
+  "error": null,
+  "name": "roadster",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 58,
+  "tris": 1416,
+  "materials": 5,
+  "size": [
+   2.43,
+   2.32,
+   5.165
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.2,
+    "edgeDensity": 0.0839
+   },
+   "right": {
+    "coverage": 0.2864,
+    "edgeDensity": 0.0581
+   },
+   "back": {
+    "coverage": 0.1922,
+    "edgeDensity": 0.0433
+   },
+   "left": {
+    "coverage": 0.2835,
+    "edgeDensity": 0.0648
+   }
+  },
+  "error": null,
+  "name": "servicevan",
+  "problems": []
+ }
+]

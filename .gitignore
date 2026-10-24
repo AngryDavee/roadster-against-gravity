@@ -1,0 +1,8 @@
+node_modules/
+evidence/export-frames/
+.DS_Store
+.env*
+*.key
+__pycache__/
+*.pyc
+*.log

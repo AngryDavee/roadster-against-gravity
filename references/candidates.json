@@ -1,0 +1,110 @@
+[
+  {
+    "module": "ramp_a.js",
+    "family": "ramp",
+    "strategy": "Stacked angled slabs with an orthogonal support tower",
+    "reference": "supplied ramp film: frames 0, 240, 672, 743; style-lock applies"
+  },
+  {
+    "module": "ramp_b.js",
+    "family": "ramp",
+    "strategy": "Extruded continuous side profile and explicit triangular trusses",
+    "reference": "supplied ramp film: frames 0, 240, 672, 743; style-lock applies"
+  },
+  {
+    "module": "ramp_c.js",
+    "family": "ramp",
+    "strategy": "Parametric paneled ribbon with attached curved rail and braced spine",
+    "reference": "supplied ramp film: frames 0, 240, 672, 743; style-lock applies"
+  },
+  {
+    "module": "floodlight_a.js",
+    "family": "floodlight",
+    "strategy": "Rectangular stand and bank of flat lamp housings",
+    "reference": "supplied ramp film: frames 0, 240, 672, 743; style-lock applies"
+  },
+  {
+    "module": "floodlight_b.js",
+    "family": "floodlight",
+    "strategy": "Tripod tower with circular recessed lamps",
+    "reference": "supplied ramp film: frames 0, 240, 672, 743; style-lock applies"
+  },
+  {
+    "module": "floodlight_c.js",
+    "family": "floodlight",
+    "strategy": "Lattice mast with angled framed reflector fixtures",
+    "reference": "supplied ramp film: frames 0, 240, 672, 743; style-lock applies"
+  },
+  {
+    "module": "boundary_a.js",
+    "family": "boundary",
+    "strategy": "Solid low barrier with luminous cap",
+    "reference": "supplied ramp film: frames 0, 240, 672, 743; style-lock applies"
+  },
+  {
+    "module": "boundary_b.js",
+    "family": "boundary",
+    "strategy": "Tubular rails and individual reflector posts",
+    "reference": "supplied ramp film: frames 0, 240, 672, 743; style-lock applies"
+  },
+  {
+    "module": "boundary_c.js",
+    "family": "boundary",
+    "strategy": "Segmented illuminated safety boundary with bolted feet",
+    "reference": "supplied ramp film: frames 0, 240, 672, 743; style-lock applies"
+  },
+  {
+    "module": "pavement_a.js",
+    "family": "pavement",
+    "strategy": "Simple scored pavement slabs",
+    "reference": "supplied ramp film: frames 0, 240, 672, 743; style-lock applies"
+  },
+  {
+    "module": "pavement_b.js",
+    "family": "pavement",
+    "strategy": "Tiled pavement mass with narrow seam channels",
+    "reference": "supplied ramp film: frames 0, 240, 672, 743; style-lock applies"
+  },
+  {
+    "module": "pavement_c.js",
+    "family": "pavement",
+    "strategy": "Single ground slab with independently scored joints and embedded marker strips",
+    "reference": "supplied ramp film: frames 0, 240, 672, 743; style-lock applies"
+  },
+  {
+    "module": "roadster_a.js",
+    "family": "roadster",
+    "strategy": "Primitive mass assembly",
+    "reference": "supplied car stills + source frames 0/492/672 + official Track Mode film"
+  },
+  {
+    "module": "roadster_b.js",
+    "family": "roadster",
+    "strategy": "Extruded side profiles",
+    "reference": "supplied car stills + source frames 0/492/672 + official Track Mode film"
+  },
+  {
+    "module": "roadster_c.js",
+    "family": "roadster",
+    "strategy": "Sectional coachwork and detailed mechanical assemblies",
+    "reference": "supplied car stills + source frames 0/492/672 + official Track Mode film"
+  },
+  {
+    "family": "servicevan",
+    "module": "servicevan_a.js",
+    "strategy": "Primitive silhouette",
+    "reference": "supplied aerial frame 912, parked support van"
+  },
+  {
+    "family": "servicevan",
+    "module": "servicevan_b.js",
+    "strategy": "Extruded profile",
+    "reference": "supplied aerial frame 912, parked support van"
+  },
+  {
+    "family": "servicevan",
+    "module": "servicevan_c.js",
+    "strategy": "Faceted cab and paneled body",
+    "reference": "supplied aerial frame 912, parked support van"
+  }
+]

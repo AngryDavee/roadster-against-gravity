@@ -1,0 +1,18 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"pid\": \"fed1d343-f35f-4897-9a64-31b539dabf39\",\n  \"requested_budget_credits\": 1000,\n  \"budget_credits\": 1000,\n  \"maximum_budget_credits\": 9007199254740991,\n  \"budget_notice\": \"\",\n  \"active_operation_id\": null\n}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "pid": "fed1d343-f35f-4897-9a64-31b539dabf39",
+    "requested_budget_credits": 1000,
+    "budget_credits": 1000,
+    "maximum_budget_credits": 9007199254740991,
+    "budget_notice": "",
+    "active_operation_id": null
+  },
+  "isError": false
+}

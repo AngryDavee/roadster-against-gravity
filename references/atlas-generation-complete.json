@@ -1,0 +1,35 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"operation_id\": \"502ea6ab-4fda-4887-ac7c-d12f4a146962\",\n  \"pid\": \"fed1d343-f35f-4897-9a64-31b539dabf39\",\n  \"status\": \"succeeded\",\n  \"created_at\": 1792762048.6709988,\n  \"updated_at\": 1792762340.443802,\n  \"response_text\": \"Completed **two images and one PBR material** in this project. All three nodes succeeded; none remain running. Nothing was published or shared, no API was exported, and no other project was modified.\\n\\n### Outputs and provenance\\n\\n| Role | Node | Model | Actual dimensions |\\n|---|---|---|---|\\n| Illustrated hover/ramp keyframe | 94191df7 | Google Nano Banana 2.1, High reasoning | 2752 \u00d7 1536 |\\n| Rear three-quarter car reference | f4ee9cb4 | Google Nano Banana 2.1, High reasoning | 2528 \u00d7 1696 |\\n| Concrete material | 3b318f74 | PATINA PBR material generator | Base color inspected at 1024 \u00d7 1024 |\\n\\n**Private output file IDs**\\n- Keyframe: `5da91974-acff-4c29-b163-ca79c5d07233`\\n- Car reference: `4d097977-28d2-4047-9e52-c95c94931b9c`\\n- Concrete base color: `39775123-1831-47b7-afaf-7e6a756ed032`\\n- Concrete roughness: `3613c8d2-ea84-4390-aff0-b4a068f280c5`\\n- Concrete normal: `f29df611-775b-48f1-b308-30a97437d34a`\\n- Additional generated texture: `0df9b1ae-88bb-447b-874d-e78ea5a2680e`\\n\\n### Review notes\\nI visually inspected both references and the concrete base color. The keyframe shows the faceted silver car, white/cyan jets and ground vapor, and steep right-side ramp with red edges and white center line. The rear reference visibly includes the continuous light bar, four circular rear ports, and **RDSTR** plate.\\n\\nThe images share a prompted design language but were generated independently\u2014not reference-locked\u2014and lean toward a boxier wedge silhouette. Hover height is illustrative, not metrically verified.\\n\\nThe concrete has fine gray grain and faint rectangular panel boundaries. **Both-axis seamless tiling was enabled**, but edge continuity and normal-map orientation have not been independently verified. These remain style/design references and a surface-map set for your procedural 404 geometry.\",\n  \"error\": null,\n  \"budget\": {\n    \"budget_credits\": 1000,\n    \"budget_revision\": 28,\n    \"cost_credits\": 41,\n    \"reserved_credits\": 0,\n    \"remaining_budget_credits\": 959,\n    \"budget_exhausted\": false,\n    \"accounting_complete\": true,\n    \"pending_work_count\": 0,\n    \"budget_diagnostic\": null\n  },\n  \"requested_budget_credits\": 1000,\n  \"cost_usd\": 0.284218375,\n  \"retry_after_seconds\": null,\n  \"budget_notice\": \"\",\n  \"project_url\": \"https://app.atlas.design/p/edit/fed1d343-f35f-4897-9a64-31b539dabf39?wid=b739e1c3-2a98-4863-9598-967968451284\"\n}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "operation_id": "502ea6ab-4fda-4887-ac7c-d12f4a146962",
+    "pid": "fed1d343-f35f-4897-9a64-31b539dabf39",
+    "status": "succeeded",
+    "created_at": 1792762048.6709988,
+    "updated_at": 1792762340.443802,
+    "response_text": "Completed **two images and one PBR material** in this project. All three nodes succeeded; none remain running. Nothing was published or shared, no API was exported, and no other project was modified.\n\n### Outputs and provenance\n\n| Role | Node | Model | Actual dimensions |\n|---|---|---|---|\n| Illustrated hover/ramp keyframe | 94191df7 | Google Nano Banana 2.1, High reasoning | 2752 \u00d7 1536 |\n| Rear three-quarter car reference | f4ee9cb4 | Google Nano Banana 2.1, High reasoning | 2528 \u00d7 1696 |\n| Concrete material | 3b318f74 | PATINA PBR material generator | Base color inspected at 1024 \u00d7 1024 |\n\n**Private output file IDs**\n- Keyframe: `5da91974-acff-4c29-b163-ca79c5d07233`\n- Car reference: `4d097977-28d2-4047-9e52-c95c94931b9c`\n- Concrete base color: `39775123-1831-47b7-afaf-7e6a756ed032`\n- Concrete roughness: `3613c8d2-ea84-4390-aff0-b4a068f280c5`\n- Concrete normal: `f29df611-775b-48f1-b308-30a97437d34a`\n- Additional generated texture: `0df9b1ae-88bb-447b-874d-e78ea5a2680e`\n\n### Review notes\nI visually inspected both references and the concrete base color. The keyframe shows the faceted silver car, white/cyan jets and ground vapor, and steep right-side ramp with red edges and white center line. The rear reference visibly includes the continuous light bar, four circular rear ports, and **RDSTR** plate.\n\nThe images share a prompted design language but were generated independently\u2014not reference-locked\u2014and lean toward a boxier wedge silhouette. Hover height is illustrative, not metrically verified.\n\nThe concrete has fine gray grain and faint rectangular panel boundaries. **Both-axis seamless tiling was enabled**, but edge continuity and normal-map orientation have not been independently verified. These remain style/design references and a surface-map set for your procedural 404 geometry.",
+    "error": null,
+    "budget": {
+      "budget_credits": 1000,
+      "budget_revision": 28,
+      "cost_credits": 41,
+      "reserved_credits": 0,
+      "remaining_budget_credits": 959,
+      "budget_exhausted": false,
+      "accounting_complete": true,
+      "pending_work_count": 0,
+      "budget_diagnostic": null
+    },
+    "requested_budget_credits": 1000,
+    "cost_usd": 0.284218375,
+    "retry_after_seconds": null,
+    "budget_notice": "",
+    "project_url": "https://app.atlas.design/p/edit/fed1d343-f35f-4897-9a64-31b539dabf39?wid=b739e1c3-2a98-4863-9598-967968451284"
+  },
+  "isError": false
+}

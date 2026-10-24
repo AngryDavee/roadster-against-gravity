@@ -1,0 +1,17 @@
+{
+  "files": [
+    {
+      "path": "app/reference/master.mp4",
+      "bytes": 58419622,
+      "sha256": "9fa8746c3c4bca4a79c79206f445b1d1c27b9a35c1dd54ec1804b9926890eae4"
+    },
+    {
+      "path": "evidence/export/roadster-against-gravity.mp4",
+      "bytes": 48776504,
+      "sha256": "0c5452c0c99212aaf5200735ddd517985f055ab9debfc39204e93062b363492d"
+    }
+  ],
+  "dependencies": "npm ci from committed lockfile; Node >=22.12",
+  "source_asset_storage": "ordinary Git; no LFS; reference master included",
+  "credentials_included": false
+}

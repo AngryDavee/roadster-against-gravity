@@ -1,0 +1,18 @@
+{
+  "atlas": "authenticated; private production and fresh visual review completed",
+  "geometry": "six families, eighteen candidates, selected procedural modules",
+  "frames": 1094,
+  "fps": "24000/1001",
+  "cuts": [
+    51,
+    419,
+    656,
+    743
+  ],
+  "interactive_checks": "passed; evidence/checks/report.json",
+  "asset_verifier": "4/6 clean; two retained heuristic warnings",
+  "ship_check": "passed; all modules parse, all paths remain inside app",
+  "rendering": "local Three.js, 404 loader/surfaces, Atlas concrete maps",
+  "export": "evidence/export/roadster-against-gravity.mp4",
+  "fidelity": "exact frame count and editorial cuts; visual reconstruction of camera, geometry and motion, not pixel identity"
+}

@@ -1,0 +1,38 @@
+shot,first_frame,last_frame,start_seconds,end_seconds,observation,confidence
+S01,0,50,0.0,2.085416667,Opening car/ramp composition; red rear light and edge lights,high
+S02,51,84,2.127125,3.5035,Wide reveal and pause at ramp foot,high
+S02,84,102,3.5035,4.25425,Ascent becomes clearly apparent,medium; gradual onset
+S02,120,180,5.005,7.5075,Car climbs steep face; headlight pool moves up the deck,high
+S02,156,192,6.5065,8.008,Lower ramp edges and background lighting become more visible,medium; gradual illumination
+S02,216,230,9.009,9.592916667,Car approaches curled upper lip; roof remains visible,high
+S02,230,238,9.592916667,9.926583333,Lateral blue-white gas appears near departure; car begins rotating away,medium; overlap and distance
+S02,238,254,9.926583333,10.593916667,Aerial rotation and leftward separation from ramp,high
+S02,254,266,10.593916667,11.094416667,Car becomes broadly level; downward jets lengthen,high
+S02,266,276,11.094416667,11.5115,Jets reach pavement and build an expanding white cloud,high
+S02,276,300,11.5115,12.5125,"Car suspended above dense rolling vapor, continuing down/left",high
+S02,300,318,12.5125,13.26325,Final lowering/contact interval; wheels obscured by cloud,medium; contact not directly visible
+S02,324,342,13.5135,14.26425,Car emerges at ground level through remaining vapor,high
+S02,342,418,14.26425,17.434083333,Drive-away with trailing vapor; camera tracks,high
+S03,419,432,17.475791667,18.018,Replay departure at lip with lateral jet activity,high
+S03,432,474,18.018,19.76975,Slowed rotation exposes side then underside,high
+S03,474,510,19.76975,21.27125,Front faces camera; lateral and downward jets visible,high
+S03,510,528,21.27125,22.022,Downward jets strengthen; moving shadow on ramp,high
+S03,528,552,22.022,23.023,Ground vapor blooms outward beneath descending car,high
+S03,552,582,23.023,24.27425,Car nearly level above large cloud,high
+S03,582,606,24.27425,25.27525,Final lowering into opaque vapor; exact wheel contact hidden,medium
+S03,606,636,25.27525,26.5265,Cloud occlusion; headlights become diffuse bright spots,high
+S03,636,655,26.5265,27.318958333,Front emerges at ground level,high
+S04,656,666,27.360666667,27.77775,Close aerial departure; ramp lip right; car turning,high
+S04,666,678,27.77775,28.27825,Undertray exposed; several narrow directional gas streams,high
+S04,678,696,28.27825,29.029,Roof turns into view as the car levels,high
+S04,696,714,29.029,29.77975,Descent over crossed lines; jets beneath car,high
+S04,714,742,29.77975,30.947583333,Cloud expands under the car; shot ends before a clear wheel-contact view,high
+S05,743,780,30.989291667,32.5325,"Full venue reset; car at ramp foot, second car parked lower right",high
+S05,780,834,32.5325,34.78475,Ascent through ramp curve,high
+S05,834,906,34.78475,37.78775,Upper-ramp approach; background strip and floodlights brighten,high
+S05,906,924,37.78775,38.5385,Departure and rotation high left of ramp lip,medium; small subject
+S05,924,942,38.5385,39.28925,Car levels and descends; downward jets visible,high
+S05,942,960,39.28925,40.04,Cloud first expands across landing area,high
+S05,960,984,40.04,41.041,Lowering/landing zone; cloud hides exact tire contact,medium
+S05,984,1044,41.041,43.5435,"Drive-away toward lower left, leaving long cloud trail",high
+S05,1044,1093,43.5435,45.587208333,Hero exits; vapor thins; parked car and illuminated venue remain,high

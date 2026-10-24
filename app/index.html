@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+ <meta name="theme-color" content="#08090e"><title>ROADSTER — Against Gravity</title>
+ <link rel="stylesheet" href="./style.css">
+ <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
+</head>
+<body>
+ <main id="experience">
+  <div id="stage"><canvas id="film" aria-label="Roadster ramp cinematic"></canvas><div id="referencePanel" hidden><video id="reference" muted playsinline preload="none"></video><span class="reference-label">SOURCE FILM</span></div></div>
+  <div id="loading" role="status"><span class="loading-mark">R / 404</span><span>ASSEMBLING THE IMPOSSIBLE</span><i></i><p id="loadDetail">Preparing the scene</p></div>
+  <header class="masthead"><a class="wordmark" href="./" aria-label="Roadster home">RDSTR<span> / </span><b>404</b></a><div class="mastnote">A STUDY IN DEFIANCE<span>01 — 05 / MOTION SERIES</span></div><button id="minimal" class="icon-button" aria-label="Hide interface" title="Hide interface (H)">↗</button></header>
+  <section id="intro"><p class="eyebrow"><span></span> BUILT AS CODE. MADE TO FLY.</p><h1>AGAINST<br><em>GRAVITY.</em></h1><p class="intro-copy">One machine. One impossible arc.<br>A frame-timed, illustrated reconstruction.</p><button id="begin" class="begin">WATCH THE FILM <span>↗</span></button><p class="intro-meta">00:45 / FIVE PERSPECTIVES / 404</p></section>
+  <div class="shot-caption" id="caption" hidden><span id="shotNumber">01</span><div><p id="shotName">At the threshold</p><small>ROADSTER / NIGHT STUDY</small></div></div>
+  <div id="comparisonLabel" hidden>404 RECONSTRUCTION</div>
+  <nav class="transport" aria-label="Playback controls">
+   <div id="chapters" class="chapters"></div>
+   <div class="timeline-wrap"><input id="timeline" aria-label="Film timeline" type="range" min="0" max="1093" value="0" step="1"></div>
+   <div class="transport-row"><div class="transport-left"><button id="play" aria-label="Play" class="play-button">▶</button><button id="restart" title="Restart" aria-label="Restart">↺</button><output id="time">00:00.000</output><span class="duration">/ 00:45.629</span></div><div class="transport-right"><button id="speed" title="Playback speed">1×</button><button id="compare">COMPARE</button><button id="inspect">INSPECT</button><button id="snapshot" title="Save the rendered frame">SAVE FRAME</button><button id="fullscreen" title="Fullscreen" aria-label="Fullscreen">⛶</button></div></div>
+  </nav>
+  <div id="notice" role="status" hidden></div>
+  <div id="error" role="alert" hidden><h2>The scene could not start.</h2><p id="errorText"></p><button onclick="location.reload()">Retry</button></div>
+ </main>
+ <script type="module" src="./main.js"></script>
+</body>
+</html>

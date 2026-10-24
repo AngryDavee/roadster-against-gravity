@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "All four cuts occur on the original source frames",
+      "pass": true
+    },
+    {
+      "name": "Every source frame has a finite vehicle and camera pose",
+      "pass": true
+    },
+    {
+      "name": "Watch / play / pause work through real mouse input",
+      "pass": true
+    },
+    {
+      "name": "Chapter selection seeks to the replay",
+      "pass": true
+    },
+    {
+      "name": "Timeline keyboard seeking moves one source frame",
+      "pass": true
+    },
+    {
+      "name": "Reference comparison seeks in sync and preserves 16:9 framing",
+      "pass": true
+    },
+    {
+      "name": "Inspection orbit changes the actual 3D view",
+      "pass": true
+    },
+    {
+      "name": "Seeking away and back produces identical rendered pixels",
+      "pass": true
+    },
+    {
+      "name": "Film stops on its last frame and restarts correctly",
+      "pass": true
+    },
+    {
+      "name": "Phone touch starts and pauses playback without horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "No browser exceptions or failed production resource requests",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "badResources": [],
+  "sourceFrames": 1094,
+  "fps": 23.976023976023978,
+  "pictureDuration": 45.62891666666666,
+  "render": {
+    "calls": 172,
+    "triangles": 83860,
+    "time": 0.11670000000000029,
+    "shot": 0,
+    "action": 0.11670000000000029,
+    "pose": {
+      "x": 0,
+      "y": 0.035,
+      "z": 0,
+      "pitch": 0,
+      "turn": 0,
+      "flight": 0,
+      "theta": 0
+    },
+    "width": 1280,
+    "height": 720
+  }
+}
