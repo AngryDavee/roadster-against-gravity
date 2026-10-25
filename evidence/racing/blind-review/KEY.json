@@ -1,0 +1,7 @@
+{
+ "pair_01.png": {
+  "build": "left",
+  "build_file": "coast.png",
+  "ref_file": "atlas-concept.png"
+ }
+}

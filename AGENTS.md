@@ -1,6 +1,6 @@
 # Instructions for continuing this project
 
-Read `HANDOFF.md`, `STYLE_LOCK.md`, and `README.md` before editing. This repository is the **Roadster film**, not Tidebreak. Preserve the existing film unless the user requests a change.
+Read `HANDOFF.md`, `STYLE_LOCK.md`, and `README.md` before editing. This repository contains the **Roadster film** and its separately developed **Meridian racing adaptation**, not Tidebreak. The film baseline is tagged `film-baseline-2026-10-26`. The user authorized an Asphalt 8-inspired original racing game on 2026-10-26; work in `racing/`. Film-only timing, camera, scenery and no-HUD rules below apply to `app/`; racing has its own style and gameplay brief. Preserve the original film.
 
 - Use the pinned 404 recipe in `vendor/404-game-recipe/404.md` and `GAME.md`. Use Atlas MCP for new generated images, textures and visual reviews. Do not substitute another image service, Unity, Unreal, Blender, or downloaded meshes.
 - Keep generated geometry as editable JavaScript modules. Preserve the unchanged stock loader and surfaces modules. Keep scene lighting, animation and effects outside asset modules.

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "tests": [
+    "boost consumption",
+    "pause",
+    "barrier collision",
+    "jump landing",
+    "original gravity curve",
+    "road bypass",
+    "finite poses and bounded charge",
+    "no position teleport",
+    "all opponents finish",
+    "skilled player can win",
+    "restart"
+  ],
+  "winningTime": 110.96666666666165
+}

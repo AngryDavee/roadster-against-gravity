@@ -1,0 +1,56 @@
+[
+  {
+    "file": "hangar_a.js",
+    "family": "hangar",
+    "strategy": "Primitive vaulted ribs and overlapping roof planks",
+    "reference": "references/racing/atlas-objects.png"
+  },
+  {
+    "file": "hangar_b.js",
+    "family": "hangar",
+    "strategy": "Extruded hollow arch shell and broad flanges",
+    "reference": "references/racing/atlas-objects.png"
+  },
+  {
+    "file": "hangar_c.js",
+    "family": "hangar",
+    "strategy": "Individual curved skin panels, bronze clerestories and external rib grid",
+    "reference": "references/racing/atlas-objects.png"
+  },
+  {
+    "file": "tower_a.js",
+    "family": "tower",
+    "strategy": "Stacked tapering pedestal sections and an octagonal cabin",
+    "reference": "references/racing/atlas-objects.png"
+  },
+  {
+    "file": "tower_b.js",
+    "family": "tower",
+    "strategy": "Lathed flared pedestal, tapered viewing cabin and service doors",
+    "reference": "references/racing/atlas-objects.png"
+  },
+  {
+    "file": "tower_c.js",
+    "family": "tower",
+    "strategy": "Faceted panel pedestal with buttressed feet and explicit glazing mullions",
+    "reference": "references/racing/atlas-objects.png"
+  },
+  {
+    "file": "wedge_a.js",
+    "family": "wedge",
+    "strategy": "Sloped slab deck on graduated steel trestles",
+    "reference": "references/racing/atlas-objects.png"
+  },
+  {
+    "file": "wedge_b.js",
+    "family": "wedge",
+    "strategy": "Extruded triangular sidewalls with inset deck",
+    "reference": "references/racing/atlas-objects.png"
+  },
+  {
+    "file": "wedge_c.js",
+    "family": "wedge",
+    "strategy": "Panelized launch deck with open diagonal trusses and rail caps",
+    "reference": "references/racing/atlas-objects.png"
+  }
+]

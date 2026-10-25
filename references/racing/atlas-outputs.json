@@ -1,0 +1,71 @@
+{
+  "success": true,
+  "pid": "254a8025-503f-4a33-8ed8-e0394c884d2d",
+  "project_url": "https://app.atlas.design/p/edit/254a8025-503f-4a33-8ed8-e0394c884d2d?wid=b739e1c3-2a98-4863-9598-967968451284",
+  "outputs": [
+    {
+      "fid": "36c86027-415d-4b87-9af7-693d8a58ce0a",
+      "name": "output",
+      "filename": "output.png",
+      "mime_type": "image/png",
+      "size_bytes": 6241102,
+      "node_id": "d9e19590-9ed2-4576-b7e8-78dcb2d3abb9",
+      "associated_node_ids": [
+        "d9e19590-9ed2-4576-b7e8-78dcb2d3abb9"
+      ],
+      "run_id": "a7b53fb8-59e0-484e-b75e-71e837c942c0",
+      "node_run_ids": [
+        "a7b53fb8-59e0-484e-b75e-71e837c942c0"
+      ],
+      "output_field": "output_image",
+      "role": "unknown",
+      "dimensions": {
+        "width": 2736,
+        "height": 1536
+      },
+      "provenance": {
+        "node_type": "quality_text_to_image",
+        "generating_run_id": "1575e76b-4de7-4476-b084-5890a2ec0d22",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {},
+      "local_path": "references/racing/atlas-concept.png"
+    },
+    {
+      "fid": "72b1a080-355c-49be-b65c-cc21a71db216",
+      "name": "output_image",
+      "filename": "output_image.png",
+      "mime_type": "image/png",
+      "size_bytes": 4494383,
+      "node_id": "6ffc2818-223c-4b22-b9aa-be2369692f51",
+      "associated_node_ids": [
+        "6ffc2818-223c-4b22-b9aa-be2369692f51"
+      ],
+      "run_id": "1259e5f7-83eb-49ab-8dee-fa52cb837488",
+      "node_run_ids": [
+        "1259e5f7-83eb-49ab-8dee-fa52cb837488"
+      ],
+      "output_field": "output_image",
+      "role": "unknown",
+      "dimensions": {
+        "width": 2736,
+        "height": 1536
+      },
+      "provenance": {
+        "node_type": "multimodal",
+        "generating_run_id": "e563f3ee-36b3-4cc2-8906-94fb802061b1",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {},
+      "local_path": "references/racing/atlas-objects.png"
+    }
+  ],
+  "has_more": false,
+  "next_cursor": null
+}

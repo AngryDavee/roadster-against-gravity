@@ -1,0 +1,16 @@
+ok    boundary                  864 tris  48 meshes  5.96x0.292x0.43m
+ok    floodlight                420 tris  15 meshes  2.6x6.634x2.043m
+ok    hangar                   5200 tris  393 meshes  25.9x11.25x22.3m
+WARN  ramp                    12284 tris  926 meshes  8.37x35.679x19.431m
+        front face is nearly featureless next to the others, it was probably never modelled
+        back face is nearly featureless next to the others, it was probably never modelled
+ok    roadster                11304 tris  384 meshes  2.207x1.305x4.997m
+ok    tower                     932 tris  121 meshes  7.4x18.575x7.4m
+ok    wedge                     792 tris  39 meshes  5.173x2.259x12.033m
+
+6/7 clean
+sheet:  /Users/adams/Desktop/404_GAMES/roadster-film/racing/assets/_verify/sheet.png
+report: /Users/adams/Desktop/404_GAMES/roadster-film/racing/assets/_verify/report.json
+
+Look at the sheet before you fix anything. The measurements below flag structure,
+they cannot tell you whether the asset resembles what you asked for.

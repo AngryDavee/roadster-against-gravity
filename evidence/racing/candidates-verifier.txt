@@ -1,0 +1,19 @@
+WARN  hangar_a                 2472 tris  130 meshes  25.9x11.321x22m
+        right face is nearly featureless next to the others, it was probably never modelled
+WARN  hangar_b                 3596 tris  155 meshes  25.9x11.245x22m
+        right face is nearly featureless next to the others, it was probably never modelled
+        left face is nearly featureless next to the others, it was probably never modelled
+ok    hangar_c                 5200 tris  393 meshes  25.9x11.25x22.3m
+ok    tower_a                   548 tris  30 meshes  7.2x18.575x7.2m
+ok    tower_b                   676 tris  26 meshes  7.2x18.575x7.2m
+ok    tower_c                   932 tris  121 meshes  7.4x18.575x7.4m
+ok    wedge_a                   336 tris  20 meshes  5x2.198x12.027m
+ok    wedge_b                   222 tris  12 meshes  5.2x2.169x12.013m
+ok    wedge_c                   792 tris  39 meshes  5.173x2.259x12.033m
+
+7/9 clean
+sheet:  /Users/adams/Desktop/404_GAMES/roadster-film/racing/candidates/_verify/sheet.png
+report: /Users/adams/Desktop/404_GAMES/roadster-film/racing/candidates/_verify/report.json
+
+Look at the sheet before you fix anything. The measurements below flag structure,
+they cannot tell you whether the asset resembles what you asked for.

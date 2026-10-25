@@ -1,5 +1,22 @@
 # Roadster — Against Gravity
 
+## Racing iteration: Meridian Launch Coast
+
+The original film is preserved byte-for-byte in `app/` and tagged **`film-baseline-2026-10-26`**. The new playable adaptation lives independently in `racing/`, on branch **`feature/airborne-racing`**.
+
+```sh
+npm ci
+npm run race
+```
+
+Open **http://localhost:4175**. A/D or arrows steer, Shift drifts, Space boosts; acceleration is automatic. Touch controls are provided on phones. See [racing setup and status](racing/README.md). `npm start` still opens the original cinematic on port 4174.
+
+The new circuit includes two laps, five AI rivals, charge pickups, smaller jumps, a covered sector, coastal elevation changes, results and the original gravity ramp as an optional airborne transfer. This is a playable first racing iteration, not a finished Asphalt-scale game or a competition certification.
+
+![Meridian racing iteration](evidence/racing/final/dock.png)
+
+---
+
 A local, editable Three.js reconstruction of the supplied Roadster ramp film, using the 404 recipe for procedural geometry and Atlas MCP for generated reference images, concrete maps and visual critique. The treatment follows the user's faceted, ink-edged game screenshots.
 
 ![Final film contact sheet](evidence/export/contact-sheet.jpg)

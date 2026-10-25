@@ -1,0 +1,271 @@
+[
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 48,
+  "tris": 864,
+  "materials": 5,
+  "size": [
+   5.96,
+   0.292,
+   0.43
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.0336,
+    "edgeDensity": 0.206
+   },
+   "right": {
+    "coverage": 0.0124,
+    "edgeDensity": 0.3733
+   },
+   "back": {
+    "coverage": 0.0452,
+    "edgeDensity": 0.3412
+   },
+   "left": {
+    "coverage": 0.0094,
+    "edgeDensity": 0.4576
+   }
+  },
+  "error": null,
+  "name": "boundary",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 15,
+  "tris": 420,
+  "materials": 3,
+  "size": [
+   2.6,
+   6.634,
+   2.043
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.0373,
+    "edgeDensity": 0.221
+   },
+   "right": {
+    "coverage": 0.0234,
+    "edgeDensity": 0.1007
+   },
+   "back": {
+    "coverage": 0.0183,
+    "edgeDensity": 0.0975
+   },
+   "left": {
+    "coverage": 0.0085,
+    "edgeDensity": 0.2232
+   }
+  },
+  "error": null,
+  "name": "floodlight",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 393,
+  "tris": 5200,
+  "materials": 5,
+  "size": [
+   25.9,
+   11.25,
+   22.3
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.1419,
+    "edgeDensity": 0.4709
+   },
+   "right": {
+    "coverage": 0.302,
+    "edgeDensity": 0.2767
+   },
+   "back": {
+    "coverage": 0.1341,
+    "edgeDensity": 0.453
+   },
+   "left": {
+    "coverage": 0.2616,
+    "edgeDensity": 0.2994
+   }
+  },
+  "error": null,
+  "name": "hangar",
+  "problems": []
+ },
+ {
+  "ok": false,
+  "mounts": null,
+  "meshes": 926,
+  "tris": 12284,
+  "materials": 5,
+  "size": [
+   8.37,
+   35.679,
+   19.431
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.1343,
+    "edgeDensity": 0.1233
+   },
+   "right": {
+    "coverage": 0.0751,
+    "edgeDensity": 0.3
+   },
+   "back": {
+    "coverage": 0.1159,
+    "edgeDensity": 0.136
+   },
+   "left": {
+    "coverage": 0.0654,
+    "edgeDensity": 0.392
+   }
+  },
+  "error": null,
+  "name": "ramp",
+  "problems": [
+   "front face is nearly featureless next to the others, it was probably never modelled",
+   "back face is nearly featureless next to the others, it was probably never modelled"
+  ]
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 384,
+  "tris": 11304,
+  "materials": 11,
+  "size": [
+   2.207,
+   1.305,
+   4.997
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.1498,
+    "edgeDensity": 0.1689
+   },
+   "right": {
+    "coverage": 0.1879,
+    "edgeDensity": 0.2557
+   },
+   "back": {
+    "coverage": 0.1407,
+    "edgeDensity": 0.2567
+   },
+   "left": {
+    "coverage": 0.1875,
+    "edgeDensity": 0.2608
+   }
+  },
+  "error": null,
+  "name": "roadster",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 121,
+  "tris": 932,
+  "materials": 6,
+  "size": [
+   7.4,
+   18.575,
+   7.4
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.1369,
+    "edgeDensity": 0.2105
+   },
+   "right": {
+    "coverage": 0.1364,
+    "edgeDensity": 0.2317
+   },
+   "back": {
+    "coverage": 0.1318,
+    "edgeDensity": 0.1522
+   },
+   "left": {
+    "coverage": 0.1318,
+    "edgeDensity": 0.1822
+   }
+  },
+  "error": null,
+  "name": "tower",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 39,
+  "tris": 792,
+  "materials": 3,
+  "size": [
+   5.173,
+   2.259,
+   12.033
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.0964,
+    "edgeDensity": 0.1793
+   },
+   "right": {
+    "coverage": 0.1547,
+    "edgeDensity": 0.2299
+   },
+   "back": {
+    "coverage": 0.1828,
+    "edgeDensity": 0.1791
+   },
+   "left": {
+    "coverage": 0.1348,
+    "edgeDensity": 0.1834
+   }
+  },
+  "error": null,
+  "name": "wedge",
+  "problems": []
+ }
+]

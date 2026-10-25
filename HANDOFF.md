@@ -1,5 +1,11 @@
 # Roadster film — continuation handoff
 
+## Latest iteration: October 26, 2026
+
+The user approved evolving the concept into an original Asphalt 8-inspired racer while saving the film. The film is preserved under tag `film-baseline-2026-10-26` (commit `13daaed`) and remains unchanged in `app/`. Work continues on branch `feature/airborne-racing`, with a separate static game folder `racing/`. Read `racing/README.md`, `racing/STYLE_LOCK.md` and `references/racing/design.md` for current gameplay work. `npm run race` serves it on 4175; `npm start` still serves the film on 4174.
+
+The adaptation has a complete two-lap coastal circuit, five AI rivals, keyboard/touch controls, drift/boost/pickups, regular jumps, an optional traversal of the original gravity ramp, pause, local best time and finish classification. New hangar/tower/wedge geometry follows the Atlas reference → three candidates → canonical verifier → visual selection workflow. Source material and evidence are in `references/racing/` and `evidence/racing/`. The newer racing scope intentionally adds scenery and a HUD; the no-HUD and fixed-edit requirements below still apply to the preserved film only.
+
 ## Start here
 
 This is an editable browser cinematic recreating the supplied Tesla ramp stunt with an illustrated 404 game aesthetic. The owner requested a complete portable handoff so a friend or another AI can continue it. The previous racing game is a separate project and is not part of this repository.

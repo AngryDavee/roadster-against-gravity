@@ -1,0 +1,35 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"success\": true,\n  \"operation_id\": \"a1b9f6c9-66de-4290-b1a0-b32a10012edd\",\n  \"pid\": \"254a8025-503f-4a33-8ed8-e0394c884d2d\",\n  \"status\": \"succeeded\",\n  \"created_at\": 1792970764.4865432,\n  \"updated_at\": 1792971046.052583,\n  \"response_text\": \"Created **two images** and inspected both actual outputs. Both succeeded; nothing remains running. No sharing/publication changes, meshes, videos, or APIs were created.\\n\\n| Role | Node | Output asset ID |\\n|---|---|---|\\n| Gameplay concept frame | d9e19590 | `36c86027-415d-4b87-9af7-693d8a58ce0a` |\\n| Three-object reference sheet | 6ffc2818 | `72b1a080-355c-49be-b65c-cc21a71db216` |\\n\\nBoth files are **2736 \u00d7 1536**, approximately 16:9.\\n\\n**Inspection findings**\\n- **Gameplay:** low rear chase view, silver Roadster with cyan exhaust, bright readable asphalt, sea left, ivory hangars and towers right, violet mountains and amber horizon. No visible HUD, text, or watermark. The distant red-lit ramp reads as a supported launch ramp rather than an enormous concrete overhang.\\n- **Object sheet:** three separated, fully visible three-quarter-view structures on light gray: vaulted hangar, tapered control tower, and silver launch wedge with amber markings and dark supports. A small parked vehicle appears inside the hangar. Exact dimensions and wedge banking are prompt targets, not verified measurements.\\n\\nThe sheet used the gameplay image as its style reference. Both nodes are organized in frame 60466cb3 for future procedural 404 work.\",\n  \"error\": null,\n  \"budget\": {\n    \"budget_credits\": 150,\n    \"budget_revision\": 42,\n    \"cost_credits\": 54,\n    \"reserved_credits\": 0,\n    \"remaining_budget_credits\": 96,\n    \"budget_exhausted\": false,\n    \"accounting_complete\": true,\n    \"pending_work_count\": 0,\n    \"budget_diagnostic\": null\n  },\n  \"requested_budget_credits\": 150,\n  \"cost_usd\": 0.47462985,\n  \"retry_after_seconds\": null,\n  \"budget_notice\": \"\",\n  \"project_url\": \"https://app.atlas.design/p/edit/254a8025-503f-4a33-8ed8-e0394c884d2d?wid=b739e1c3-2a98-4863-9598-967968451284\"\n}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "operation_id": "a1b9f6c9-66de-4290-b1a0-b32a10012edd",
+    "pid": "254a8025-503f-4a33-8ed8-e0394c884d2d",
+    "status": "succeeded",
+    "created_at": 1792970764.4865432,
+    "updated_at": 1792971046.052583,
+    "response_text": "Created **two images** and inspected both actual outputs. Both succeeded; nothing remains running. No sharing/publication changes, meshes, videos, or APIs were created.\n\n| Role | Node | Output asset ID |\n|---|---|---|\n| Gameplay concept frame | d9e19590 | `36c86027-415d-4b87-9af7-693d8a58ce0a` |\n| Three-object reference sheet | 6ffc2818 | `72b1a080-355c-49be-b65c-cc21a71db216` |\n\nBoth files are **2736 \u00d7 1536**, approximately 16:9.\n\n**Inspection findings**\n- **Gameplay:** low rear chase view, silver Roadster with cyan exhaust, bright readable asphalt, sea left, ivory hangars and towers right, violet mountains and amber horizon. No visible HUD, text, or watermark. The distant red-lit ramp reads as a supported launch ramp rather than an enormous concrete overhang.\n- **Object sheet:** three separated, fully visible three-quarter-view structures on light gray: vaulted hangar, tapered control tower, and silver launch wedge with amber markings and dark supports. A small parked vehicle appears inside the hangar. Exact dimensions and wedge banking are prompt targets, not verified measurements.\n\nThe sheet used the gameplay image as its style reference. Both nodes are organized in frame 60466cb3 for future procedural 404 work.",
+    "error": null,
+    "budget": {
+      "budget_credits": 150,
+      "budget_revision": 42,
+      "cost_credits": 54,
+      "reserved_credits": 0,
+      "remaining_budget_credits": 96,
+      "budget_exhausted": false,
+      "accounting_complete": true,
+      "pending_work_count": 0,
+      "budget_diagnostic": null
+    },
+    "requested_budget_credits": 150,
+    "cost_usd": 0.47462985,
+    "retry_after_seconds": null,
+    "budget_notice": "",
+    "project_url": "https://app.atlas.design/p/edit/254a8025-503f-4a33-8ed8-e0394c884d2d?wid=b739e1c3-2a98-4863-9598-967968451284"
+  },
+  "isError": false
+}
