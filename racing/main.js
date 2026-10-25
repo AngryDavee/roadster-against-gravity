@@ -25,7 +25,7 @@ function resetCamera(){const p=position(race.cars[0]);camera.position.set(p.x-4,
 function jetMaterial(color){return new THREE.ShaderMaterial({transparent:true,depthWrite:false,side:THREE.DoubleSide,blending:THREE.AdditiveBlending,uniforms:{color:{value:new THREE.Color(color)},time:{value:0}},vertexShader:'varying vec2 v;void main(){v=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',fragmentShader:'varying vec2 v;uniform vec3 color;uniform float time;void main(){float a=smoothstep(0.,.15,v.y)*pow(max(0.,v.y),.7)*(.25+.18*sin(v.y*35.-time*42.));gl_FragColor=vec4(color,a);}' });}
 function createActors(){
  for(let i=0;i<6;i++){
-  const model=world.car.clone(true);model.traverse(o=>{if(o.isMesh){o.material=o.material.clone();if(o.material.color.r>.4&&o.material.color.g>.4&&!o.material.emissive?.getHex())o.material.color.lerp(new THREE.Color(COLORS[i]),i?.7:.0);o.castShadow=i===0;o.receiveShadow=true;}});
+  const model=world.car.clone(true);model.traverse(o=>{if(o.isMesh){o.material=o.material.clone();if(o.material.color.r>.4&&o.material.color.g>.4&&!o.material.emissive?.getHex()){o.material.color.lerp(new THREE.Color(COLORS[i]),i?.7:.0);o.material.metalness=.52;o.material.roughness=.32;o.material.envMapIntensity=1.05;}o.castShadow=i===0;o.receiveShadow=true;}});
   if(i===0){const ms=[];model.traverse(o=>{if(o.isMesh&&!o.material.emissive?.getHex())ms.push(o);});for(const o of ms){const edge=new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry,34),new THREE.LineBasicMaterial({color:0x0b1320,transparent:true,opacity:.35}));o.add(edge);}}
   const group=new THREE.Group();group.add(model);scene.add(group);const jetGroup=new THREE.Group(),mat=jetMaterial(i?COLORS[i]:0x9cdbed);group.add(jetGroup);
   for(const x of [-.72,-.25,.25,.72]){const jet=new THREE.Mesh(new THREE.CylinderGeometry(.035,.24,1,12,1,true),mat);jet.rotation.x=Math.PI/2;jet.position.set(x,.46,-3);jetGroup.add(jet);}
@@ -65,6 +65,7 @@ function drawCamera(dt){
  }
  camera.position.lerp(desired,1-Math.exp(-dt*(c.stunt?6:16)));camera.lookAt(target);camera.updateProjectionMatrix();
  world.shadow.position.set(p.x-20,p.y+45,p.z-12);world.shadow.target.position.set(p.x,p.y,p.z);world.shadow.target.updateMatrixWorld();
+ world.pools.forEach((light,i)=>{const pool=sample(c.s+(i-1)*38,i%2?10:-10);light.position.copy(pool.p);light.position.y+=5.5;});
 }
 function drawMap(){
  map.clearRect(0,0,210,180);const transform=p=>[18+(p.x+170)*.25,164-(p.z+410)*.15];map.lineWidth=4;map.strokeStyle='#93acb24d';map.beginPath();for(let i=0;i<=160;i++){const [x,y]=transform(sample(i/160*LENGTH).p);i?map.lineTo(x,y):map.moveTo(x,y);}map.stroke();

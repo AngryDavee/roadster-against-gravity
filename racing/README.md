@@ -46,7 +46,7 @@ npm run race:verify      # asset geometry views; retained original-ramp warnings
 
 The browser driver reads telemetry but operates through keyboard, pointer and touch input. It checks countdown, boost, steering direction, pause, two full laps, gravity transfers, pickups, drift, results, restart and mobile interaction. A complete driven race took about 107 seconds in the recorded run. Simulation tests assert finite positions, bounded charge, continuous progress, a traversable road bypass, all rivals finishing and a skilled player winning.
 
-Selected geometry: **6/7 clean**. All three new props pass. The original ramp still triggers its documented broad-front/back featurelessness warnings; the warnings are retained. No live jam-gate pass or real-phone frame-rate claim is made.
+Selected geometry: **7/8 clean**. All three new props pass. The original ramp still triggers its documented broad-front/back featurelessness warnings; the warnings are retained. No live jam-gate pass or real-phone frame-rate claim is made.
 
 `../evidence/racing/playtest/` contains actual-input race evidence. `../evidence/racing/final/` contains deliberately staged visual-inspection views, including the corrected jet shader. Earlier baseline/review folders document superseded visual iterations. The first driven race exposed a jet shader domain error and a sub-metre ramp-entry progress regression; both were corrected, with the progress invariant covered by simulation tests.
 
@@ -62,4 +62,4 @@ Selected geometry: **6/7 clean**. All three new props pass. The original ramp st
 | `candidates/` | Three constructions for each new prop, plus verifier evidence |
 | `STYLE_LOCK.md` | Shared visual direction |
 
-This is the first playable racing iteration. The environment still needs richer landscape detail, the camera and handling need human playtesting, and rival vehicles currently share the Roadster geometry with distinct colors. Wheel geometry is static in this build. No career, additional circuits, multiplayer, vehicle damage system or production-quality soundtrack is claimed. The cinematic's exported MP4 is still the original film, not a recording of this game.
+This is the first playable racing iteration. A fresh Atlas blind review rejected the first rendering against the target because of vehicle reflection shaping, sparse surroundings and flat dusk lighting. A correction pass added service vehicles/aprons, surface treatment, local light pools and less intense track edging; it has not been certified as matching the concept art. The environment still needs richer landscape detail, the camera and handling need human playtesting, and rival vehicles currently share the Roadster geometry with distinct colors. Wheel geometry is static in this build. No career, additional circuits, multiplayer, vehicle damage system or production-quality soundtrack is claimed. The cinematic's exported MP4 is still the original film, not a recording of this game.

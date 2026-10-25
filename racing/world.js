@@ -26,6 +26,8 @@ export async function buildWorld(renderer,scene,onLoad){
  const mountains=new THREE.Group();const vs=[],ix=[];for(let i=0;i<=100;i++){const a=i/100*Math.PI*2,x=170+Math.cos(a)*1900,z=100+Math.sin(a)*1900,h=75+Math.sin(i*1.38)*43+Math.sin(i*.67)*80;vs.push(x,-5,z,x,h,z);if(i)ix.push(i*2-2,i*2-1,i*2,i*2,i*2-1,i*2+1);}const mg=new THREE.BufferGeometry();mg.setAttribute('position',new THREE.Float32BufferAttribute(vs,3));mg.setIndex(ix);mg.computeVertexNormals();mountains.add(new THREE.Mesh(mg,new THREE.MeshStandardMaterial({color:0x3b4059,roughness:1,side:THREE.DoubleSide,flatShading:true})));scene.add(mountains);
  const road=material(0x353b48,.88),shoulder=material(0xabb4bf,.8),paint=material(0xffe8bf,.7),dark=material(0x1a2530,.8);
  const tex=await new THREE.TextureLoader().loadAsync('textures/atlas-concrete-base.png');tex.colorSpace=THREE.SRGBColorSpace;tex.wrapS=tex.wrapT=THREE.RepeatWrapping;tex.repeat.set(3,1);tex.anisotropy=4;road.map=tex;
+ const apronTexture=tex.clone();apronTexture.repeat.set(.045,.045);apronTexture.needsUpdate=true;island.material.map=apronTexture;island.material.color.setHex(0x626779);
+ shoulder.map=tex;
  scene.add(ribbon(-13,13,-.2,shoulder),ribbon(-11,11,0,road),ribbon(-10.7,-10.5,.025,paint),ribbon(10.5,10.7,.025,paint));
  const markings=new THREE.Group();for(let s=0;s<LENGTH;s+=14)for(const lane of [-3.7,3.7])markings.add(ribbon(lane-.06,lane+.06,.03,paint,s,Math.min(LENGTH,s+5),2));
  for(let s=0;s<LENGTH;s+=8)for(const side of [-1,1])markings.add(ribbon(side>0?11.4:-12.6,side>0?12.6:-11.4,-.17,Math.floor(s/8)%2?dark:paint,s,Math.min(LENGTH,s+7.5),3));
@@ -34,8 +36,9 @@ export async function buildWorld(renderer,scene,onLoad){
  const sides=[];for(let i=0;i<=900;i++){const s=i/900*LENGTH;for(const lane of [-13,13]){const p=sample(s,lane).p;sides.push([p.x,p.y-.2,p.z],[p.x,-3,p.z]);}}
  const verts=[],inds=[];for(let i=0;i<sides.length;i++)verts.push(...sides[i]);for(let i=0;i<900;i++)for(let side=0;side<2;side++){const a=i*4+side*2,b=a+4;inds.push(a,b,a+1,b,b+1,a+1);}const sg=new THREE.BufferGeometry();sg.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));sg.setIndex(inds);sg.computeVertexNormals();scene.add(new THREE.Mesh(sg,new THREE.MeshStandardMaterial({color:0x737c88,roughness:.9,side:THREE.DoubleSide})));
  onLoad('Loading verified machinery and aerospace structures');
- const [car,ramp,lamp,boundary,hangar,tower,wedge]=await Promise.all([
-  ASSET('assets/roadster.js'),ASSET('assets/ramp.js',{keepHierarchy:true}),ASSET('assets/floodlight.js'),ASSET('assets/boundary.js'),ASSET('assets/hangar.js'),ASSET('assets/tower.js'),ASSET('assets/wedge.js')]);
+ const [car,ramp,lamp,boundary,hangar,tower,wedge,van]=await Promise.all([
+  ASSET('assets/roadster.js'),ASSET('assets/ramp.js',{keepHierarchy:true}),ASSET('assets/floodlight.js'),ASSET('assets/boundary.js'),ASSET('assets/hangar.js',{surfaces:true}),ASSET('assets/tower.js',{surfaces:true}),ASSET('assets/wedge.js',{surfaces:true}),ASSET('assets/servicevan.js')]);
+ boundary.traverse(o=>{if(o.isMesh&&o.material.emissive?.getHex()){o.material=o.material.clone();o.material.emissiveIntensity=.35;o.material.color.setHex(0xad4b4d);}});
  const rampOrigin=ramp.userData.sourceOrigin;ramp.position.set(...rampOrigin);const rampGroup=new THREE.Group();rampGroup.add(bakeStatic(ramp));place(rampGroup,GRAVITY.entry);scene.add(rampGroup);
  rampGroup.traverse(o=>{if(o.isMesh&&o.material.name==='stone'){o.material=o.material.clone();o.material.map=tex;o.material.color.setHex(0xb2b6c4);}});
  const blocks=[];for(let b=0;b<16;b++){const block=new THREE.Group();const from=b/16*LENGTH,to=(b+1)/16*LENGTH;
@@ -46,12 +49,22 @@ export async function buildWorld(renderer,scene,onLoad){
  for(const [s,lane] of [[180,75],[GRAVITY.entry+20,52],[1320,58],[2300,48]]){const t=tower.clone(true);place(t,s,lane);buildings.add(t);}
  // Broad shell spans the road: a real covered sector rather than a backdrop.
  for(let i=0;i<3;i++){const cover=hangar.clone(true);cover.scale.set(1.12,1.2,1);place(cover,1900+i*24,0);buildings.add(cover);}
- scene.add(bakeStatic(buildings));
+ // Airfield aprons and service traffic provide scale between track and hangars.
+ const apronMarks=new THREE.Group(),apronMat=material(0x525968,.92),lineMat=material(0xc9b28e,.85);
+ for(const [s,lane] of [[110,39],[290,38],[450,48],[240,-48],[410,-58],[630,-39],[1670,40],[2060,34]]){
+  const pad=new THREE.Mesh(new THREE.PlaneGeometry(31,37),apronMat);pad.rotation.x=-Math.PI/2;const loc=sample(s,lane);pad.position.copy(loc.p);pad.position.y=-.08;pad.rotation.z=-loc.yaw;apronMarks.add(pad);
+  for(let j=0;j<4;j++){
+   const parked=van.clone(true);parked.scale.setScalar(.85);place(parked,s-11+j*7,lane+7);parked.rotation.y+=Math.PI/2;buildings.add(parked);
+   const strip=new THREE.Mesh(new THREE.PlaneGeometry(.12,9),lineMat);strip.rotation.x=-Math.PI/2;const sp=sample(s-14+j*7,lane+7);strip.position.copy(sp.p);strip.position.y=.02;strip.rotation.z=-sp.yaw;apronMarks.add(strip);
+  }
+ }
+ scene.add(bakeStatic(buildings),bakeStatic(apronMarks));
  for(const j of JUMPS){const wedgeClone=wedge.clone(true);place(wedgeClone,j.s-6,j.lane,.03);scene.add(wedgeClone);}
  // Start/finish paint and launch-lane graphics are markings on existing surfaces.
  const startPaint=new THREE.Group();for(let x=-10;x<10;x+=1)for(let z=0;z<3;z++){const tile=new THREE.Mesh(new THREE.PlaneGeometry(1,1),((x+z)%2)?paint:dark);tile.rotation.x=-Math.PI/2;const p=sample(0,x+.5).p;tile.position.set(p.x,.045,p.z+z);startPaint.add(tile);}scene.add(bakeStatic(startPaint));
  const launchPaint=material(0x8ad3e3,.5);launchPaint.emissive.setHex(0x163e54);for(let k=0;k<9;k++)scene.add(ribbon(-3.5,3.5,.04,launchPaint,GRAVITY.entry-70+k*7,GRAVITY.entry-67+k*7,1));
  const pickupMeshes=[];const cellGeo=new THREE.OctahedronGeometry(.7);for(let i=0;i<PICKUPS.length;i++)for(let j=0;j<3;j++){const m=new THREE.MeshStandardMaterial({color:0xa7f5ff,emissive:0x38c9ed,emissiveIntensity:2,metalness:.5,roughness:.2});const cell=new THREE.Mesh(cellGeo,m);place(cell,PICKUPS[i].s,PICKUPS[i].lanes[j],1.4);scene.add(cell);pickupMeshes.push({mesh:cell,key:`${i}:${j}`,base:cell.position.y});}
  const reflectionScene=new THREE.Scene();reflectionScene.background=new THREE.Color(0x43546a);for(const [pos,scale,col] of [[[0,8,0],[20,10],0xbcc6ed],[[5,3,-4],[3,8],0xffe4c8],[[-6,3,1],[2,7],0x999acb]]){const card=new THREE.Mesh(new THREE.PlaneGeometry(...scale),new THREE.MeshBasicMaterial({color:col,side:THREE.DoubleSide}));card.position.set(...pos);card.lookAt(0,0,0);reflectionScene.add(card);}const pmrem=new THREE.PMREMGenerator(renderer),env=pmrem.fromScene(reflectionScene,.05).texture;pmrem.dispose();car.traverse(o=>{if(o.isMesh){o.material=o.material.clone();o.material.envMap=env;o.material.envMapIntensity=.7;}});
- return {car,rampGroup,pickupMeshes,shadow,seaMaterial,blocks};
+ const pools=[];for(let i=0;i<3;i++){const light=new THREE.PointLight(i===1?0xffd39c:0xb6cbe9,160,38,2);scene.add(light);pools.push(light);}
+ return {car,rampGroup,pickupMeshes,shadow,seaMaterial,blocks,pools};
 }

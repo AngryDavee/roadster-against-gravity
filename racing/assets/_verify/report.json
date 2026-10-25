@@ -195,6 +195,44 @@
  {
   "ok": true,
   "mounts": null,
+  "meshes": 58,
+  "tris": 1416,
+  "materials": 5,
+  "size": [
+   2.43,
+   2.32,
+   5.165
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.2,
+    "edgeDensity": 0.0839
+   },
+   "right": {
+    "coverage": 0.2864,
+    "edgeDensity": 0.0581
+   },
+   "back": {
+    "coverage": 0.1922,
+    "edgeDensity": 0.0433
+   },
+   "left": {
+    "coverage": 0.2835,
+    "edgeDensity": 0.0648
+   }
+  },
+  "error": null,
+  "name": "servicevan",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
   "meshes": 121,
   "tris": 932,
   "materials": 6,
