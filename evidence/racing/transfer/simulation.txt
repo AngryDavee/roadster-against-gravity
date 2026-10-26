@@ -1,7 +1,3 @@
-
-> roadster-against-gravity@0.1.0 race:simulation
-> node tools/race-simulation-test.mjs
-
 {
   "passed": true,
   "tests": [
@@ -14,11 +10,13 @@
     "continuous takeoff velocity",
     "fixed flight alignment",
     "continuous landing position",
+    "steering offset preserved",
+    "boost shortens traversal",
     "finite poses and bounded charge",
     "no position teleport",
     "all opponents finish",
     "skilled player can win",
     "restart"
   ],
-  "winningTime": 113.84999999999482
+  "winningTime": 114.69999999999477
 }

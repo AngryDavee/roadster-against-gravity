@@ -12,6 +12,7 @@ try{
  const started=Date.now();let landed=false,peakCloud=0;
  while(Date.now()-started<30000){
   const info=await page.evaluate(()=>{const c=window.__RACE__.state.cars[0];return{...window.__RACE__.stats(),stunt:c.stunt,landings:c.landings};});samples.push(info);peakCloud=Math.max(peakCloud,info.vapor.ground);
+  if(info.stunt&&info.position.air&&info.position.y>3&&info.position.y<5&&!shots.includes('hover')){await page.screenshot({path:out+'/hover.png'});shots.push('hover');}
   if(info.stunt){for(const [name,at]of[['ramp',1.6],['lip',3.4],['flight',4.2],['descent',5.8],['cloud',7.1]])if(info.stunt.elapsed>=at&&!shots.includes(name)){await page.screenshot({path:`${out}/${name}.png`});shots.push(name);break;}}
   if(info.landings&&!landed){landed=true;await page.screenshot({path:`${out}/touchdown.png`});shots.push('touchdown');await sleep(1800);await page.screenshot({path:`${out}/drive-away.png`});break;}
   await sleep(70);

@@ -7,5 +7,7 @@
     "assets/ramp.js": true,
     "assetlib.js": true,
     "surfaces.js": true
-  }
+  },
+  "first_racing_tag": "racing-baseline-2026-10-26",
+  "active_racing_ramp": "assets/transfer-ramp.js (user-authorized swept variant; original ramp.js remains unchanged)"
 }

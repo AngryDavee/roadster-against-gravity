@@ -7,9 +7,10 @@ WARN  ramp                    12284 tris  926 meshes  8.37x35.679x19.431m
 ok    roadster                11304 tris  384 meshes  2.207x1.305x4.997m
 ok    servicevan               1416 tris  58 meshes  2.43x2.32x5.165m
 ok    tower                     932 tris  121 meshes  7.4x18.575x7.4m
+ok    transfer-ramp           16744 tris  1244 meshes  120.445x36.327x30.896m
 ok    wedge                     792 tris  39 meshes  5.173x2.259x12.033m
 
-7/8 clean
+8/9 clean
 sheet:  /Users/adams/Desktop/404_GAMES/roadster-film/racing/assets/_verify/sheet.png
 report: /Users/adams/Desktop/404_GAMES/roadster-film/racing/assets/_verify/report.json
 

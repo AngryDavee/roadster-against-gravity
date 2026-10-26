@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "operation_id": "ecf8d94d-a298-4acf-8576-b6f018529dce",
+  "pid": "7d017a90-5f98-4b50-af80-439924061254",
+  "status": "succeeded",
+  "created_at": 1792975339.0196815,
+  "updated_at": 1792975358.2560122,
+  "response_text": "Judging the uploaded panels directly, with dusk and faceted illustration accepted:\n\n| Criterion | Verdict | Assessment |\n|---|---|---|\n| **1. Ramp / receiving-track geography** | **Partial** | **C** clearly reveals the ramp\u2019s overall shape and its relationship to the lower road. In **B/D**, the receiving straight is readable, but the cropped upper ramp and overlapping supports make its connection to the landing area less immediately clear. **A** more cleanly separates the tall ramp on the right from the car and landing zone on the left. |\n| **2. Car visibility during landing** | **Partial** | In **B**, the car\u2019s silhouette remains identifiable above the vapor, though small. In **D**, vapor almost entirely hides it, making the touchdown pose difficult to read. **A** preserves a much clearer body and wheel silhouette above the cloud. |\n| **3. Cold-gas / vapor resemblance to source** | **Partial** | **B/D** establish white vapor beneath the car, but it reads more as a low, horizontally stretched smoke patch. **A** has a taller, denser billowing mound, irregular outward curls, and a more visible cyan-tinted fringe. Distinct downward white/cyan discharge is not clearly legible in **B/D** at this viewing size. |\n\n**Most important remaining differences:** preserve the car silhouette in **D**; give the under-car vapor more vertical volume and irregular billowing edges; make the downward cold-gas component distinguishable from the ground cloud. For geography, a clearer ramp-to-landing spatial relationship in the landing views would help more than changing the illustration style.\n\nThese stills do **not** establish motion continuity, trajectory, or physical plausibility.",
+  "error": null,
+  "budget": {
+    "budget_credits": 25,
+    "budget_revision": 6,
+    "cost_credits": 4,
+    "reserved_credits": 0,
+    "remaining_budget_credits": 21,
+    "budget_exhausted": false,
+    "accounting_complete": true,
+    "pending_work_count": 0,
+    "budget_diagnostic": null
+  },
+  "requested_budget_credits": 25,
+  "cost_usd": 0.061358600000000006,
+  "retry_after_seconds": null,
+  "budget_notice": "",
+  "project_url": "https://app.atlas.design/p/edit/7d017a90-5f98-4b50-af80-439924061254?wid=b739e1c3-2a98-4863-9598-967968451284"
+}

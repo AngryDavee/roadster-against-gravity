@@ -6,7 +6,7 @@ export function coldGasMaterial(color=0xaddfeb){
  varying vec2 v;uniform vec3 color;uniform float time;
  float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
  float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+1.),f.x),f.y);}
- void main(){float y=clamp(v.y,0.,1.),n=noise(vec2(v.x*16.,y*17.+time*28.));float core=pow(y,.45);float alpha=smoothstep(0.,.24,y)*core*(.16+.38*n)*smoothstep(.12,.65,n+.28*y);vec3 c=mix(color*.7,vec3(1.35,1.43,1.46),core*.8);gl_FragColor=vec4(c,alpha);}`});
+ void main(){float y=clamp(v.y,0.,1.),n=noise(vec2(v.x*16.,y*17.+time*28.));float core=pow(y,.45);float alpha=smoothstep(0.,.24,y)*core*(.22+.50*n)*smoothstep(.12,.65,n+.28*y);vec3 c=mix(color*.7,vec3(1.35,1.43,1.46),core*.8);gl_FragColor=vec4(c,alpha);}`});
 }
 export class RacingVapor{
  constructor(scene){
@@ -17,13 +17,13 @@ export class RacingVapor{
    varying vec2 v;varying vec4 q;
    float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
    float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+1.),f.x),f.y);}
-   void main(){if(q.z<.001)discard;float n=noise(v*4.+q.w*7.)+.5*noise(v*10.+q.w)+.22*noise(v*23.);float rim=1.-length((v-.5)*2.)+.24*(n-.8);float a=smoothstep(0.,.7,rim)*q.z*(.45+.55*n);if(a<.002)discard;float light=clamp(.30+.32*v.y+.35*n,0.,1.);vec3 color=mix(vec3(.25,.31,.41),vec3(1.08,1.12,1.16),light);gl_FragColor=vec4(color,a);}`});
+   void main(){if(q.z<.001)discard;float n=noise(v*4.+q.w*7.)+.5*noise(v*10.+q.w)+.22*noise(v*23.);float rim=1.-length((v-.5)*2.)+.24*(n-.8);float a=smoothstep(0.,.7,rim)*q.z*(.45+.55*n);if(a<.002)discard;float light=clamp(.30+.32*v.y+.35*n,0.,1.);vec3 color=mix(vec3(.20,.39,.49),vec3(1.08,1.12,1.16),light);gl_FragColor=vec4(color,a);}`});
   this.mesh=new THREE.Mesh(g,m);this.mesh.frustumCulled=false;this.mesh.renderOrder=5;scene.add(this.mesh);this.vector=new THREE.Vector3();
  }
  spawn(origin,ground,velocity={x:0,z:0},power=1){
   const id=++this.serial,r=random(id),s=random(id+713),angle=r*Math.PI*2,p=this.parts[this.cursor++%this.count];
   Object.assign(p,{x:origin.x,y:origin.y,z:origin.z,age:0,life:ground?4.5+s*1.8:.45+s*.3,ground,seed:r*6.28,
-   vx:ground?Math.cos(angle)*(2.8+s*3.8)+velocity.x*.3:velocity.x*.15+(r-.5)*1.1,vz:ground?Math.sin(angle)*(2.8+s*3.8)+velocity.z*.3:velocity.z*.15+(s-.5)*1.1,vy:ground?.25+s*.7:-9-s*6,size:ground?2.5+s*1.8:.13+s*.18,power});
+   vx:ground?Math.cos(angle)*(2.8+s*3.8)+velocity.x*.3:velocity.x*.15+(r-.5)*1.1,vz:ground?Math.sin(angle)*(2.8+s*3.8)+velocity.z*.3:velocity.z*.15+(s-.5)*1.1,vy:ground?.55+s*1.05:-9-s*6,size:ground?2.5+s*1.8:.13+s*.18,power});
  }
  update(dt,cars,poses,actors){
   for(let i=0;i<cars.length;i++){
@@ -38,7 +38,7 @@ export class RacingVapor{
   }
   for(let i=0;i<this.count;i++){
    const p=this.parts[i];let alpha=0,size=0,stretch=1;
-   if(p.life>0){p.age+=dt;if(p.age<p.life){const u=p.age/p.life;p.x+=p.vx*dt;p.z+=p.vz*dt;p.y+=p.vy*dt;if(p.ground){p.vx*=Math.exp(-dt*.32);p.vz*=Math.exp(-dt*.32);size=p.size+p.age*1.9;stretch=.7;alpha=Math.min(1,p.age/.12)*Math.pow(1-u,1.5)*.24*p.power;p.y=Math.max(size*.20,p.y);}else{size=p.size+p.age*1.9;stretch=1.6;alpha=Math.pow(1-u,1.4)*.12*p.power;p.y=Math.max(.15,p.y);}}else p.life=0;}
+   if(p.life>0){p.age+=dt;if(p.age<p.life){const u=p.age/p.life;p.x+=p.vx*dt;p.z+=p.vz*dt;p.y+=p.vy*dt;if(p.ground){p.vx*=Math.exp(-dt*.32);p.vz*=Math.exp(-dt*.32);size=p.size+p.age*1.9;stretch=.95;alpha=Math.min(1,p.age/.12)*Math.pow(1-u,1.5)*.24*p.power;p.y=Math.max(size*.30,p.y);const hero=poses[0],distance=Math.hypot(p.x-hero.x,p.z-hero.z);if(hero.y<1.3&&distance<5)alpha*=.1+.9*(distance/5)**2;}else{size=p.size+p.age*1.9;stretch=1.6;alpha=Math.pow(1-u,1.4)*.12*p.power;p.y=Math.max(.15,p.y);}}else p.life=0;}
    this.centers.set([p.x||0,p.y||-100,p.z||0],i*3);this.params.set([size,size*stretch,alpha,p.seed||0],i*4);
   }
   this.mesh.geometry.attributes.center.needsUpdate=true;this.mesh.geometry.attributes.particle.needsUpdate=true;

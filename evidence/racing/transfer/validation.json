@@ -1,0 +1,40 @@
+{
+  "local_focused_pass": true,
+  "flight_lateral_range": 0,
+  "local_full_browser_pass": true,
+  "browser_checks": [
+    "Real start button and full countdown enter race",
+    "Actual keyboard boost moves the car and consumes charge",
+    "Right steering moves toward screen-right on the opening straight",
+    "Pause and resume freeze/unfreeze race simulation",
+    "Real-input driver completes two laps with gravity transfer, pickups and drift",
+    "Race-again resets finish state and countdown",
+    "C key and Camera button switch between chase and cinematic modes",
+    "Phone touch starts, holds boost and pauses without horizontal overflow",
+    "No browser exceptions or missing resources"
+  ],
+  "simulation_pass": true,
+  "simulation_checks": [
+    "boost consumption",
+    "pause",
+    "barrier collision",
+    "jump landing",
+    "directed gravity curve",
+    "road bypass",
+    "continuous takeoff velocity",
+    "fixed flight alignment",
+    "continuous landing position",
+    "steering offset preserved",
+    "boost shortens traversal",
+    "finite poses and bounded charge",
+    "no position teleport",
+    "all opponents finish",
+    "skilled player can win",
+    "restart"
+  ],
+  "selected_geometry": "8/9 clean; original archived ramp retains two featurelessness warnings; new transfer ramp clean",
+  "film_unchanged": true,
+  "preview": "transfer-preview.mp4; validated by complete FFmpeg decode",
+  "ci_previous_runtime_run": "https://github.com/AngryDavee/roadster-against-gravity/actions/runs/40250419326",
+  "ci_status_at_save": "in_progress"
+}
