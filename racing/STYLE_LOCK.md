@@ -9,3 +9,7 @@ Palette: ink #101724, silver #d8dce5, warm ivory #ffead0, violet #8b87aa, sea #1
 Scale in metres: road width 22; Roadster approximately 5 × 2.2 × 1.3; canonical gravity ramp 7.2 wide, 34 high; hangar 25 wide, 11 high; control tower 18 high; smaller jump 12 long, 5 wide, 2 high. Camera is a responsive low chase view. During the gravity maneuver it widens enough to preserve orientation.
 
 New generated images/textures and critique must use Atlas MCP. No imported mesh assets. Vehicle gas remains white/cyan. The ramp's actual original geometry is reused; its traversal is an arcade maneuver with a controllable aerial transfer into the returning lane.
+
+## Directed-ramp update
+
+User-approved swept ramp variant: source vertical profile R20.4m / 2.3rad, deck7.2m wide, 100m lateral sweep to align with the return road. The original film ramp remains unchanged. Gas stays white/cyan, with four downward nozzles, brief lateral attitude jets and turbulent ground vapor; no orange fire. Camera reveals full ramp, then moves closer to the descent while preserving live input.

@@ -9,9 +9,9 @@ npm ci
 npm run race
 ```
 
-Open **http://localhost:4175**. A/D or arrows steer, Shift drifts, Space boosts; acceleration is automatic. Touch controls are provided on phones. See [racing setup and status](racing/README.md). `npm start` still opens the original cinematic on port 4174.
+Open **http://localhost:4175**. A/D or arrows steer, Shift drifts, Space boosts; acceleration is automatic. Touch controls are provided on phones. C toggles the wide ramp / landing camera sequence and continuous chase. See [racing setup and status](racing/README.md). `npm start` still opens the original cinematic on port 4174.
 
-The new circuit includes two laps, five AI rivals, charge pickups, smaller jumps, a covered sector, coastal elevation changes, results and the original gravity ramp as an optional airborne transfer. This is a playable first racing iteration, not a finished Asphalt-scale game or a competition certification.
+The new circuit includes two laps, five AI rivals, charge pickups, smaller jumps, a covered sector, coastal elevation changes, results and a swept gravity ramp that launches directly onto the return track. This is a playable first racing iteration, not a finished Asphalt-scale game or a competition certification.
 
 ![Meridian racing iteration](evidence/racing/final/dock.png)
 

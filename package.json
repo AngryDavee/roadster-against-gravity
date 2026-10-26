@@ -15,7 +15,8 @@
     "race:check": "node vendor/404-game-recipe/harness/ship.mjs racing",
     "race:simulation": "node tools/race-simulation-test.mjs",
     "race:test": "node tools/test.mjs --race",
-    "race:verify": "node vendor/404-game-recipe/harness/verify.mjs racing/assets --size=400"
+    "race:verify": "node vendor/404-game-recipe/harness/verify.mjs racing/assets --size=400",
+    "race:transfer": "node tools/test.mjs --transfer"
   },
   "engines": {
     "node": ">=22.12"

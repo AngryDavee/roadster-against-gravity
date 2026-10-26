@@ -1,5 +1,5 @@
 import {LENGTH,LAPS,WIDTH,GRAVITY,JUMPS,PICKUPS,wrap,clamp,smooth,sample} from './track.js';
-import {carPose} from './stunt.js';
+import {transferPose,rampDuration,TRANSFER,FLIGHT_SPEED} from './transfer.js';
 export const NAMES=['YOU','VEGA','ION','SABLE','NOVA','KITE'];
 export const COLORS=[0xd8dce5,0xeea252,0x77d9e6,0xa89ae3,0xd97983,0xa9d9b0];
 const mix=(a,b,t)=>a+(b-a)*t;
@@ -13,12 +13,9 @@ function event(r,text,tone='cyan'){r.events.push({text,tone,until:r.time+2.2});i
 function crossed(previous,current,at){return Math.floor((previous-at)/LENGTH)<Math.floor((current-at)/LENGTH);}
 export function position(car){
  if(car.stunt){
-  const q=car.stunt,u=clamp(q.elapsed/GRAVITY.duration,0,1),a=mix(3.45,12.85,u),pose=carPose(a),gate=sample(GRAVITY.entry);
-  const flight=smooth((a-9.6)/3.25),end=sample(GRAVITY.exit,car.lane);
-  const x0=gate.p.x+gate.t.x*pose.z,z0=gate.p.z+gate.t.z*pose.z;
-  const finalPose=carPose(12.85),naturalEnd=gate.p.clone().addScaledVector(gate.t,finalPose.z);
-  return {x:x0+(end.p.x-naturalEnd.x)*flight,y:gate.p.y+pose.y,z:z0+(end.p.z-naturalEnd.z)*flight,
-   yaw:gate.yaw+Math.PI*smooth((a-9.6)/1.14),pitch:a<=9.6?pose.pitch:mix(-2.65,-Math.PI,smooth((a-9.6)/1.14))+Math.PI*smooth((a-9.6)/1.14),roll:0,air:a>9.6,action:a};
+  const q=car.stunt,pose=transferPose(q.elapsed,q.entrySpeed??48,q.trim),gate=sample(GRAVITY.entry);
+  const cos=Math.cos(gate.yaw),sin=Math.sin(gate.yaw);
+  return {...pose,x:gate.p.x+pose.x*cos+pose.z*sin,y:gate.p.y+pose.y,z:gate.p.z-pose.x*sin+pose.z*cos,yaw:gate.yaw+pose.yaw,action:pose.air?11:7};
  }
  const road=sample(car.s,car.lane),u=car.jump?car.jump.elapsed/car.jump.duration:0;
  let rampLift=0,rampPitch=0;for(const j of JUMPS){const distance=wrap(j.s-car.s);if(distance<12&&Math.abs(car.lane-j.lane)<2.6&&!car.jump){rampLift=(1-distance/12)*2;rampPitch=-Math.atan(2/12);}}
@@ -52,12 +49,14 @@ export function step(r,dt,input={}){
   const targetSpeed=(c.id?46+(c.id%3)*.6:48)+(c.boosting?21:0)-Math.min(15,Math.abs(curv)*750)*(c.drifting?.35:1)-(c.drifting?5:0);
   c.speed+=clamp(targetSpeed-c.speed,-30*dt,(c.boosting?27:18)*dt);
   if(c.stunt){
-   c.stunt.elapsed+=dt;c.stunt.trim+=steer*dt*2.5;c.stunt.trim=clamp(c.stunt.trim,-6,6);
-   if(c.boosting)c.stunt.trim*=Math.exp(-dt*2);
-   c.s=mix(c.stunt.from,c.stunt.to,smooth(c.stunt.elapsed/GRAVITY.duration));
-   if(c.stunt.elapsed>GRAVITY.duration){
-    c.s=c.stunt.to;c.lane=clamp(c.stunt.trim,-9,9);const clean=Math.abs(c.stunt.trim)<3;
-    c.speed=clean?58:32;c.charge=Math.min(100,c.charge+(clean?42:12));c.gravityRuns++;c.landings++;c.airtime+=2.2;c.stunt=null;
+   c.stunt.rate??=1;c.stunt.rate+=((c.boosting?1.18:1)-c.stunt.rate)*Math.min(1,dt*4);c.stunt.elapsed+=dt*c.stunt.rate;c.stunt.trim+=steer*dt*2.5;c.stunt.trim=clamp(c.stunt.trim,-2.8,2.8);
+   const duration=c.stunt.duration??GRAVITY.duration;
+   c.s=mix(c.stunt.from,c.stunt.to,smooth(c.stunt.elapsed/duration));
+   c.speed=transferPose(c.stunt.elapsed,c.stunt.entrySpeed??48,c.stunt.trim).speed*c.stunt.rate;
+   if(c.stunt.elapsed>rampDuration(c.stunt.entrySpeed??48))c.airtime+=dt;
+   if(c.stunt.elapsed>=duration){
+    c.s=c.stunt.to;c.lane=clamp(c.stunt.trim,-9,9);const clean=Math.abs(c.stunt.trim)<2.4;
+    c.speed=FLIGHT_SPEED*c.stunt.rate*(clean?1:.85);c.charge=Math.min(100,c.charge+(clean?42:12));c.gravityRuns++;c.landings++;c.stunt=null;
     if(!c.id)event(r,clean?'GRAVITY TRANSFER / +42 CHARGE':'ROUGH LANDING / RECOVER','amber');
    }
   }else{
@@ -66,9 +65,9 @@ export function step(r,dt,input={}){
    if(Math.abs(c.lane)>WIDTH/2-1){c.lane=clamp(c.lane,-WIDTH/2+1,WIDTH/2-1);c.lat*=-.25;if(!c.cooldown){c.speed*=.63;c.collisions++;c.cooldown=.8;if(!c.id)event(r,'BARRIER / SPEED LOST','red');}}
    c.s+=c.speed*dt;
    if(c.jump){c.jump.elapsed+=dt;c.airtime+=dt;c.charge=Math.min(100,c.charge+dt*7);if(c.jump.elapsed>=c.jump.duration){c.jump=null;c.landings++;c.charge=Math.min(100,c.charge+15);if(!c.id)event(r,'AIRTIME / CLEAN TOUCHDOWN');}}
-   if(!c.jump&&crossed(prev,c.s,GRAVITY.entry)&&Math.abs(c.lane)<3.4&&c.speed>32){
+   if(!c.jump&&crossed(prev,c.s,GRAVITY.entry)&&Math.abs(c.lane)<2.55&&c.speed>32){
     const lap=Math.floor((c.s-GRAVITY.entry)/LENGTH);
-    c.stunt={elapsed:0,from:c.s,to:lap*LENGTH+GRAVITY.exit,trim:c.lane*.2};c.lat=0;
+    c.stunt={elapsed:(c.s-lap*LENGTH-GRAVITY.entry)/c.speed,from:c.s,to:lap*LENGTH+GRAVITY.exit,trim:clamp(c.lane,-2.8,2.8),entrySpeed:c.speed,duration:rampDuration(c.speed)+TRANSFER.flightTime};c.lat=0;
     if(!c.id)event(r,'GRAVITY TRANSFER / HOLD YOUR LINE','amber');
    }
    for(const jump of JUMPS)if(!c.jump&&!c.stunt&&crossed(prev,c.s,jump.s)&&Math.abs(c.lane-jump.lane)<2.6&&c.speed>27){c.jump={elapsed:0,duration:1.55,spin:c.drifting};if(!c.id)event(r,c.drifting?'FLAT SPIN / CHARGE RECOVERY':'AIRBORNE');}

@@ -5,13 +5,18 @@
     "pause",
     "barrier collision",
     "jump landing",
-    "original gravity curve",
+    "directed gravity curve",
     "road bypass",
+    "continuous takeoff velocity",
+    "fixed flight alignment",
+    "continuous landing position",
+    "steering offset preserved",
+    "boost shortens traversal",
     "finite poses and bounded charge",
     "no position teleport",
     "all opponents finish",
     "skilled player can win",
     "restart"
   ],
-  "winningTime": 110.96666666666165
+  "winningTime": 114.69999999999477
 }

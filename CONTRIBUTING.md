@@ -9,6 +9,16 @@ npm ci
 npm start
 ```
 
+For the **Meridian racing iteration**, switch to its branch before installing:
+
+```sh
+git switch feature/airborne-racing
+npm ci
+npm run race
+```
+
+Open http://localhost:4175. Racing changes belong in `racing/`; use `feature/airborne-racing` as the target branch for racing pull requests. Read `racing/README.md` and run `npm run race:check`, `npm run race:simulation` and `npm run race:test`. The original cinematic remains in `app/` and on `main`; its saved checkpoint is `film-baseline-2026-10-26`.
+
 Use Node 22.12+ and a WebGL2-capable browser. The first install downloads Puppeteer's test browser. The source film and final export are included, so the initial clone is larger than a code-only project. Read `HANDOFF.md` before editing.
 
 To contribute without direct write access, fork the repository on GitHub, clone your fork, create a branch, commit changes, push the branch to your fork, and open a pull request to `AngryDavee/roadster-against-gravity`. Public access allows reading and forking; direct pushes require the owner to add you as a collaborator.

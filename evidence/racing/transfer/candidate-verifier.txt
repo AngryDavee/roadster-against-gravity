@@ -1,0 +1,7 @@
+ok    transfer_a               6896 tris  235 meshes  118.992x34.782x26.08m
+ok    transfer_b              16744 tris  1244 meshes  120.445x36.327x30.896m
+ok    transfer_c               6120 tris  321 meshes  120.01x34.537x29.209m
+
+3/3 clean
+sheet:  /Users/adams/Desktop/404_GAMES/roadster-film/racing/transfer-candidates/_verify/sheet.png
+report: /Users/adams/Desktop/404_GAMES/roadster-film/racing/transfer-candidates/_verify/report.json

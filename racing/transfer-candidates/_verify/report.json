@@ -1,0 +1,116 @@
+[
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 235,
+  "tris": 6896,
+  "materials": 4,
+  "size": [
+   118.992,
+   34.782,
+   26.08
+  ],
+  "groundOffset": 0.025,
+  "centreOffset": [
+   0.007,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.0382,
+    "edgeDensity": 0.3831
+   },
+   "right": {
+    "coverage": 0.0251,
+    "edgeDensity": 0.55
+   },
+   "back": {
+    "coverage": 0.0322,
+    "edgeDensity": 0.48
+   },
+   "left": {
+    "coverage": 0.0429,
+    "edgeDensity": 0.2357
+   }
+  },
+  "error": null,
+  "name": "transfer_a",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 1244,
+  "tris": 16744,
+  "materials": 6,
+  "size": [
+   120.445,
+   36.327,
+   30.896
+  ],
+  "groundOffset": 0.002,
+  "centreOffset": [
+   0.001,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.0397,
+    "edgeDensity": 0.4031
+   },
+   "right": {
+    "coverage": 0.026,
+    "edgeDensity": 0.4598
+   },
+   "back": {
+    "coverage": 0.0366,
+    "edgeDensity": 0.4677
+   },
+   "left": {
+    "coverage": 0.0439,
+    "edgeDensity": 0.3402
+   }
+  },
+  "error": null,
+  "name": "transfer_b",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 321,
+  "tris": 6120,
+  "materials": 4,
+  "size": [
+   120.01,
+   34.537,
+   29.209
+  ],
+  "groundOffset": 0.129,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.0555,
+    "edgeDensity": 0.4258
+   },
+   "right": {
+    "coverage": 0.0422,
+    "edgeDensity": 0.3419
+   },
+   "back": {
+    "coverage": 0.0489,
+    "edgeDensity": 0.4327
+   },
+   "left": {
+    "coverage": 0.0552,
+    "edgeDensity": 0.3367
+   }
+  },
+  "error": null,
+  "name": "transfer_c",
+  "problems": []
+ }
+]

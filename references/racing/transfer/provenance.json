@@ -1,0 +1,16 @@
+{
+  "project_id": "740686f8-be7a-4a9b-8788-94ecb8952191",
+  "operation_id": "aea85758-f07c-4549-b1a4-5ca0cc18e818",
+  "output_fid": "aea67e49-47b4-4a08-8ae3-c55f91fca698",
+  "credits": 31,
+  "selected": "transfer_b",
+  "candidates": {
+    "a": "continuous indexed extrusion with arch ribs",
+    "b": "individual concrete panels with Warren trusses and cantilever piers",
+    "c": "oriented precast solids with portal frames"
+  },
+  "reason": "B retains panel seams, lights, continuous rails, diagonal truss structure and purposeful foundations while following the shared launch curve.",
+  "reference_limit": "Atlas diagram is geometrically inconsistent. Use its structure/material treatment; source vertical profile and tested centerline alignment define geometry.",
+  "source_gas_anchors": "references/source-analysis/event-anchors.csv: S02 frames 230\u2013318, S03 510\u2013636",
+  "baseline": "racing-baseline-2026-10-26"
+}

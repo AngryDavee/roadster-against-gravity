@@ -2,6 +2,24 @@
   "kind": "staged visual inspection; not a driving test",
   "errors": [],
   "stats": {
+    "vapor": {
+      "ground": 0,
+      "jet": 0
+    },
+    "cameraMode": "cinematic",
+    "camera": {
+      "position": [
+        314.87405618378926,
+        2.234287133599022,
+        -336.81526792537835
+      ],
+      "fov": 59.99999026300511,
+      "heroScreen": [
+        5.038430473913912e-9,
+        -0.17910289826802606,
+        0.9716492867162099
+      ]
+    },
     "phase": "race",
     "paused": true,
     "time": 20,
@@ -9,14 +27,14 @@
     "progress": 1935,
     "charge": 100,
     "gravityRuns": 0,
-    "drawCalls": 136,
-    "triangles": 377373,
+    "drawCalls": 137,
+    "triangles": 379585,
     "position": {
-      "x": 307.0285731681097,
-      "y": -0.15239530110138133,
-      "z": -344.342729898916,
-      "yaw": -2.3275606551602928,
-      "pitch": -0.0034029087947055627,
+      "x": 309.87465163180235,
+      "y": -0.16571286926231965,
+      "z": -341.6287443313771,
+      "yaw": -2.3372493901036018,
+      "pitch": -0.003366747478782776,
       "roll": 0,
       "air": false,
       "action": 0

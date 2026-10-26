@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {createRace,startRace,step,position,standings} from '../racing/simulation.js';
+import {transferPose,rampDuration,TRANSFER} from '../racing/transfer.js';
 import {LENGTH,LAPS,GRAVITY,JUMPS,PICKUPS,sample,wrap} from '../racing/track.js';
 const fixed=1/60;
 const fresh=()=>{const r=createRace();startRace(r);for(let i=0;i<220;i++)step(r,fixed,{});return r;};
@@ -7,8 +8,22 @@ const r=fresh();for(let i=0;i<180;i++)step(r,fixed,{boost:true});assert(r.cars[0
 const paused=r.time;r.paused=true;for(let i=0;i<100;i++)step(r,fixed,{boost:true});assert.equal(r.time,paused);r.paused=false;
 const boundary=fresh();for(let i=0;i<500;i++)step(boundary,fixed,{steer:1});assert(boundary.cars[0].collisions>0);assert(Math.abs(boundary.cars[0].lane)<=10);
 const jump=fresh();jump.cars[0].s=JUMPS[0].s-1;jump.cars[0].lane=JUMPS[0].lane;jump.cars[0].speed=42;for(let i=0;i<12;i++)step(jump,fixed,{});assert(jump.cars[0].jump);assert(position(jump.cars[0]).y>1);for(let i=0;i<120;i++)step(jump,fixed,{});assert(jump.cars[0].landings>=1);
-const ramp=fresh();ramp.cars[0].s=GRAVITY.entry-1;ramp.cars[0].lane=0;ramp.cars[0].speed=44;let height=0;for(let i=0;i<430;i++){step(ramp,fixed,{});height=Math.max(height,position(ramp.cars[0]).y);}assert(height>34);assert.equal(ramp.cars[0].gravityRuns,1);assert(ramp.cars[0].s>GRAVITY.exit);
+const ramp=fresh();ramp.cars[0].s=GRAVITY.entry-1;ramp.cars[0].lane=0;ramp.cars[0].speed=44;let height=0;for(let i=0;i<620;i++){step(ramp,fixed,{});height=Math.max(height,position(ramp.cars[0]).y);}assert(height>34);assert.equal(ramp.cars[0].gravityRuns,1);assert(ramp.cars[0].s>GRAVITY.exit);
 const bypass=fresh();bypass.cars[0].s=GRAVITY.entry-1;bypass.cars[0].lane=7;bypass.cars[0].speed=44;for(let i=0;i<60;i++)step(bypass,fixed,{});assert.equal(bypass.cars[0].stunt,null);assert.equal(bypass.cars[0].gravityRuns,0);
+const tRamp=rampDuration(48),tEnd=tRamp+TRANSFER.flightTime;
+const lipPose=transferPose(tRamp,48),nextPose=transferPose(tRamp+1e-5,48);
+assert(Math.hypot(lipPose.x-nextPose.x,lipPose.y-nextPose.y,lipPose.z-nextPose.z)<.001,'Continuous takeoff position');
+for(let t=tRamp+.001;t<tEnd;t+=.01){const p=transferPose(t,48);assert(Math.abs(p.x-100)<1e-8,'No automatic lateral correction after takeoff');assert(Math.abs(p.yaw-Math.PI)<1e-8,'Launch heading already faces return track');}
+const gate=sample(GRAVITY.entry),exit=sample(GRAVITY.exit),endPose=transferPose(tEnd,48);
+assert(Math.hypot(gate.p.x+endPose.x-exit.p.x,gate.p.z+endPose.z-exit.p.z)<.005,'Ramp trajectory ends on the road without a landing snap');
+const a=transferPose(tRamp-.001,48),b=transferPose(tRamp+.001,48);
+assert(Math.abs((lipPose.z-a.z)/.001-(b.z-lipPose.z)/.001)<.1,'Launch velocity continuous');
+for(const lane of[-2,0,2]){
+ const end=transferPose(tEnd,48,lane),road=sample(GRAVITY.exit,lane);
+ assert(Math.hypot(gate.p.x+end.x-road.p.x,gate.p.z+end.z-road.p.z)<.005,'Steered offset carries through to landing');
+}
+const transferRun=boost=>{const r=fresh(),c=r.cars[0];c.s=GRAVITY.entry-1;c.lane=0;c.speed=48;for(let f=0;f<900;f++){step(r,fixed,{boost});if(c.gravityRuns)return r.time;}throw Error('Transfer did not finish');};
+assert(transferRun(true)<transferRun(false),'Boost has a real traversal-speed effect');
 const championship=fresh();let old=championship.cars.map(c=>c.s);
 for(let frame=0;frame<14000;frame++){
  const c=championship.cars[0],road=sample(c.s),next=sample(c.s+12),curv=Math.atan2(road.t.z*next.t.x-road.t.x*next.t.z,road.t.dot(next.t))/12;
@@ -19,4 +34,4 @@ for(let frame=0;frame<14000;frame++){
 }
 assert.equal(championship.phase,'results');assert(championship.cars.every(c=>c.finish!==null&&c.s===LENGTH*LAPS));assert.equal(standings(championship)[0].id,0,'Skilled play can win against the same simulated rivals');
 const finish=championship.cars[0].finish;startRace(championship);assert.equal(championship.phase,'countdown');assert(championship.cars.every(c=>c.finish===null));
-console.log(JSON.stringify({passed:true,tests:['boost consumption','pause','barrier collision','jump landing','original gravity curve','road bypass','finite poses and bounded charge','no position teleport','all opponents finish','skilled player can win','restart'],winningTime:finish},null,2));
+console.log(JSON.stringify({passed:true,tests:['boost consumption','pause','barrier collision','jump landing','directed gravity curve','road bypass','continuous takeoff velocity','fixed flight alignment','continuous landing position','steering offset preserved','boost shortens traversal','finite poses and bounded charge','no position teleport','all opponents finish','skilled player can win','restart'],winningTime:finish},null,2));

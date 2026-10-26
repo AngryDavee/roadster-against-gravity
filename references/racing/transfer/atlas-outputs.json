@@ -1,0 +1,39 @@
+{
+  "success": true,
+  "pid": "740686f8-be7a-4a9b-8788-94ecb8952191",
+  "project_url": "https://app.atlas.design/p/edit/740686f8-be7a-4a9b-8788-94ecb8952191?wid=b739e1c3-2a98-4863-9598-967968451284",
+  "outputs": [
+    {
+      "fid": "aea67e49-47b4-4a08-8ae3-c55f91fca698",
+      "name": "output",
+      "filename": "output.png",
+      "mime_type": "image/png",
+      "size_bytes": 6921904,
+      "node_id": "323f1fbe-785c-4a2f-91d7-72f69506a7ad",
+      "associated_node_ids": [
+        "323f1fbe-785c-4a2f-91d7-72f69506a7ad"
+      ],
+      "run_id": "9dd4dede-1d61-46c3-a994-c06c68ba4fea",
+      "node_run_ids": [
+        "9dd4dede-1d61-46c3-a994-c06c68ba4fea"
+      ],
+      "output_field": "output_image",
+      "role": "unknown",
+      "dimensions": {
+        "width": 2512,
+        "height": 1664
+      },
+      "provenance": {
+        "node_type": "quality_text_to_image",
+        "generating_run_id": "8702b306-315d-4ce8-a16e-2f72606084a8",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {}
+    }
+  ],
+  "has_more": false,
+  "next_cursor": null
+}

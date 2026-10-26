@@ -271,6 +271,44 @@
  {
   "ok": true,
   "mounts": null,
+  "meshes": 1244,
+  "tris": 16744,
+  "materials": 6,
+  "size": [
+   120.445,
+   36.327,
+   30.896
+  ],
+  "groundOffset": 0.002,
+  "centreOffset": [
+   0.001,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.0401,
+    "edgeDensity": 0.4359
+   },
+   "right": {
+    "coverage": 0.0264,
+    "edgeDensity": 0.4888
+   },
+   "back": {
+    "coverage": 0.0371,
+    "edgeDensity": 0.5085
+   },
+   "left": {
+    "coverage": 0.0441,
+    "edgeDensity": 0.3561
+   }
+  },
+  "error": null,
+  "name": "transfer-ramp",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
   "meshes": 39,
   "tris": 792,
   "materials": 3,

@@ -6,6 +6,10 @@ The user approved evolving the concept into an original Asphalt 8-inspired racer
 
 The adaptation has a complete two-lap coastal circuit, five AI rivals, keyboard/touch controls, drift/boost/pickups, regular jumps, an optional traversal of the original gravity ramp, pause, local best time and finish classification. New hangar/tower/wedge geometry follows the Atlas reference → three candidates → canonical verifier → visual selection workflow. Source material and evidence are in `references/racing/` and `evidence/racing/`. The newer racing scope intentionally adds scenery and a HUD; the no-HUD and fixed-edit requirements below still apply to the preserved film only.
 
+### Latest steering: directed ramp and source-style landing
+
+The user rejected the mid-air sideways correction. The active racing ramp is now `racing/assets/transfer-ramp.js`, a swept variant that physically aims at the return track before launch. `transfer.js` owns the matching path; flight X remains constant unless the player steers. `vapor.js` supplies cold-gas jets and persistent touchdown vapor. `main.js` now blends wide ramp reveal → closer side landing view → chase; C or the Camera button keeps chase throughout. The original film and original ramp module are untouched. First playable racing baseline tag: `racing-baseline-2026-10-26` (`67553f8`). Run `npm run race:transfer` for focused acceptance, plus the full racing tests. Geometry selection, Atlas provenance and current screenshots are in the transfer subfolders.
+
 ## Start here
 
 This is an editable browser cinematic recreating the supplied Tesla ramp stunt with an illustrated 404 game aesthetic. The owner requested a complete portable handoff so a friend or another AI can continue it. The previous racing game is a separate project and is not part of this repository.
