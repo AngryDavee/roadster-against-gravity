@@ -2,11 +2,20 @@ import puppeteer from 'puppeteer';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 const out='evidence/racing/playtest';await fs.mkdir(out,{recursive:true});
-const browser=await puppeteer.launch({headless:true,args:['--no-sandbox']});
+const browser=await puppeteer.launch({headless:true,args:['--no-sandbox',...(process.env.CI?['--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']:[])]});
 const errors=[],failed=[],checks=[],frames=[];const pass=name=>{checks.push(name);console.log('PASS',name);};
 const sleep=t=>new Promise(r=>setTimeout(r,t));
+const diagnostics=[];
+async function observe(page){
+ page.on('console',m=>{const line=`${m.type()}: ${m.text()}`;diagnostics.push(line);if(m.type()==='error'||line.includes('[startup]'))console.log(line);});
+ page.on('requestfailed',r=>diagnostics.push(`REQUEST FAILED ${r.url()}: ${r.failure()?.errorText}`));
+ await page.evaluateOnNewDocument(()=>{
+  let last='';new MutationObserver(()=>{const text=document.querySelector('#load-text')?.textContent;if(text&&text!==last){last=text;console.log('[startup]',text);}}).observe(document,{childList:true,subtree:true,characterData:true});
+ });
+}
+
 try{
- const p=await browser.newPage();p.setDefaultTimeout(120000);p.setDefaultNavigationTimeout(120000);await p.setViewport(process.env.CI?{width:960,height:600}:{width:1280,height:800});p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400)failed.push(r.url());});await p.goto(process.env.ROADSTER_URL||'http://localhost:4175',{waitUntil:'networkidle0'});await p.waitForFunction(()=>window.__READY__);await sleep(1500);await p.screenshot({path:out+'/dock.png'});
+ const p=await browser.newPage();p.setDefaultTimeout(120000);p.setDefaultNavigationTimeout(120000);await p.setViewport(process.env.CI?{width:960,height:600}:{width:1280,height:800});p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400)failed.push(r.url());});await observe(p);await p.goto(process.env.ROADSTER_URL||'http://localhost:4175',{waitUntil:'domcontentloaded'});await p.waitForFunction(()=>window.__READY__);await sleep(1500);await p.screenshot({path:out+'/dock.png'});
  await p.click('#start');await p.waitForFunction(()=>window.__RACE__.state.phase==='countdown');await p.screenshot({path:out+'/countdown.png'});await p.waitForFunction(()=>window.__RACE__.state.phase==='race');pass('Real start button and full countdown enter race');
  const boostStart=await p.evaluate(()=>window.__RACE__.state.time);await p.keyboard.down('Space');await p.waitForFunction(t=>window.__RACE__.state.time>=t+2.2,{},boostStart);let stats=await p.evaluate(()=>window.__RACE__.stats());assert(stats.progress>30&&stats.speed>25&&stats.charge<90);await p.screenshot({path:out+'/boost.png'});await p.keyboard.up('Space');pass('Actual keyboard boost moves the car and consumes charge');
  const xBefore=stats.position.x;const steerStart=await p.evaluate(()=>window.__RACE__.state.time);await p.keyboard.down('KeyD');await p.waitForFunction(t=>window.__RACE__.state.time>=t+.4,{},steerStart);await p.keyboard.up('KeyD');stats=await p.evaluate(()=>window.__RACE__.stats());assert(stats.position.x<xBefore);pass('Right steering moves toward screen-right on the opening straight');
@@ -31,7 +40,10 @@ try{
  const result=await p.evaluate(()=>({stats:window.__RACE__.stats(),cars:window.__RACE__.state.cars}));assert.equal(result.stats.phase,'results');assert(result.stats.gravityRuns>=1&&peak>30);assert(result.cars[0].pickupCount>0);assert(result.cars[0].driftTime>0);pass('Real-input driver completes two laps with gravity transfer, pickups and drift');await p.screenshot({path:out+'/results.png'});
  await p.click('#again');await p.waitForFunction(()=>window.__RACE__.state.phase==='countdown');assert.equal(await p.evaluate(()=>window.__RACE__.state.cars[0].finish),null);pass('Race-again resets finish state and countdown');
  await p.close();
- const phone=await browser.newPage();phone.setDefaultTimeout(120000);phone.setDefaultNavigationTimeout(120000);await phone.setViewport({width:390,height:844,deviceScaleFactor:1,isMobile:true,hasTouch:true});phone.on('pageerror',e=>errors.push(e.message));await phone.goto(process.env.ROADSTER_URL||'http://localhost:4175',{waitUntil:'networkidle0'});await phone.waitForFunction(()=>window.__READY__);await phone.screenshot({path:out+'/phone-dock.png'});await phone.tap('#start');await phone.waitForFunction(()=>window.__RACE__.state.phase==='race');
+ const phone=await browser.newPage();phone.setDefaultTimeout(120000);phone.setDefaultNavigationTimeout(120000);await phone.setViewport({width:390,height:844,deviceScaleFactor:1,isMobile:true,hasTouch:true});phone.on('pageerror',e=>errors.push(e.message));await observe(phone);await phone.goto(process.env.ROADSTER_URL||'http://localhost:4175',{waitUntil:'domcontentloaded'});await phone.waitForFunction(()=>window.__READY__);await phone.screenshot({path:out+'/phone-dock.png'});await phone.tap('#start');await phone.waitForFunction(()=>window.__RACE__.state.phase==='race');
  const bounds=await phone.$eval('[data-control="boost"]',e=>{const r=e.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2};});await phone.touchscreen.touchStart(bounds.x,bounds.y);await phone.waitForFunction(()=>window.__RACE__.state.cars[0].boostTime>.8);await phone.touchscreen.touchEnd();assert(await phone.evaluate(()=>window.__RACE__.state.cars[0].boostTime>.5));assert(await phone.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await phone.screenshot({path:out+'/phone-race.png'});await phone.tap('#pause');assert(await phone.evaluate(()=>window.__RACE__.state.paused));pass('Phone touch starts, holds boost and pauses without horizontal overflow');
  assert.deepEqual(errors,[]);assert.deepEqual(failed,[]);pass('No browser exceptions or missing resources');await fs.writeFile(out+'/report.json',JSON.stringify({passed:true,checks,errors,failed,peakHeight:peak,result,note:'Headless browser is functional verification, not physical-device performance measurement.'},null,2));
+}catch(error){
+ await fs.writeFile(out+'/failure.json',JSON.stringify({passed:false,message:error.message,stack:error.stack,checks,errors,failed,diagnostics},null,2));
+ console.error('Browser diagnostics:',JSON.stringify({errors,failed,diagnostics}));throw error;
 }finally{await browser.close();}
