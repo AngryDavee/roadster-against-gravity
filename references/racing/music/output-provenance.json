@@ -1,0 +1,27 @@
+{
+  "fid": "98b0af3d-0b41-4d4d-9f60-856b863d2a89",
+  "name": "output",
+  "filename": "output.mp3",
+  "mime_type": "audio/mpeg",
+  "size_bytes": 2304620,
+  "node_id": "c6978967-7943-4487-a45c-8aac2430992f",
+  "associated_node_ids": [
+    "c6978967-7943-4487-a45c-8aac2430992f"
+  ],
+  "run_id": "db95d775-5056-4cae-85a2-2c3cab397259",
+  "node_run_ids": [
+    "db95d775-5056-4cae-85a2-2c3cab397259"
+  ],
+  "output_field": "output_audio",
+  "role": "unknown",
+  "dimensions": null,
+  "provenance": {
+    "node_type": "create_music",
+    "generating_run_id": "315df2d8-6f40-46bc-b129-593a2d951487",
+    "sources": [],
+    "direction": null,
+    "repeat_grid": null,
+    "evidence": "frozen_generation_record"
+  },
+  "requested_properties": {}
+}

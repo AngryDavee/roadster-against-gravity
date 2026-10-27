@@ -1,85 +1,104 @@
-import {LENGTH,LAPS,WIDTH,GRAVITY,JUMPS,PICKUPS,wrap,clamp,smooth,sample} from './track.js';
+import * as THREE from './vendor/three.module.js';
+import {LENGTH,LAPS,WIDTH,GRAVITY,JUMPS,PICKUPS,clamp,smooth,sample,roadWidth} from './track.js';
 import {transferPose,rampDuration,TRANSFER,FLIGHT_SPEED} from './transfer.js';
-export const NAMES=['YOU','VEGA','ION','SABLE','NOVA','KITE'];
-export const COLORS=[0xd8dce5,0xeea252,0x77d9e6,0xa89ae3,0xd97983,0xa9d9b0];
-const mix=(a,b,t)=>a+(b-a)*t;
-const wave=(i,t)=>Math.sin(t*.73+i*13.1)*.5+Math.sin(t*.31+i*8.9)*.5;
-export function createRace(){
- return {phase:'dock',countdown:3.6,time:0,tick:0,paused:false,events:[],pickups:new Map(),finishOrder:[],
- cars:NAMES.map((name,i)=>({id:i,name,s:-Math.floor(i/2)*7,lane:i%2?3:-3,speed:0,charge:100,boosting:false,drifting:false,lat:0,stunt:null,jump:null,cooldown:0,finish:null,airtime:0,landings:0,driftTime:0,gravityRuns:0,pickupCount:0,collisions:0,boostTime:0}))};
-}
+export const NAMES=['YOU'],COLORS=[0xd8dce5];
+const mix=(a,b,t)=>a+(b-a)*t,axis=new THREE.Vector3(0,1,0);
+const ease=t=>{t=clamp(t,0,1);return t*t*t*(t*(t*6-15)+10);};
+export function createRace(){return{phase:'dock',countdown:3.6,time:0,tick:0,paused:false,events:[],pickups:new Map(),finishOrder:[],cars:[{id:0,name:'YOU',s:0,lane:0,speed:0,charge:100,boosting:false,drifting:false,lat:0,heading:0,steering:0,driftYaw:0,driftBuffer:0,driftIntent:0,spinDirection:1,spins:0,score:0,stunt:null,jump:null,cooldown:0,finish:null,airtime:0,landings:0,driftTime:0,gravityRuns:0,pickupCount:0,collisions:0,boostTime:0,landingPulse:0}]};}
 export function startRace(r){Object.assign(r,createRace());r.phase='countdown';}
-function event(r,text,tone='cyan'){r.events.push({text,tone,until:r.time+2.2});if(r.events.length>10)r.events.shift();}
-function crossed(previous,current,at){return Math.floor((previous-at)/LENGTH)<Math.floor((current-at)/LENGTH);}
-export function position(car){
- if(car.stunt){
-  const q=car.stunt,pose=transferPose(q.elapsed,q.entrySpeed??48,q.trim),gate=sample(GRAVITY.entry);
+function event(r,text,tone='cyan'){r.events.push({text,tone,until:r.time+2.5});if(r.events.length>10)r.events.shift();}
+export function position(c){
+ if(c.stunt){const q=c.stunt,pose=transferPose(q.elapsed,q.entrySpeed,q.trim),gate=sample(GRAVITY.entry),airAge=q.elapsed-rampDuration(q.entrySpeed);
+  const spinAngle=q.spinAngle||0;
+  const quaternion=new THREE.Quaternion().setFromAxisAngle(axis,gate.yaw+spinAngle+(q.entryYaw||0)*(1-ease(q.elapsed/.35))).multiply(new THREE.Quaternion().fromArray(pose.quaternion)).toArray();
   const cos=Math.cos(gate.yaw),sin=Math.sin(gate.yaw);
-  return {...pose,x:gate.p.x+pose.x*cos+pose.z*sin,y:gate.p.y+pose.y,z:gate.p.z-pose.x*sin+pose.z*cos,yaw:gate.yaw+pose.yaw,action:pose.air?11:7};
+  return{...pose,quaternion,x:gate.p.x+pose.x*cos+pose.z*sin,y:gate.p.y+pose.y,z:gate.p.z-pose.x*sin+pose.z*cos,yaw:gate.yaw+pose.yaw,spinAngle,action:pose.air?11:7};
  }
- const road=sample(car.s,car.lane),u=car.jump?car.jump.elapsed/car.jump.duration:0;
- let rampLift=0,rampPitch=0;for(const j of JUMPS){const distance=wrap(j.s-car.s);if(distance<12&&Math.abs(car.lane-j.lane)<2.6&&!car.jump){rampLift=(1-distance/12)*2;rampPitch=-Math.atan(2/12);}}
- return {x:road.p.x,y:road.p.y+(car.jump?Math.sin(Math.PI*u)*6.5+2*(1-u):rampLift),z:road.p.z,yaw:road.yaw-car.lat*.024+(car.jump?.spin?u*Math.PI*2:0),pitch:car.jump?-.14*Math.cos(Math.PI*u):-Math.asin(road.t.y)+rampPitch,roll:car.lat*.012,air:!!car.jump,action:car.jump?11:0};
+ const road=sample(c.s,c.lane),u=c.jump?clamp(c.jump.elapsed/c.jump.duration,0,1):0;
+ let lift=0,pitch=0;
+ for(const j of JUMPS){const d=j.s-c.s;if(d>=0&&d<j.length&&Math.abs(c.lane-j.lane)<j.width/2-1&&!c.jump){lift=(1-d/j.length)*j.height;pitch=-Math.atan(j.height/j.length);}}
+ const spin=c.jump?(c.jump.spinAngle||0):0;
+ return{x:road.p.x,y:road.p.y+(c.jump?4*c.jump.peak*u*(1-u)+c.jump.height*(1-u):lift),z:road.p.z,yaw:road.yaw-c.heading+c.driftYaw*(c.jump?1-ease(u*3):1)+spin,pitch:c.jump?-.16*Math.cos(Math.PI*u):pitch,roll:c.jump?0:-c.steering*.025,air:!!c.jump,spinAngle:spin,action:c.jump?11:0};
 }
+// A lip gesture seeds angular momentum. Continued steering + drift supplies
+// torque; releasing it damps rotation. Only the final alignment is assisted.
+function rotateAir(q,dt,input,age,duration,settle=.7,start=0){
+ q.spinAngle??=0;q.spinVelocity??=0;q.spins??=0;
+ if(!q.spinEnabled||age<start)return;
+ const driven=input.drift&&Math.abs(input.steer||0)>.25;
+ // Ease out of a nearly complete turn while still travelling forward. Waiting
+ // until touchdown used to overshoot 360 degrees and rewind the car into line.
+ const completing=driven&&Math.abs(q.spinAngle)>=2*Math.PI-1.8;
+ if(q.settleStarted!==undefined||age>=duration-settle||completing){
+  if(q.settleStarted===undefined){
+   q.settleStarted=age;q.settleAngle=q.spinAngle;q.settleVelocity=q.spinVelocity;
+   q.settleTarget=Math.round(q.spinAngle/(2*Math.PI))*2*Math.PI;
+   q.settleDuration=Math.min(duration-age,Math.max(.7,2*Math.abs(q.settleTarget-q.spinAngle)/Math.max(.5,Math.abs(q.spinVelocity))));
+  }
+  const span=Math.max(.001,q.settleDuration),u=clamp((age-q.settleStarted)/span,0,1);
+  // Match incoming angular velocity and reach zero velocity/acceleration at alignment.
+  const tangent=u-6*u**3+8*u**4-3*u**5;
+  q.spinAngle=mix(q.settleAngle,q.settleTarget,ease(u))+q.settleVelocity*span*tangent;
+  q.spinVelocity=(q.settleTarget-q.settleAngle)*30*u*u*(u-1)**2/span+q.settleVelocity*(1-18*u*u+32*u**3-15*u**4);
+  if(u===1)q.spins=Math.max(q.spins,Math.floor(Math.abs(q.spinAngle)/(2*Math.PI)+1e-6));return;
+ }
+ const torque=driven?-(input.steer||0)*4.5:-Math.atan2(Math.sin(q.spinAngle),Math.cos(q.spinAngle))*2;
+ q.spinVelocity=clamp(q.spinVelocity+torque*dt,-2.6,2.6)*Math.exp(-dt*(driven?.12:2.2));
+ q.spinAngle+=q.spinVelocity*dt;q.spins=Math.max(q.spins,Math.floor(Math.abs(q.spinAngle)/(2*Math.PI)));
+}
+function land(r,c,spins,gravity=false){c.landings++;c.spins+=spins;c.score+=Math.round(c.airtime*10)+(spins*1000)+(gravity?2500:250);c.charge=Math.min(100,c.charge+15+spins*25+(gravity?25:0));c.landingPulse=1;event(r,spins?`FLAT SPIN ×${spins} / +${spins*25} BOOST`:gravity?'COLD-GAS TOUCHDOWN / CLEAN LANDING':'AIRTIME / CLEAN LANDING','amber');}
 export function step(r,dt,input={}){
- if(r.paused||r.phase==='dock'||r.cars.every(c=>c.finish!==null))return;
- dt=clamp(dt,0,1/30);r.tick++;
+ if(r.paused||r.phase==='dock'||r.phase==='results')return;dt=clamp(dt,0,1/30);r.tick++;
  if(r.phase==='countdown'){r.countdown-=dt;if(r.countdown<=0){r.phase='race';event(r,'GO / FULL THRUST');}return;}
- r.time+=dt;
- for(const c of r.cars){
-  if(c.finish!==null)continue;
-  c.cooldown=Math.max(0,c.cooldown-dt);
-  const prev=c.s,road=sample(c.s),ahead=sample(c.s+12),curv=Math.atan2(road.t.z*ahead.t.x-road.t.x*ahead.t.z,road.t.dot(ahead.t))/12;
-  let steer=input.steer||0,drift=!!input.drift,boost=!!input.boost;
-  if(c.id){
-   // Stable personalities and physical progress; no rubber-band teleport or free boost.
-   const target=wave(c.id,r.time*.24)*7;
-   const rampDistance=wrap(GRAVITY.entry-c.s);
-   let desired=target;
-   if(rampDistance<95&&[1,3,5].includes(c.id))desired=0;
-   const pickup=PICKUPS.find(p=>wrap(p.s-c.s)<80);if(pickup&&rampDistance>95)desired=pickup.lanes[(c.id+Math.floor(r.time/6))%3];
-   steer=clamp((desired-c.lane)*.55-c.lat*.15,-1,1);
-   drift=Math.abs(curv)>.006&&c.speed>32;
-   boost=c.charge>20&&Math.abs(curv)<.005&&Math.sin(r.time*.45+c.id*2)>.1;
-   if(Math.sin(r.time*.19+c.id*7)>.993)steer+=.45; // occasional recoverable line error
+ r.time+=dt;const c=r.cars[0],steer=clamp(input.steer||0,-1,1),drift=!!input.drift;
+ c.cooldown=Math.max(0,c.cooldown-dt);c.landingPulse=Math.max(0,c.landingPulse-dt*2);c.driftBuffer=drift?.4:Math.max(0,c.driftBuffer-dt);
+ if(Math.abs(steer)>.15)c.spinDirection=-Math.sign(steer);
+ c.driftIntent=drift&&Math.abs(steer)>.3?Math.min(.5,c.driftIntent+dt):0;
+ c.steering+=(steer-c.steering)*(1-Math.exp(-dt*14));
+ c.drifting=drift&&!c.jump&&!c.stunt&&c.speed>12;c.boosting=!!input.boost&&c.charge>1&&!c.drifting;
+ if(c.boosting){c.charge=Math.max(0,c.charge-dt*18);c.boostTime+=dt;}
+ if(c.drifting){c.driftTime+=dt;c.charge=Math.min(100,c.charge+dt*(Math.abs(steer)>.1?12:3));}
+ c.driftYaw+=((c.drifting?-c.steering*.48:0)-c.driftYaw)*(1-Math.exp(-dt*7));
+ if(c.stunt){
+  const q=c.stunt,rt=rampDuration(q.entrySpeed);q.rate??=1;q.rate+=((c.boosting?1.1:1)-q.rate)*Math.min(1,dt*3);q.elapsed+=dt*q.rate;
+  const air=q.elapsed>rt;
+  if(air&&q.spinEnabled===undefined){
+   // Allow a deliberate gesture just after the lip; never accept late mid-flight spins.
+   if(drift&&c.driftIntent>=.05){q.spinEnabled=true;q.spinVelocity=-steer*1.1;event(r,'DRIVER ROTATION / RELEASE TO STABILIZE','amber');}
+   else if(q.elapsed-rt>.15)q.spinEnabled=false;
   }
-  c.boosting=boost&&c.charge>1&&!drift;c.drifting=drift&&!c.stunt&&!c.jump&&c.speed>15;
-  if(c.boosting){c.charge=Math.max(0,c.charge-dt*21);c.boostTime+=dt;}
-  if(c.drifting&&Math.abs(steer)>.15){c.charge=Math.min(100,c.charge+dt*15);c.driftTime+=dt;}
-  const targetSpeed=(c.id?46+(c.id%3)*.6:48)+(c.boosting?21:0)-Math.min(15,Math.abs(curv)*750)*(c.drifting?.35:1)-(c.drifting?5:0);
-  c.speed+=clamp(targetSpeed-c.speed,-30*dt,(c.boosting?27:18)*dt);
-  if(c.stunt){
-   c.stunt.rate??=1;c.stunt.rate+=((c.boosting?1.18:1)-c.stunt.rate)*Math.min(1,dt*4);c.stunt.elapsed+=dt*c.stunt.rate;c.stunt.trim+=steer*dt*2.5;c.stunt.trim=clamp(c.stunt.trim,-2.8,2.8);
-   const duration=c.stunt.duration??GRAVITY.duration;
-   c.s=mix(c.stunt.from,c.stunt.to,smooth(c.stunt.elapsed/duration));
-   c.speed=transferPose(c.stunt.elapsed,c.stunt.entrySpeed??48,c.stunt.trim).speed*c.stunt.rate;
-   if(c.stunt.elapsed>rampDuration(c.stunt.entrySpeed??48))c.airtime+=dt;
-   if(c.stunt.elapsed>=duration){
-    c.s=c.stunt.to;c.lane=clamp(c.stunt.trim,-9,9);const clean=Math.abs(c.stunt.trim)<2.4;
-    c.speed=FLIGHT_SPEED*c.stunt.rate*(clean?1:.85);c.charge=Math.min(100,c.charge+(clean?42:12));c.gravityRuns++;c.landings++;c.stunt=null;
-    if(!c.id)event(r,clean?'GRAVITY TRANSFER / +42 CHARGE':'ROUGH LANDING / RECOVER','amber');
-   }
-  }else{
-   const force=steer*(c.drifting?15:10)+curv*c.speed*c.speed*.055;
-   c.lat+=(force-c.lat)*Math.min(1,dt*5);c.lane+=c.lat*dt;
-   if(Math.abs(c.lane)>WIDTH/2-1){c.lane=clamp(c.lane,-WIDTH/2+1,WIDTH/2-1);c.lat*=-.25;if(!c.cooldown){c.speed*=.63;c.collisions++;c.cooldown=.8;if(!c.id)event(r,'BARRIER / SPEED LOST','red');}}
-   c.s+=c.speed*dt;
-   if(c.jump){c.jump.elapsed+=dt;c.airtime+=dt;c.charge=Math.min(100,c.charge+dt*7);if(c.jump.elapsed>=c.jump.duration){c.jump=null;c.landings++;c.charge=Math.min(100,c.charge+15);if(!c.id)event(r,'AIRTIME / CLEAN TOUCHDOWN');}}
-   if(!c.jump&&crossed(prev,c.s,GRAVITY.entry)&&Math.abs(c.lane)<2.55&&c.speed>32){
-    const lap=Math.floor((c.s-GRAVITY.entry)/LENGTH);
-    c.stunt={elapsed:(c.s-lap*LENGTH-GRAVITY.entry)/c.speed,from:c.s,to:lap*LENGTH+GRAVITY.exit,trim:clamp(c.lane,-2.8,2.8),entrySpeed:c.speed,duration:rampDuration(c.speed)+TRANSFER.flightTime};c.lat=0;
-    if(!c.id)event(r,'GRAVITY TRANSFER / HOLD YOUR LINE','amber');
-   }
-   for(const jump of JUMPS)if(!c.jump&&!c.stunt&&crossed(prev,c.s,jump.s)&&Math.abs(c.lane-jump.lane)<2.6&&c.speed>27){c.jump={elapsed:0,duration:1.55,spin:c.drifting};if(!c.id)event(r,c.drifting?'FLAT SPIN / CHARGE RECOVERY':'AIRBORNE');}
-  }
-  if(!c.stunt&&!c.jump)for(let i=0;i<PICKUPS.length;i++)if(crossed(prev,c.s,PICKUPS[i].s))for(let j=0;j<3;j++){
-   const key=`${i}:${j}`;if(Math.abs(c.lane-PICKUPS[i].lanes[j])<1.8&&(r.pickups.get(key)||0)<=r.time){r.pickups.set(key,r.time+7);c.charge=Math.min(100,c.charge+25);c.pickupCount++;if(!c.id)event(r,'CELL COLLECTED / +25');}
-  }
-  if(c.s>=LENGTH*LAPS){c.finish=r.time;c.s=LENGTH*LAPS;r.finishOrder.push(c.id);if(!c.id){r.phase='results';event(r,'RACE COMPLETE');}}
+  rotateAir(q,dt,input,q.elapsed-rt,TRANSFER.flightTime);
+  if(!q.spinEnabled)q.trim+=steer*dt*1.1;q.trim=clamp(q.trim,-2.35,2.35);
+  c.s=mix(q.from,q.to,smooth(q.elapsed/q.duration));c.speed=transferPose(q.elapsed,q.entrySpeed,q.trim).speed*q.rate;if(air)c.airtime+=dt;
+  if(q.elapsed>=q.duration){c.s=q.to;c.lane=q.trim;c.heading=0;c.lat=0;c.driftYaw=0;c.speed=FLIGHT_SPEED*q.rate;c.gravityRuns++;land(r,c,q.spins,true);c.stunt=null;}
+  return;
  }
- for(let i=0;i<r.cars.length;i++)for(let j=i+1;j<r.cars.length;j++){
-  const a=r.cars[i],b=r.cars[j];if(a.stunt||b.stunt||a.jump||b.jump||a.cooldown||b.cooldown||a.finish!==null||b.finish!==null)continue;
-  if(Math.abs(a.s-b.s)<4&&Math.abs(a.lane-b.lane)<1.9){const faster=a.speed>b.speed?a:b;faster.speed*=.78;a.cooldown=b.cooldown=.65;const dir=a.lane>b.lane?1:-1;a.lane+=dir*.8;b.lane-=dir*.8;a.collisions++;b.collisions++;if(!i)event(r,'CONTACT / KEEP RACING','amber');}
+ const prev=c.s,road=sample(c.s),ahead=sample(Math.min(c.s+4,GRAVITY.entry>c.s?GRAVITY.entry:LENGTH));
+ const curveAngle=Math.atan2(road.t.z*ahead.t.x-road.t.x*ahead.t.z,road.t.dot(ahead.t)),curv=curveAngle/4;
+ const offroad=Math.max(0,Math.abs(c.lane)-roadWidth(c.s)/2);
+ const target=62+(c.boosting?25:0)-(c.drifting?10:0)-Math.min(28,offroad*4);
+ c.speed+=clamp(target-c.speed,-25*dt,(c.boosting?31:22)*dt);
+ if(c.jump){c.jump.elapsed+=dt;c.airtime+=dt;rotateAir(c.jump,dt,input,c.jump.elapsed,c.jump.duration,.65,0);if(!c.jump.spinEnabled)c.heading+=steer*dt*.18;c.lane+=Math.sin(c.heading)*c.speed*dt*.35;c.s+=c.speed*dt;
+  if(c.jump.elapsed>=c.jump.duration){land(r,c,c.jump.spins);c.jump=null;c.driftYaw=0;}
+ }else{
+  // Heading responds to steering; changing road direction does not rotate the
+  // vehicle for free. Drift increases yaw authority and shows body slip.
+  const turnRate=c.drifting?1.35:.94;
+  c.heading=clamp(c.heading+(c.steering*turnRate+curv*c.speed*Math.cos(c.heading)-c.heading*.42)*dt,-.8,.8);
+  // Soft run-off recovery on the wide shoulder. No invisible wall/impact bounce.
+  if(offroad>1)c.heading-=Math.sign(c.lane)*Math.min(.8,offroad*.1)*dt;
+  if(offroad>5)c.heading+=(-Math.sign(c.lane)*.5-c.heading)*(1-Math.exp(-dt*2));
+  c.lat=Math.sin(c.heading)*c.speed;c.lane+=c.lat*dt;c.s+=Math.max(0,c.speed*Math.cos(c.heading))*dt;
+  // The marked approach visibly narrows into the 7.2m deck. Its shoulder
+  // guides the car smoothly, rather than a one-frame snap at ramp capture.
+  if(c.s>GRAVITY.entry-85&&c.s<GRAVITY.entry){const bound=Math.max(2.35,roadWidth(c.s)/2-1.15);if(Math.abs(c.lane)>bound){c.lane+= (Math.sign(c.lane)*bound-c.lane)*(1-Math.exp(-dt*9));c.heading*=Math.exp(-dt*6);}}
+  if(prev<GRAVITY.entry&&c.s>=GRAVITY.entry){
+   if(Math.abs(c.lane)>2.5){c.s=GRAVITY.entry-.6;c.speed=Math.min(c.speed,14);c.lane*=Math.exp(-dt*4);event(r,'ALIGN WITH THE LIT LAUNCH LANE');return;}
+   const entrySpeed=Math.max(1,c.speed);c.stunt={elapsed:0,from:GRAVITY.entry,to:GRAVITY.exit,trim:c.lane,entryYaw:-c.heading+c.driftYaw,entrySpeed,duration:rampDuration(entrySpeed)+TRANSFER.flightTime,spins:0,spinAngle:0,spinVelocity:0};c.s=GRAVITY.entry;c.heading=0;c.lat=0;event(r,'GRAVITY LAUNCH / STEER + DRIFT AT THE LIP','amber');
+  }
+  for(const j of JUMPS)if(!c.stunt&&prev<j.s&&c.s>=j.s&&Math.abs(c.lane-j.lane)<j.width/2-1){c.jump={elapsed:0,duration:2.8,height:j.height,peak:9,spins:0,spinAngle:0,spinEnabled:drift&&c.driftIntent>=.1,spinVelocity:drift&&c.driftIntent>=.1?-steer*1.1:0};event(r,c.jump.spinEnabled?'DRIVER ROTATION / RELEASE TO STABILIZE':'AIRBORNE / STEER + DRIFT AT THE LIP');}
  }
+ if(!c.stunt&&!c.jump)for(let i=0;i<PICKUPS.length;i++)if(prev<PICKUPS[i].s&&c.s>=PICKUPS[i].s)for(let j=0;j<3;j++){if(Math.abs(c.lane-PICKUPS[i].lanes[j])<1.8){r.pickups.set(`${i}:${j}`,Infinity);c.charge=Math.min(100,c.charge+25);c.pickupCount++;event(r,'BOOST CELL / +25');}}
+ if(c.s>=LENGTH){c.s=LENGTH;c.finish=r.time;r.finishOrder=[0];r.phase='results';event(r,'EXHIBITION COMPLETE');}
 }
-export function standings(r){return [...r.cars].sort((a,b)=>a.finish!==null&&b.finish!==null?a.finish-b.finish:a.finish!==null?-1:b.finish!==null?1:b.s-a.s);}
+export function standings(r){return r.cars;}

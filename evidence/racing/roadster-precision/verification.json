@@ -1,0 +1,125 @@
+{
+  "asset": "racing/assets/roadster-precision.js",
+  "sha256": "4534e400341e96365e6e22899f1e3f639ac208ab5678b847b0c7793d5d5a3457",
+  "geometry": [
+    {
+      "ok": true,
+      "mounts": null,
+      "meshes": 453,
+      "tris": 58274,
+      "materials": 16,
+      "size": [
+        2.173,
+        1.252,
+        4.93
+      ],
+      "groundOffset": 0,
+      "centreOffset": [
+        0,
+        0
+      ],
+      "sides": {
+        "front": {
+          "coverage": 0.1663,
+          "edgeDensity": 0.0804
+        },
+        "right": {
+          "coverage": 0.2072,
+          "edgeDensity": 0.106
+        },
+        "back": {
+          "coverage": 0.1498,
+          "edgeDensity": 0.1299
+        },
+        "left": {
+          "coverage": 0.207,
+          "edgeDensity": 0.1164
+        }
+      },
+      "error": null,
+      "name": "roadster-precision",
+      "problems": []
+    }
+  ],
+  "transfer": {
+    "passed": true,
+    "kind": "Real keyboard approach, deliberate lip gesture, post-touchdown steering and boost",
+    "checks": [
+      "brief wide highlight, close-up and continuous side-to-rear orbit",
+      "20+ actual airborne frames",
+      "driver-triggered rotation",
+      "unobstructed framing",
+      "close thruster descent",
+      "camera behind car before touchdown",
+      "left steering and boost after landing",
+      "right steering after landing",
+      "camera toggle",
+      "no browser errors"
+    ],
+    "peakCloud": 117,
+    "errors": []
+  },
+  "rehearsal": {
+    "passed": true,
+    "input": "real keyboard events only",
+    "phase": "results",
+    "car": {
+      "id": 0,
+      "name": "YOU",
+      "s": 1536.63741356108,
+      "lane": -2.0016919203601313,
+      "speed": 71.16666666666649,
+      "charge": 7.5000000000013305,
+      "boosting": false,
+      "drifting": false,
+      "lat": 16.792582079356272,
+      "heading": 0.238207724879835,
+      "steering": 0.9996809328452085,
+      "driftYaw": 0,
+      "driftBuffer": 0,
+      "driftIntent": 0,
+      "spinDirection": -1,
+      "spins": 1,
+      "score": 3852,
+      "stunt": null,
+      "jump": null,
+      "cooldown": 0,
+      "finish": 25.89999999999981,
+      "airtime": 7.433333333333312,
+      "landings": 2,
+      "driftTime": 3.349999999999993,
+      "gravityRuns": 1,
+      "pickupCount": 3,
+      "collisions": 0,
+      "boostTime": 15.250000000000338,
+      "landingPulse": 0
+    },
+    "title": "COAST\nCONQUERED.",
+    "fullscreen": false,
+    "audio": {
+      "state": "ready",
+      "context": "running",
+      "muted": false,
+      "volume": 0.65,
+      "mode": "results",
+      "playing": true,
+      "duration": 95.6,
+      "offset": 26.090666666666667,
+      "musicGain": 0.20959176123142242,
+      "filterHz": 15995.78125,
+      "error": null
+    },
+    "errors": []
+  },
+  "film_browser_checks_passed": 11,
+  "film_baseline_unchanged": true,
+  "stock_loader_unchanged": true,
+  "stock_surfaces_unchanged": true,
+  "limitations": [
+    "No measured photographic similarity percentage",
+    "Photo/model views have different lenses and lighting",
+    "Full driving rehearsal preceded final front-fascia material and shoulder refinements; final geometry and regenerated views rechecked",
+    "No public competition gate run"
+  ],
+  "committed": false
+}

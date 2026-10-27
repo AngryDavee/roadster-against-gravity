@@ -1,0 +1,75 @@
+{
+  "kind": "isolated reference inspection; identical lighting and cameras",
+  "measurements": [
+    {
+      "name": "before",
+      "dimensions": [
+        2.2070000007003547,
+        1.3051302085210787,
+        4.996928205247968
+      ],
+      "triangles": 11304,
+      "joints": [
+        {
+          "name": "coachwork",
+          "present": true
+        },
+        {
+          "name": "rear_wing",
+          "present": true
+        },
+        {
+          "name": "wheel_l_f",
+          "present": true
+        },
+        {
+          "name": "wheel_r_f",
+          "present": true
+        },
+        {
+          "name": "wheel_l_r",
+          "present": true
+        },
+        {
+          "name": "wheel_r_r",
+          "present": true
+        }
+      ]
+    },
+    {
+      "name": "after",
+      "dimensions": [
+        2.242000000759959,
+        1.1806499826908112,
+        4.9411961999386556
+      ],
+      "triangles": 52354,
+      "joints": [
+        {
+          "name": "coachwork",
+          "present": true
+        },
+        {
+          "name": "rear_wing",
+          "present": true
+        },
+        {
+          "name": "wheel_l_f",
+          "present": true
+        },
+        {
+          "name": "wheel_r_f",
+          "present": true
+        },
+        {
+          "name": "wheel_l_r",
+          "present": true
+        },
+        {
+          "name": "wheel_r_r",
+          "present": true
+        }
+      ]
+    }
+  ]
+}

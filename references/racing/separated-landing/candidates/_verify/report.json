@@ -1,0 +1,116 @@
+[
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 926,
+  "tris": 12284,
+  "materials": 5,
+  "size": [
+   17.651,
+   39.297,
+   20.732
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.1076,
+    "edgeDensity": 0.1822
+   },
+   "right": {
+    "coverage": 0.0659,
+    "edgeDensity": 0.3008
+   },
+   "back": {
+    "coverage": 0.0903,
+    "edgeDensity": 0.1678
+   },
+   "left": {
+    "coverage": 0.0483,
+    "edgeDensity": 0.3675
+   }
+  },
+  "error": null,
+  "name": "ramp-10",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 926,
+  "tris": 12284,
+  "materials": 5,
+  "size": [
+   21.371,
+   39.572,
+   21.108
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.1034,
+    "edgeDensity": 0.1757
+   },
+   "right": {
+    "coverage": 0.0648,
+    "edgeDensity": 0.3035
+   },
+   "back": {
+    "coverage": 0.0857,
+    "edgeDensity": 0.1736
+   },
+   "left": {
+    "coverage": 0.045,
+    "edgeDensity": 0.354
+   }
+  },
+  "error": null,
+  "name": "ramp-14",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 926,
+  "tris": 12284,
+  "materials": 5,
+  "size": [
+   25.086,
+   39.783,
+   21.395
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.0995,
+    "edgeDensity": 0.175
+   },
+   "right": {
+    "coverage": 0.0617,
+    "edgeDensity": 0.2936
+   },
+   "back": {
+    "coverage": 0.082,
+    "edgeDensity": 0.166
+   },
+   "left": {
+    "coverage": 0.0428,
+    "edgeDensity": 0.3618
+   }
+  },
+  "error": null,
+  "name": "ramp-18",
+  "problems": []
+ }
+]

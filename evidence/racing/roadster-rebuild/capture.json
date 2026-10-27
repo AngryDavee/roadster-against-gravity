@@ -1,0 +1,10 @@
+{
+  "kind": "Paused runtime poses; camera and particles settle for visual review",
+  "poses": [
+    "wide",
+    "close",
+    "pan",
+    "rear",
+    "touchdown"
+  ]
+}

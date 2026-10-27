@@ -1,79 +1,55 @@
-# Meridian / Against Gravity
+# Meridian — solo airborne exhibition
 
-An original arcade racing adaptation of the Roadster film. A coastal aerospace circuit at violet dusk combines high-speed straights, charge pickups, drift corners, smaller launch wedges, a covered technical sector, an elevated coastal road and a swept adaptation of the original overhanging gravity ramp.
+Run `npm ci`, then `npm run race`, and open http://localhost:4175. Existing assets run without an Atlas key. The comparison film on port 4174 now uses the same car, preserving its original shot timing. The original film remains at its baseline tag. **For another PC or an AI-operated recording, read [RECORDING.md](../RECORDING.md).** Future unrequested edits remain local.
 
-## Run
+## Current Roadster
 
-From the repository root, with Node 22.12+:
+`assets/roadster-precision.js` is the active reference-derived wedge coupe. Earlier models remain in `assets/roadster-2026.js` and `assets/roadster.js`. Tesla-credited gallery photographs, including the true overhead view, and the user's ramp footage establish the continuous glass canopy, narrow rear taper, rising body crease, rounded nose, sculpted silver wheel faces and recessed thrust hardware. The doors/lamps stay closed and wing low as in the ramp shot. Inferred bounds are 4.930 × 2.173 × 1.252m; this is editable procedural geometry, not CAD or a measured 99% match.
 
-```sh
-npm ci
-npm run race
-```
+This extensively refines selected construction C from the original three candidates. Canonical verification passes at 58,274 triangles with no problems. Current source provenance, Atlas critique and selected verifier results are in `references/racing/roadster-precision/`. Current visual evidence and photo comparison are in `evidence/racing/roadster-precision/`. Run `node tools/roadster-precision-review.mjs` for isolated previous/current renders. Edit the module directly; the older `tools/refine-roadster.py` regenerates only the earlier model. Independent wheel/wing groups remain intact; rear boost and downward jets follow the revised outlets. Physics, camera and music are unchanged. Recording is paused for review; no fullscreen demonstration is currently staged.
 
-Open http://localhost:4175. This directory is a standalone static application: its modules, assets, vendor library and textures all stay inside it. No Atlas key is required to play. The original film is unchanged in `../app/`, served by `npm start` at port 4174, and recoverable from Git tag `film-baseline-2026-10-26`.
+## Current landing revision
 
-## Controls and race
+The user rejected the shared approach/landing pavement, distant descent camera, post-landing disorientation and Shift-only automatic spin. The ramp now keeps the tall reference curl while progressively bending 14m left. Its actual departure tangent aims at a separate receiving runway, about 59m from the approach centreline at touchdown. The receiving road extends 30m behind the contact point and stays straight for 130m afterward. Flight and ground coordinates share the same position, yaw, lane basis and terminal speed; no touchdown lane-sign flip or sideways correction is applied.
 
-- A/D or Left/Right: steer. Acceleration is automatic.
-- Shift or Down: drift/brake; steering during a drift restores charge.
-- Space: cold-gas boost. Charge is finite; pickups, drift and landings restore it.
-- C or Camera button: toggle automatic stunt cameras / continuous chase view.
-- Escape or pause button: pause/resume. Losing focus pauses the race.
-- Phone: hold the on-screen steering, drift and boost controls. Two-finger combinations work.
+The view tracks beside the car during ascent, briefly widens at departure (under one second), returns to a short close front/side thruster shot, then pans around the car on a curved path from 0.75–2.55s after departure. The cosine orbit starts earlier and has a lower peak turn speed. Camera position and look target travel with the car and use matching smoothing; follow distance, height and look-ahead blend continuously over the final 1.65 seconds instead of switching at a height threshold. Rear chase stays active throughout touchdown and acceleration. C toggles continuous chase. Ground steering and boost are active immediately on touchdown. The flight remains assisted and follows the ramp's departure tangent; this is not a full rigid-body vehicle simulation.
 
-Complete two laps against five simulated drivers. Their progress, lane choice, charge use and collisions are simulated; they do not teleport to the leader. They can take the same ramps and pickups. Different control patterns make them competitive, while skilled play can win. This is local AI racing, not network multiplayer.
+## Original soundtrack
 
-The main gravity ramp is optional. Follow the cyan center approach at speed; use the side lanes for the normal road bypass. The new deck preserves the source ramp’s vertical curl while sweeping across to the parallel return track. Its upper lip already faces that track: flight has no automatic sideways correction. Steering changes your actual offset; boost spends charge to shorten the traversal. Downward white/cyan jets brake the descent and build ground vapor before touchdown. The original straight ramp remains unchanged in the film and archived asset module. This is a deliberately assisted arcade traversal, not a free-flight vehicle simulation. Automatic camera mode reveals the full ramp, blends to a closer side view for the jet-assisted landing, then returns to chase. Driving input remains live, and C immediately selects continuous chase. Ordinary wedges launch the car; drifting at launch adds a flat spin.
+**Ignition Vector** is an original instrumental generated with ElevenLabs Music through Atlas MCP. The direction draws on the classic Asphalt 8 mix of electronic, bass and rock: driving breakbeats, synth bass and guitar accents. No Asphalt recording or reference audio was supplied. The retained source is 96.024s; the locally mastered looping MP3 is 95.6s, stereo 48kHz/192kbps, approximately -16.25 LUFS. The requested 150 BPM is not a measured guarantee.
 
-Results appear when the player finishes. Rivals still racing continue to finish, and the classification updates rather than inventing their final times. The player's best time is saved locally when browser storage is available.
+Music begins with the race after a user gesture. It softens and filters during the gravity flight, returns on landing, and lifts slightly under boost. Pause preserves the playhead. SOUND controls the whole mix; the pause screen has a separate music-volume slider. Both preferences persist. The dock stops playback, and a failed audio download cannot block racing. Existing engine audio remains procedural.
 
-## Research and art
+`npm run race:audio` checks real browser decoding/output, mute, pause/resume, volume, airborne/landing mix, dock stop, persistence and failed-request recovery. Source, generation receipts, mastering measurements and research links are in `references/racing/music/`; runtime credits are in `racing/audio/credits.json`. `tools/master-racing-music.py` reproduces local processing with FFmpeg. No API key is needed to play the track.
 
-The design draws on Gameloft's documented route/jump/trick/boost loop, while using an original setting and interface. Research and concrete design decisions are recorded in `../references/racing/design.md`. There are no copied Asphalt tracks, UI assets or car meshes.
+## Controls
 
-Atlas MCP generated the gameplay target and coherent hangar/tower/wedge sheet. The generation completed in private project `254a8025-503f-4a33-8ed8-e0394c884d2d`, operation `a1b9f6c9-66de-4290-b1a0-b32a10012edd`, with 54 credits recorded. The concept's car and straight ramp differ from the source subject, so the preserved procedural Roadster and original overhang remain authoritative. Existing Atlas concrete maps are reused. All three new props were built through three independent construction strategies, verified, viewed from multiple sides and selected. Receipts and choices are in `../references/racing/`.
+- A/D or left/right arrows: steer; automatic acceleration.
+- Shift/Down plus steering at the lip: initiate rotation immediately. A deliberate gesture within 0.15s after takeoff is also accepted after a 0.05s hold. Shift alone does not spin, and later input cannot start a trick. Hold the combination to build a turn; releasing early damps rotation. A nearly complete turn eases forward to 360° with continuous angular velocity, instead of overshooting and rewinding. One sustained gesture produces one turn. Nominal gravity flight is 4.1s (boost can shorten it further), with 14m/s rolling touchdown. Driven yaw is capped at 2.6 rad/s; final alignment remains assisted.
+- Space: boost. Drift, pickups and completed rotations replenish reserve.
+- R / Practice Gravity Launch: retry the launch approach with countdown.
+- C / Camera: automatic sequence or chase view.
+- Escape / Pause: pause. Phone touch steering/drift/boost can be combined.
 
-The continuous road, coastal ground, sea and horizon are procedural scene surfaces. Discrete machinery and structures are 404 asset modules. Jets, trail particles, markings and pickup indicators are runtime effects. Motor sound is a synthesized Web Audio cue; no music track is included.
+A new `meridian.airborne.separate.v3.best` key isolates records from previous route layouts.
 
-## Verification
+## 404 and Atlas provenance
 
-```sh
-npm run race:check       # canonical 404 module/path shipping checks
-npm run race:simulation  # boost, collisions, jumps, ramp, fairness, finish/restart
-npm run race:test        # starts isolated server; complete real-input race + phone checks
-npm run race:transfer    # focused ramp, alignment, vapor and camera checks
-npm run race:verify      # asset geometry views; retained original-ramp warnings
-```
+The active ramp is `assets/ramp-banked.js`. Three source-derived bends (10m, 14m, 18m) were built and passed the canonical four-view verifier: `references/racing/separated-landing/candidates/_verify/`. The middle bend preserves the narrow curl with adequate receiving-road clearance. It modifies the existing reference-driven 404 module; it is not an imported mesh. Original `assets/ramp.js`, Roadster, `assetlib.js`, `surfaces.js` and `app/` remain unchanged. Existing Atlas concrete and rock textures are reused. No additional texture generation was needed. Atlas receives source/game comparison frames for visual critique; receipts are in `evidence/racing/separated-landing/`.
 
-The browser driver reads telemetry but operates through keyboard, pointer and touch input. It checks countdown, boost, steering direction, pause, two full laps, gravity transfers, pickups, drift, results, restart and mobile interaction. The first racing baseline completed a driven race in about 107 seconds; current results are recorded in the browser reports. Simulation tests assert finite positions, bounded charge, continuous progress, a traversable road bypass, all rivals finishing and a skilled player winning.
+The latest source review revisited the reference's close replay (roughly 17.5–27.4s), high aerial replay (27.4–31s), and wide replay. The playable sequence adopts the useful wide/close transitions without replaying or rewinding the player's action. Source frame analysis remains in `references/source-study.json`.
 
-Selected geometry: **8/9 clean**. All three environment props and the new transfer ramp pass. The original ramp still triggers its documented broad-front/back featurelessness warnings; the warnings are retained. No live jam-gate pass or real-phone frame-rate claim is made.
+## Verification and limitations
 
-`../evidence/racing/playtest/` contains actual-input race evidence. `../evidence/racing/final/` contains deliberately staged visual-inspection views, including the corrected jet shader. Earlier baseline/review folders document superseded visual iterations. The first driven race exposed a jet shader domain error and a sub-metre ramp-entry progress regression; both were corrected, with the progress invariant covered by simulation tests.
+- `npm run race:simulation`: 20 slow/off-centre entries; separate-road clearance; matching touchdown position/attitude/lane; Shift-only and late-input negative cases; held versus released rotation; both post-land steering directions/boost; full route and restart.
+- `npm run race:transfer`: real keyboard lip gesture, per-frame visibility, sub-second wide highlight, close thruster view, early chase before contact, actual left/right steering and boost after landing.
+- `npm run race:test`: complete real-input course, countdown, boost, steering, restart, camera toggle and emulated phone touch.
+- `npm run race:check`: canonical 404 parse/path checks. The three new ramp candidates are clean; unchanged older assets retain their previously documented verifier warnings.
 
-## Continue editing
+Current camera visual evidence: `evidence/racing/smooth-flight/{wide,close,pan,rear,touchdown}.png` (paused runtime poses) and `evidence/racing/smooth-flight/report.json` / `telemetry.json` (real input). `tools/capture-landing.mjs` regenerates those stills. Older MP4s and `evidence/racing/final/` depict earlier layouts and are historical; no new video export is claimed.
 
-| File | Responsibility |
-|---|---|
-| `track.js` | Circuit spline, road width, ramp transfer endpoints, wedges and pickups |
-| `simulation.js` | Fixed-step race, rivals, collisions, charge, stunts and classification |
-| `world.js` | Track surfaces, coast, scenery, Atlas material and asset placement |
-| `transfer.js` | Shared swept-ramp curve, launch direction and continuous landing path |
-| `vapor.js` | White/cyan jet shaders, turbulent plumes and persistent ground vapor |
-| `main.js` | Input, camera, HUD, effects, sound and persistence |
-| `assets/` | Selected 404 geometry; original Roadster and gravity ramp preserved |
-| `candidates/` | Three constructions for each new prop, plus verifier evidence |
-| `STYLE_LOCK.md` | Shared visual direction |
+Remaining limits: stylized terrain is still repetitive and sparse in places, flight leveling is assisted, barrel-roll ramps are absent, and no physical-phone performance or live competition-gate pass is claimed. This is an original Asphalt-inspired prototype, not an exact reproduction of its physics or production quality.
 
-This is the first playable racing iteration. A fresh Atlas blind review rejected the first rendering against the target because of vehicle reflection shaping, sparse surroundings and flat dusk lighting. A correction pass added service vehicles/aprons, surface treatment, local light pools and less intense track edging; it has not been certified as matching the concept art. The environment still needs richer landscape detail, the camera and handling need human playtesting, and rival vehicles currently share the Roadster geometry with distinct colors. Wheel geometry is static in this build. No career, additional circuits, multiplayer, vehicle damage system or production-quality soundtrack is claimed. The cinematic's exported MP4 is still the original film, not a recording of this game.
+The pre-change build is backed up outside the repository at `/Users/adams/Desktop/404_GAMES/local-backups/meridian-before-separated-landing-20261027.tar.gz`. Read `HANDOFF.md` before continuing.
 
-## Directed ramp revision — October 26
-
-The first playable racer is saved at tag `racing-baseline-2026-10-26` (`67553f8`), in addition to the original film baseline. Its GitHub checks passed at https://github.com/AngryDavee/roadster-against-gravity/actions/runs/40247505334.
-
-The revised ramp has three independently constructed 404 candidates. Candidate B was selected for its paneled deck, cross-braced trusses and clear launch alignment. Atlas project `740686f8-be7a-4a9b-8788-94ecb8952191` generated a structural reference (31 credits). Its diagram does not solve the geometry correctly; the source film’s vertical profile and the numerical alignment requirements remain authoritative. Receipts, comparison study and tests live under `references/racing/transfer/` and `evidence/racing/transfer/`.
-
-This remains an assisted arcade stunt, with a prescribed vertical braking profile, not a rigid-body rocket simulation. The new shot direction and gas effects are inspired by the source video; exact photographic equivalence is not claimed. The racing environment retains its approved illustrated dusk treatment.
-
-The latest source-likeness reviews are retained verbatim as `review-v1.json` and `review-v2.json`; neither is a blanket art-quality pass. The final vapor adjustment preserves the grounded car’s silhouette while allowing taller billows. The preview MP4 records the current browser rendering from a staged ramp approach.
+Atlas review operation `0183b1e1-5aaf-4422-9017-288377acf005` (5 credits) passed the hooked silhouette, close descent and distinct camera stages. Road-to-flight geography and surface detail remained partial. Follow-up moved hints away from the car and enlarged desktop control text. The review does not certify motion; actual-input tests cover the landing handoff.

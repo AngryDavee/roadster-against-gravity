@@ -1,0 +1,12 @@
+{
+  "source_sha256": "6dee969005529543e99e0116d0b7df9c695643c002f7c14155b88672665a3eec",
+  "runtime_sha256": "f9c8bf8b388d7706cd1d4d537f181341fbd281fef2f19fb905ccdf5c624be9e3",
+  "runtime_bytes": 2296073,
+  "loop_seconds": 95.6,
+  "processing": "400ms circular linear crossfade; -4.86dB fixed gain; stereo 48kHz 192kbps MP3",
+  "measured_loudness_lufs": -16.25,
+  "measured_true_peak_dbtp": -4.78,
+  "measured_loudness_range_lu": 1.2,
+  "tempo_bpm_requested": 150,
+  "tempo_bpm_measured": null
+}

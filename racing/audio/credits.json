@@ -1,0 +1,16 @@
+{
+  "title": "Ignition Vector",
+  "use": "Meridian racing score",
+  "file": "ignition-vector.mp3",
+  "creation": "Original text-to-music generation through Atlas MCP / ElevenLabs Music",
+  "reference_recordings_used": false,
+  "instrumental_control": true,
+  "project_id": "349e8ac2-a001-4998-b158-d060968e115f",
+  "node_id": "c6978967-7943-4487-a45c-8aac2430992f",
+  "run_id": "db95d775-5056-4cae-85a2-2c3cab397259",
+  "source_file_id": "98b0af3d-0b41-4d4d-9f60-856b863d2a89",
+  "runtime_duration_seconds": 95.6,
+  "format": "stereo MP3, 48000 Hz, 192 kbps",
+  "local_processing": "Circular crossfade for looping and fixed gain reduction",
+  "notes": "Genre inspiration only; no Asphalt recordings, samples or melodies were supplied. Generation receipts and the untouched source are retained in references/racing/music."
+}

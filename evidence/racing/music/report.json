@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "checks": [
+    "no autoplay or music download before user gesture",
+    "local music decoded and playing after Start",
+    "master mute silences actual output",
+    "pause preserves playhead; volume slider and resume work",
+    "music softens in flight and returns after landing",
+    "return to dock stops music",
+    "sound preferences survive reload",
+    "music request failure does not block racing"
+  ],
+  "duration": 95.6,
+  "measuredMasterRms": 0.018707598465486863,
+  "air": {
+    "state": "ready",
+    "context": "running",
+    "muted": false,
+    "volume": 0.3,
+    "mode": "airborne",
+    "playing": true,
+    "duration": 95.6,
+    "offset": 4.682666666666666,
+    "musicGain": 0.07481613755226135,
+    "filterHz": 5773.65478515625,
+    "error": null
+  },
+  "land": {
+    "state": "ready",
+    "context": "running",
+    "muted": false,
+    "volume": 0.3,
+    "mode": "race",
+    "playing": true,
+    "duration": 95.6,
+    "offset": 9.525333333333332,
+    "musicGain": 0.12330219149589539,
+    "filterHz": 15597.0361328125,
+    "error": null
+  },
+  "errors": []
+}

@@ -1,0 +1,94 @@
+{
+  "stats": {
+    "vapor": {
+      "ground": 0,
+      "jet": 0
+    },
+    "peakHeight": 36.513039665581175,
+    "terrainOccluded": false,
+    "vehicleCount": 1,
+    "spins": 0,
+    "score": 2847,
+    "wheelAngles": [
+      4491.849166967386,
+      4491.849166967386,
+      4491.849166967386,
+      4491.849166967386
+    ],
+    "cameraMode": "cinematic",
+    "camera": {
+      "position": [
+        -236.10259481674768,
+        2.4000000000000004,
+        -92.3681882607182
+      ],
+      "fov": 64.00000000000024,
+      "heroScreen": [
+        -0.032966662265971475,
+        -0.13001104211375306,
+        0.9749219924725743
+      ]
+    },
+    "phase": "results",
+    "paused": false,
+    "time": 33.06666666666607,
+    "speed": 60.33333333333334,
+    "progress": 1536.63741356108,
+    "charge": 0.9000000000010209,
+    "gravityRuns": 1,
+    "drawCalls": 167,
+    "triangles": 254364,
+    "position": {
+      "x": -238.0048853582662,
+      "y": 0,
+      "z": -100.00107759061235,
+      "yaw": 3.584040353589791,
+      "pitch": 0,
+      "roll": -0.024229717741115504,
+      "air": false,
+      "spinAngle": 0,
+      "action": 0
+    },
+    "cars": [
+      {
+        "id": 0,
+        "s": 1536.63741356108,
+        "lane": -13.00488540291101,
+        "finish": 33.06666666666607
+      }
+    ]
+  },
+  "cars": [
+    {
+      "id": 0,
+      "name": "YOU",
+      "s": 1536.63741356108,
+      "lane": -13.00488540291101,
+      "speed": 60.33333333333334,
+      "charge": 0.9000000000010209,
+      "boosting": false,
+      "drifting": false,
+      "lat": -25.836400198182545,
+      "heading": -0.44253056044669675,
+      "steering": 0.9691887096446201,
+      "driftYaw": 7.509002225485717e-71,
+      "driftBuffer": 0,
+      "driftIntent": 0,
+      "spinDirection": -1,
+      "spins": 0,
+      "score": 2847,
+      "stunt": null,
+      "jump": null,
+      "cooldown": 0,
+      "finish": 33.06666666666607,
+      "airtime": 6.933333333333314,
+      "landings": 2,
+      "driftTime": 4.049999999999991,
+      "gravityRuns": 1,
+      "pickupCount": 1,
+      "collisions": 0,
+      "boostTime": 12.150000000000183,
+      "landingPulse": 0
+    }
+  ]
+}

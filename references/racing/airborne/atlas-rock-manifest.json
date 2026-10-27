@@ -1,0 +1,145 @@
+{
+  "success": true,
+  "pid": "349e8ac2-a001-4998-b158-d060968e115f",
+  "project_url": "https://app.atlas.design/p/edit/349e8ac2-a001-4998-b158-d060968e115f?wid=b739e1c3-2a98-4863-9598-967968451284",
+  "outputs": [
+    {
+      "fid": "1e26ded9-0adf-45a7-be2e-73f2dfd2eefd",
+      "name": "texture",
+      "filename": "texture.png",
+      "mime_type": "image/png",
+      "size_bytes": 2022483,
+      "node_id": "f4673498-63cb-47fa-a5a2-2d066518865a",
+      "associated_node_ids": [
+        "f4673498-63cb-47fa-a5a2-2d066518865a"
+      ],
+      "run_id": "3ac5bac2-fc1b-40c4-af1e-566962e2c79e",
+      "node_run_ids": [
+        "3ac5bac2-fc1b-40c4-af1e-566962e2c79e"
+      ],
+      "output_field": "output_texture",
+      "role": "texture",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "provenance": {
+        "node_type": "material_generation",
+        "generating_run_id": "d5d0687f-7923-46b8-991c-a138e5addc83",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {
+        "image_size": "square_hd",
+        "tiling_mode": "both",
+        "upscale_factor": 1.0
+      }
+    },
+    {
+      "fid": "224e16e1-f841-4946-b968-0a539a906321",
+      "name": "basecolor",
+      "filename": "basecolor.png",
+      "mime_type": "image/png",
+      "size_bytes": 2044499,
+      "node_id": "f4673498-63cb-47fa-a5a2-2d066518865a",
+      "associated_node_ids": [
+        "f4673498-63cb-47fa-a5a2-2d066518865a"
+      ],
+      "run_id": "3ac5bac2-fc1b-40c4-af1e-566962e2c79e",
+      "node_run_ids": [
+        "3ac5bac2-fc1b-40c4-af1e-566962e2c79e"
+      ],
+      "output_field": "output_basecolor",
+      "role": "base_color",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "provenance": {
+        "node_type": "material_generation",
+        "generating_run_id": "d5d0687f-7923-46b8-991c-a138e5addc83",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {
+        "image_size": "square_hd",
+        "tiling_mode": "both",
+        "upscale_factor": 1.0
+      }
+    },
+    {
+      "fid": "8a71a9a1-0e99-4228-be80-4f76c241268e",
+      "name": "normal",
+      "filename": "normal.png",
+      "mime_type": "image/png",
+      "size_bytes": 1769136,
+      "node_id": "f4673498-63cb-47fa-a5a2-2d066518865a",
+      "associated_node_ids": [
+        "f4673498-63cb-47fa-a5a2-2d066518865a"
+      ],
+      "run_id": "3ac5bac2-fc1b-40c4-af1e-566962e2c79e",
+      "node_run_ids": [
+        "3ac5bac2-fc1b-40c4-af1e-566962e2c79e"
+      ],
+      "output_field": "output_normal",
+      "role": "normal",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "provenance": {
+        "node_type": "material_generation",
+        "generating_run_id": "d5d0687f-7923-46b8-991c-a138e5addc83",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {
+        "image_size": "square_hd",
+        "tiling_mode": "both",
+        "upscale_factor": 1.0
+      }
+    },
+    {
+      "fid": "fff51bb2-b973-4626-bfa0-5baab76532bf",
+      "name": "roughness",
+      "filename": "roughness.png",
+      "mime_type": "image/png",
+      "size_bytes": 599768,
+      "node_id": "f4673498-63cb-47fa-a5a2-2d066518865a",
+      "associated_node_ids": [
+        "f4673498-63cb-47fa-a5a2-2d066518865a"
+      ],
+      "run_id": "3ac5bac2-fc1b-40c4-af1e-566962e2c79e",
+      "node_run_ids": [
+        "3ac5bac2-fc1b-40c4-af1e-566962e2c79e"
+      ],
+      "output_field": "output_roughness",
+      "role": "roughness",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "provenance": {
+        "node_type": "material_generation",
+        "generating_run_id": "d5d0687f-7923-46b8-991c-a138e5addc83",
+        "sources": [],
+        "direction": null,
+        "repeat_grid": null,
+        "evidence": "frozen_generation_record"
+      },
+      "requested_properties": {
+        "image_size": "square_hd",
+        "tiling_mode": "both",
+        "upscale_factor": 1.0
+      }
+    }
+  ],
+  "has_more": false,
+  "next_cursor": null
+}

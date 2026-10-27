@@ -1,0 +1,40 @@
+[
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 896,
+  "tris": 52354,
+  "materials": 15,
+  "size": [
+   2.242,
+   1.181,
+   4.941
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.1687,
+    "edgeDensity": 0.0727
+   },
+   "right": {
+    "coverage": 0.2035,
+    "edgeDensity": 0.1214
+   },
+   "back": {
+    "coverage": 0.148,
+    "edgeDensity": 0.1385
+   },
+   "left": {
+    "coverage": 0.1948,
+    "edgeDensity": 0.1165
+   }
+  },
+  "error": null,
+  "name": "roadster-2026",
+  "problems": []
+ }
+]

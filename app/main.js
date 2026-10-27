@@ -21,7 +21,7 @@ function compactPart(root){
 }
 function outlines(root){
  const meshes=[];root.traverse(o=>{if(o.isMesh&&o.geometry.attributes.position.count>12&&!o.material.emissive?.getHex())meshes.push(o);});
- for(const o of meshes){const line=new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry,32),new THREE.LineBasicMaterial({color:0x090b14,transparent:true,opacity:.85}));o.add(line);}
+ for(const o of meshes){const line=new THREE.LineSegments(new THREE.EdgesGeometry(o.geometry,32),new THREE.LineBasicMaterial({color:0x090b14,transparent:true,opacity:.14}));o.add(line);}
 }
 function shadowLight(color,intensity,position,target,extent=45){
  const light=new THREE.DirectionalLight(color,intensity);light.position.set(...position);light.target.position.set(...target);scene.add(light,light.target);light.castShadow=true;light.shadow.mapSize.set(2048,2048);Object.assign(light.shadow.camera,{left:-extent,right:extent,top:extent,bottom:-extent,near:1,far:180});light.shadow.bias=-.0005;light.shadow.normalBias=.035;return light;
@@ -38,20 +38,23 @@ async function init(){
  const fill=new THREE.DirectionalLight(0xc2a6e2,.7);fill.position.set(-12,8,-32);scene.add(fill);
  $('loadDetail').textContent='Loading the five verified asset families';
  const assets=await Promise.all([
-  ASSET('assets/roadster.js',{keepHierarchy:true}),ASSET('assets/ramp.js',{keepHierarchy:true,surfaces:{byMaterial:{stone:'stone'}}}),
-  ASSET('assets/pavement.js',{surfaces:true}),ASSET('assets/floodlight.js'),ASSET('assets/boundary.js'),ASSET('assets/roadster.js'),ASSET('assets/servicevan.js')
+  ASSET('assets/roadster-precision.js',{keepHierarchy:true}),ASSET('assets/ramp.js',{keepHierarchy:true,surfaces:{byMaterial:{stone:'stone'}}}),
+  ASSET('assets/pavement.js',{surfaces:true}),ASSET('assets/floodlight.js'),ASSET('assets/boundary.js'),ASSET('assets/roadster-precision.js'),ASSET('assets/servicevan.js')
  ]);
  [hero]=assets;
- if(!hero.userData.body)throw new Error('The Roadster articulated assembly did not load.');
- hero.userData.body=compactPart(hero.userData.body);
- for(const wheel of Object.values(hero.userData.wheels||{}))wheels.push(compactPart(wheel));
- if(hero.userData.wing)hero.userData.wing=compactPart(hero.userData.wing);
+ const coachwork=hero.getObjectByName('coachwork');
+ if(!coachwork)throw new Error('The Roadster articulated assembly did not load.');
+ compactPart(coachwork);
+ for(const name of ['wheel_l_f','wheel_r_f','wheel_l_r','wheel_r_r']){
+  const wheel=hero.getObjectByName(name);if(!wheel)throw new Error('Missing Roadster wheel: '+name);wheels.push(compactPart(wheel));
+ }
+ const wing=hero.getObjectByName('rear_wing');if(wing)compactPart(wing);
 
  // Procedural studio light cards provide crisp painted-metal reflections; no imported environment mesh or image.
  const reflectionScene=new THREE.Scene();reflectionScene.background=new THREE.Color(0x0c101c);
  for(const [pos,scale,color] of [[[0,8,0],[12,4],0xbcc6ed],[[5,3,-4],[3,8],0xffe4c8],[[-6,3,1],[2,7],0x999acb]]){const card=new THREE.Mesh(new THREE.PlaneGeometry(...scale),new THREE.MeshBasicMaterial({color,side:THREE.DoubleSide}));card.position.set(...pos);card.lookAt(0,0,0);reflectionScene.add(card);}
  const pmrem=new THREE.PMREMGenerator(renderer),reflections=pmrem.fromScene(reflectionScene,.05).texture;pmrem.dispose();
- hero.traverse(o=>{if(o.isMesh&&o.material.isMeshStandardMaterial){o.material=o.material.clone();o.material.envMap=reflections;o.material.envMapIntensity=.65;o.material.polygonOffset=true;o.material.polygonOffsetFactor=1;o.material.polygonOffsetUnits=1;
+ hero.traverse(o=>{if(o.isMesh&&o.material.isMeshStandardMaterial){o.material=o.material.clone();o.material.envMap=reflections;o.material.envMapIntensity=o.material.name==='copper_glazing'?.22:.65;o.material.polygonOffset=true;o.material.polygonOffsetFactor=1;o.material.polygonOffsetUnits=1;
  if(o.material.color.getHex()>0x303030&&o.material.emissive.getHex()===0){o.material.onBeforeCompile=shader=>{shader.fragmentShader=shader.fragmentShader.replace('#include <dithering_fragment>',`#include <dithering_fragment>
  float illustrationLuma=dot(gl_FragColor.rgb,vec3(.2126,.7152,.0722));
  float illustratedBand=floor(illustrationLuma*7.+.45)/7.;
@@ -89,14 +92,14 @@ async function init(){
  if(params.has('clean'))document.body.classList.add('clean');
  if(params.has('t'))seek(Number(params.get('t'))||0);
  if(capture)setStarted();
- window.__FILM__={state,seek,play,pause:()=>play(false),render,stats:()=>({calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,time:state.time,shot:shotAt(state.time),action:actionTime(state.time),pose:carPose(actionTime(state.time)),width:canvas.width,height:canvas.height}),setSize:(w,h)=>{renderer.setPixelRatio(1);renderer.setSize(w,h,false);post.resize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();render();},frame:n=>seek(n/FPS)};
+ window.__FILM__={state,seek,play,pause:()=>play(false),render,stats:()=>({vehicleAsset:'roadster-precision.js',wheelCount:wheels.length,calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,time:state.time,shot:shotAt(state.time),action:actionTime(state.time),pose:carPose(actionTime(state.time)),width:canvas.width,height:canvas.height}),setSize:(w,h)=>{renderer.setPixelRatio(1);renderer.setSize(w,h,false);post.resize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();render();},frame:n=>seek(n/FPS)};
  render();if(!capture)requestAnimationFrame(tick);
 }
 function resize(){if(!renderer)return;const availableW=$('stage').clientWidth/(state.compare?2:1),availableH=$('stage').clientHeight,w=Math.min(availableW,availableH*16/9),h=w*9/16;canvas.style.width=w+'px';canvas.style.height=h+'px';$('referencePanel').style.width=w+'px';$('referencePanel').style.height=h+'px';renderer.setSize(w,h,false);const size=renderer.getDrawingBufferSize(new THREE.Vector2());post.resize(size.x,size.y);camera.aspect=w/h;camera.updateProjectionMatrix();if(state.ready)render();}
 function render(){
  if(!state.ready)return;
  const t=state.time,a=actionTime(t),p=carPose(a);hero.position.set(p.x,p.y,p.z);hero.quaternion.copy(vehicleQuaternion(a));
- const wheelAngle=a<=9.6?-p.theta*20.4/.39:-(47+(15-p.z))/.39;
+ const wheelAngle=a<=9.6?-p.theta*20.4/.435:-(47+(15-p.z))/.435;
  for(const w of wheels)w.rotation.x=wheelAngle;
  vapor.update(a);jets.update(a);edgeWhite.value=smooth((a-4.0)/5.2)*24;
  if(state.inspect){const center=new THREE.Vector3(p.x,p.y+.8,p.z);camera.position.copy(center).add(new THREE.Vector3(Math.sin(orbit.yaw)*Math.cos(orbit.pitch),Math.sin(orbit.pitch),Math.cos(orbit.yaw)*Math.cos(orbit.pitch)).multiplyScalar(orbit.radius));camera.up.set(0,1,0);camera.lookAt(center);camera.fov=43;}

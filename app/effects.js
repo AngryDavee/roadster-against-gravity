@@ -39,7 +39,7 @@ export class Vapor {
    if(i<240){
     const jet=i%4,age=((Math.floor(i/4)/60+a*2)%1)*.33,pose=carPose(a);
     if(a>=9.65&&a<12.85){
-     this.q.copy(vehicleQuaternion(a));p.set(jet%2?-.82:.82,.10,jet<2?-1.5:1.5).applyQuaternion(this.q).add(new THREE.Vector3(pose.x,pose.y,pose.z));
+     this.q.copy(vehicleQuaternion(a));p.set(jet%2?-.7872:.7872,.10,jet<2?-1.5:1.5).applyQuaternion(this.q).add(new THREE.Vector3(pose.x,pose.y,pose.z));
      this.dir.set((r-.5)*.8,-1,(s-.5)*.5).applyQuaternion(this.q);p.addScaledVector(this.dir,age*18);p.y=Math.max(.1,p.y);
      size=.22+age*2.;stretch=1.35;opacity=(1-age/.33)*.012;
     }
@@ -68,7 +68,7 @@ export class ColdGasJets {
    float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
    float noise(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(hash(i),hash(i+vec2(1,0)),f.x),mix(hash(i+vec2(0,1)),hash(i+1.),f.x),f.y);}
    void main(){float n=noise(vec2(vUv.x*14.,vUv.y*9.+time*12.));float alpha=pow(max(0.,vUv.y),.6)*(.22+.4*n)*smoothstep(0.,.16,vUv.y);vec3 c=mix(vec3(.26,.53,.68),vec3(.8,1.,1.1),vUv.y);gl_FragColor=vec4(c,alpha);}`});
-  for(const x of [-.82,.82])for(const z of [-1.5,1.5]){const jet=new THREE.Mesh(new THREE.CylinderGeometry(.035,.48,1,20,12,true),this.mat);jet.userData={x,z};jet.renderOrder=4;this.group.add(jet);this.jets.push(jet);}
+  for(const x of [-.7872,.7872])for(const z of [-1.5,1.5]){const jet=new THREE.Mesh(new THREE.CylinderGeometry(.035,.48,1,20,12,true),this.mat);jet.userData={x,z};jet.renderOrder=4;this.group.add(jet);this.jets.push(jet);}
   this.sides=[];for(const s of [-1,1]){const jet=new THREE.Mesh(new THREE.CylinderGeometry(.02,.25,5,16,8,true),this.mat);jet.rotation.z=s*Math.PI/2;jet.position.set(s*3.4,.3,-1.1);jet.renderOrder=4;this.group.add(jet);this.sides.push(jet);}
  }
  update(a){this.group.visible=a>=9.65&&a<12.85;if(!this.group.visible)return;this.mat.uniforms.time.value=a;const p=carPose(a),length=Math.min(5,Math.max(.3,p.y+.12));for(const jet of this.jets){jet.scale.y=length;jet.position.set(jet.userData.x,.1-length/2,jet.userData.z);}for(const side of this.sides)side.visible=a<10.9;}

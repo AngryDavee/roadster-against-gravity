@@ -1,0 +1,63 @@
+{
+  "kind": "staged visual inspection; not a driving test",
+  "errors": [],
+  "stats": {
+    "vapor": {
+      "ground": 0,
+      "jet": 0
+    },
+    "peakHeight": 32.667907609624066,
+    "terrainOccluded": false,
+    "vehicleCount": 1,
+    "spins": 0,
+    "score": 0,
+    "wheelAngles": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "cameraMode": "cinematic",
+    "camera": {
+      "position": [
+        170.00242855603935,
+        2.400000000000001,
+        -52.54000039529354
+      ],
+      "fov": 63.999999953835705,
+      "heroScreen": [
+        -7.015602510015758e-11,
+        -0.15002882350623414,
+        0.9735841417130282
+      ]
+    },
+    "phase": "race",
+    "paused": true,
+    "time": 20,
+    "speed": 55,
+    "progress": 1935,
+    "charge": 100,
+    "gravityRuns": 0,
+    "drawCalls": 169,
+    "triangles": 157682,
+    "position": {
+      "x": 170,
+      "y": 0,
+      "z": -60,
+      "yaw": -3.141267109879078,
+      "pitch": 0,
+      "roll": 0,
+      "air": false,
+      "spinAngle": 0,
+      "action": 0
+    },
+    "cars": [
+      {
+        "id": 0,
+        "s": 1935,
+        "lane": 0,
+        "finish": null
+      }
+    ]
+  }
+}

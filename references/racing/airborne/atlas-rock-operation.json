@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "operation_id": "b5613201-4351-4900-b946-6f1d1ad822da",
+  "pid": "349e8ac2-a001-4998-b158-d060968e115f",
+  "status": "succeeded",
+  "created_at": 1793085488.0750413,
+  "updated_at": 1793085588.4408097,
+  "response_text": "Generated **one PATINA PBR material** in node f4673498. Generation succeeded; nothing remains running. No environment image was generated, and sharing/publication was unchanged.\n\n| Typed output role | File identifier | Actual dimensions |\n|---|---|---|\n| Base color / albedo \u2014 ``output_basecolor`` | `224e16e1-f841-4946-b968-0a539a906321` | 1024 \u00d7 1024 |\n| Normal \u2014 ``output_normal`` | `8a71a9a1-0e99-4228-be80-4f76c241268e` | 1024 \u00d7 1024 |\n| Roughness \u2014 ``output_roughness`` | `fff51bb2-b973-4626-bfa0-5baab76532bf` | 1024 \u00d7 1024 |\n| Additional source texture \u2014 ``output_texture`` | `1e26ded9-0adf-45a7-be2e-73f2dfd2eefd` | 1024 \u00d7 1024 |\n\n**Verification and caveats**\n- Both-axis seamless tiling was enabled, but pixel-level seam continuity was not verified.\n- PATINA declares the normal output **tangent-space**; OpenGL versus DirectX / green-channel orientation is **unspecified**.\n- Inspected all three requested maps. The albedo shows warm grey stone with muted ochre accents, but also prominent ledges and shadow-like darkening. It is therefore **not verified as lighting-free**, and the relief is stronger than requested.\n- The maps visibly contain a repeated 2 \u00d7 2 motif. The roughness output is predominantly dark; its physical calibration was not verified.\n- Metalness and height were disabled. The additional texture belongs to the same material, not a second material.",
+  "error": null,
+  "budget": {
+    "budget_credits": 100,
+    "budget_revision": 24,
+    "cost_credits": 22,
+    "reserved_credits": 0,
+    "remaining_budget_credits": 78,
+    "budget_exhausted": false,
+    "accounting_complete": true,
+    "pending_work_count": 0,
+    "budget_diagnostic": null
+  },
+  "requested_budget_credits": 100,
+  "cost_usd": 0.19708339999999996,
+  "retry_after_seconds": null,
+  "budget_notice": "",
+  "project_url": "https://app.atlas.design/p/edit/349e8ac2-a001-4998-b158-d060968e115f?wid=b739e1c3-2a98-4863-9598-967968451284"
+}

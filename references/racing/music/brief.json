@@ -1,0 +1,32 @@
+{
+  "title": "Ignition Vector",
+  "research": [
+    {
+      "url": "https://asphalt.fandom.com/wiki/Asphalt_8%3A_Airborne/Music",
+      "finding": "Classic Asphalt 8 grouped its soundtrack into Bass, Rock and Electronic stations; licensed and original music both featured. Catalog changed over updates."
+    },
+    {
+      "url": "https://www.gameloft.com/for-brands/news/high-scores-music-gameloft-games-new-collection-music-gamelofts-popular-games-now-available-stream-download",
+      "finding": "Gameloft's official High Scores album includes Asphalt 8 original tracks Bleach, Chemistry and Circular Sunset."
+    }
+  ],
+  "composition_brief": "Original instrumental breakbeat / electro-rock / bass hybrid, 150 BPM target. Punchy syncopated drums, controlled rolling bass, gritty synth stabs, restrained guitar, wide futuristic arpeggios. Immediate rhythm, sustained race momentum, brief airy middle, strong return. No named artists or existing songs as generation inputs.",
+  "configured_duration_seconds": 96,
+  "decoded_source_duration_seconds": 96.024,
+  "runtime_duration_seconds": 95.6,
+  "generation_provider": "ElevenLabs Music via Atlas MCP",
+  "generation_charge_credits": 27,
+  "total_atlas_operations_credits": 52,
+  "verification_limits": "Duration, format, loudness and browser audio output measured. 150 BPM is a prompt target, not independently certified. Instrumental mode was enabled; musical quality and mix still benefit from the user's listening review.",
+  "integration": "Play on race start after user gesture. Shared context pauses without losing playhead. Low-pass and lower gain during gravity-ramp flight; normal mix returns on landing; modest gain lift during boost. Results quieter, dock stops music. Master mute and separate persistent music volume.",
+  "verification": {
+    "audio_checks": 8,
+    "gameplay_checks": 9,
+    "canonical_modules": 37,
+    "canonical_pages": 1,
+    "browser_errors": 0,
+    "decoded_runtime_seconds": 95.6,
+    "original_film_unchanged": true,
+    "camera_unchanged_from_backup": true
+  }
+}

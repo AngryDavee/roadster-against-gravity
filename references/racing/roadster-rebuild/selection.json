@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-27",
+  "task": "Rebuild racing Roadster using accurate visual references before screen recording",
+  "reference_gallery": "https://www.caranddriver.com/photos/a74152579/tesla-roadster-revealed-exterior-gallery/",
+  "credit": "Tesla press photography reproduced by Car and Driver; source ramp movie and user stills are primary action/variant references",
+  "source_identity": "White/silver wedge Roadster in supplied ramp footage, not the rounded 2017 prototype",
+  "active_asset": "racing/assets/roadster-2026.js",
+  "previous_asset_retained": "racing/assets/roadster.js",
+  "candidates": {
+    "a-fender-shells": "Separate wheel-fender pods and door/hood panels; less continuous transitions",
+    "b-extruded-profiles": "Extruded side outlines with actual wheel cutouts; side reflection and silhouette too slab-like",
+    "c-parametric-coachwork": "Selected. Continuous crowned bonnet, curved shoulder strips, arch-following side surfaces"
+  },
+  "review_operations": [
+    "422d585b-b03e-416a-865b-a15389e507fd",
+    "8a11472e-a28b-4665-8631-8ea4563875ca"
+  ],
+  "atlas_credits": 9,
+  "revisions": [
+    "C reduced from 69750 triangles to 50554 before selection",
+    "Lowered and extended continuous canopy; changed final height to 1.181m",
+    "Stowed headlamp shutters match the ramp variant instead of conspicuous dark deployed pockets",
+    "Raised shoulder cross-sections to clear inner tires and wheel-well liners, caught in isolated close-up render",
+    "Darkened/recessed lower gimbal housings to separate them from the four upper alloy outlets",
+    "Independent four-wheel pivots, low active-wing joint, separate downward outlets retained",
+    "Rear boost effect x/y/origin aligned to the new upper outlets; wheel spin radius updated to .42m"
+  ],
+  "dimensions_measured_m": {
+    "width": 2.242,
+    "height": 1.181,
+    "length": 4.941
+  },
+  "final_triangles": 52354,
+  "measurements_caveat": "Dimensions and hidden mechanical construction inferred from photographs, not official CAD or measured manufacturer specifications.",
+  "verification": {
+    "candidates": "candidates/_verify/report.json (3/3 clean)",
+    "selected": "selected/_verify/report.json (1/1 clean)",
+    "inspection": "evidence/racing/roadster-rebuild/; before/after studio frames use identical lights/cameras; gameplay close/pan/rear captures are paused poses, not input proof"
+  },
+  "reproduce": [
+    "python3 tools/build-roadster-candidates.py",
+    "python3 tools/refine-roadster.py",
+    "node tools/roadster-model-review.mjs"
+  ],
+  "scope": "Original app/, original car asset, stock assetlib/surfaces, physics, camera timing and soundtrack unchanged. No git commit/push."
+}

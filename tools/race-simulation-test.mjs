@@ -1,37 +1,42 @@
 import assert from 'node:assert/strict';
-import {createRace,startRace,step,position,standings} from '../racing/simulation.js';
-import {transferPose,rampDuration,TRANSFER} from '../racing/transfer.js';
-import {LENGTH,LAPS,GRAVITY,JUMPS,PICKUPS,sample,wrap} from '../racing/track.js';
-const fixed=1/60;
-const fresh=()=>{const r=createRace();startRace(r);for(let i=0;i<220;i++)step(r,fixed,{});return r;};
-const r=fresh();for(let i=0;i<180;i++)step(r,fixed,{boost:true});assert(r.cars[0].s>40);assert(r.cars[0].charge<50);assert(r.cars[0].speed>45);
-const paused=r.time;r.paused=true;for(let i=0;i<100;i++)step(r,fixed,{boost:true});assert.equal(r.time,paused);r.paused=false;
-const boundary=fresh();for(let i=0;i<500;i++)step(boundary,fixed,{steer:1});assert(boundary.cars[0].collisions>0);assert(Math.abs(boundary.cars[0].lane)<=10);
-const jump=fresh();jump.cars[0].s=JUMPS[0].s-1;jump.cars[0].lane=JUMPS[0].lane;jump.cars[0].speed=42;for(let i=0;i<12;i++)step(jump,fixed,{});assert(jump.cars[0].jump);assert(position(jump.cars[0]).y>1);for(let i=0;i<120;i++)step(jump,fixed,{});assert(jump.cars[0].landings>=1);
-const ramp=fresh();ramp.cars[0].s=GRAVITY.entry-1;ramp.cars[0].lane=0;ramp.cars[0].speed=44;let height=0;for(let i=0;i<620;i++){step(ramp,fixed,{});height=Math.max(height,position(ramp.cars[0]).y);}assert(height>34);assert.equal(ramp.cars[0].gravityRuns,1);assert(ramp.cars[0].s>GRAVITY.exit);
-const bypass=fresh();bypass.cars[0].s=GRAVITY.entry-1;bypass.cars[0].lane=7;bypass.cars[0].speed=44;for(let i=0;i<60;i++)step(bypass,fixed,{});assert.equal(bypass.cars[0].stunt,null);assert.equal(bypass.cars[0].gravityRuns,0);
-const tRamp=rampDuration(48),tEnd=tRamp+TRANSFER.flightTime;
-const lipPose=transferPose(tRamp,48),nextPose=transferPose(tRamp+1e-5,48);
-assert(Math.hypot(lipPose.x-nextPose.x,lipPose.y-nextPose.y,lipPose.z-nextPose.z)<.001,'Continuous takeoff position');
-for(let t=tRamp+.001;t<tEnd;t+=.01){const p=transferPose(t,48);assert(Math.abs(p.x-100)<1e-8,'No automatic lateral correction after takeoff');assert(Math.abs(p.yaw-Math.PI)<1e-8,'Launch heading already faces return track');}
-const gate=sample(GRAVITY.entry),exit=sample(GRAVITY.exit),endPose=transferPose(tEnd,48);
-assert(Math.hypot(gate.p.x+endPose.x-exit.p.x,gate.p.z+endPose.z-exit.p.z)<.005,'Ramp trajectory ends on the road without a landing snap');
-const a=transferPose(tRamp-.001,48),b=transferPose(tRamp+.001,48);
-assert(Math.abs((lipPose.z-a.z)/.001-(b.z-lipPose.z)/.001)<.1,'Launch velocity continuous');
-for(const lane of[-2,0,2]){
- const end=transferPose(tEnd,48,lane),road=sample(GRAVITY.exit,lane);
- assert(Math.hypot(gate.p.x+end.x-road.p.x,gate.p.z+end.z-road.p.z)<.005,'Steered offset carries through to landing');
+import * as THREE from '../racing/vendor/three.module.js';
+import {createRace,startRace,step,position} from '../racing/simulation.js';
+import {sample,LENGTH,GRAVITY,JUMPS} from '../racing/track.js';
+import {transferPose,rampDuration,TRANSFER,FLIGHT_DIRECTION,LANDING_YAW} from '../racing/transfer.js';
+const dt=1/60,checks=[],pass=s=>checks.push(s);
+const fresh=()=>{const r=createRace();startRace(r);for(let n=0;n<220;n++)step(r,dt);return r;};
+const quat=p=>p.quaternion?new THREE.Quaternion().fromArray(p.quaternion):new THREE.Quaternion().setFromEuler(new THREE.Euler(p.pitch,p.yaw,p.roll,'YXZ'));
+const r=fresh();for(let n=0;n<120;n++)step(r,dt,{boost:true});assert(r.cars[0].speed>50&&r.cars[0].charge<70);r.paused=true;const time=r.time;step(r,dt);assert.equal(r.time,time);pass('Solo countdown, finite boost, pause');
+for(const speed of[5,25,48,85])for(const lane of[-8,-2,0,2,8]){const r=fresh(),c=r.cars[0];c.s=GRAVITY.entry-110;c.speed=speed;c.lane=lane;let previous=position(c),maxStep=0;
+ for(let i=0;i<1400&&!c.gravityRuns;i++){step(r,dt);const p=position(c);assert([p.x,p.y,p.z].every(Number.isFinite));maxStep=Math.max(maxStep,Math.hypot(p.x-previous.x,p.y-previous.y,p.z-previous.z));previous=p;}
+ assert.equal(c.gravityRuns,1);assert(maxStep<3);
+}pass('20 low-speed/off-centre approaches reach separate receiving road without teleport');
+const rt=rampDuration(48),end=rt+TRANSFER.flightTime;
+for(const lane of[-2,0,2]){const p=transferPose(end,48,lane),gate=sample(GRAVITY.entry),road=sample(GRAVITY.exit,lane);assert(Math.hypot(p.x+gate.p.x-road.p.x,p.z+gate.p.z-road.p.z)<.01);assert(quat(p).angleTo(quat({pitch:0,yaw:road.yaw,roll:0}))<1e-5);}
+const landing=sample(GRAVITY.exit).p;let clearance=Infinity;for(let s=0;s<=GRAVITY.entry;s+=1)clearance=Math.min(clearance,landing.distanceTo(sample(s).p));assert(clearance>45);pass('Touchdown position, attitude and lane match a physically separate road (>45m centreline gap)');
+function launch(mode){const r=fresh(),c=r.cars[0];c.s=GRAVITY.entry-5;c.speed=48;let maxAngle=0,maxRate=0,last=position(c),jump=0,firstMotion=null,rewind=0,priorAngle=0;
+ for(let n=0;n<1000&&!c.gravityRuns;n++){const age=c.stunt?c.stunt.elapsed-rampDuration(c.stunt.entrySpeed):-99;
+  const atLip=c.stunt&&age>-.35;
+  const driver=['sustain','left'].includes(mode)?atLip:mode==='grace'?age>.035:mode==='release'?atLip&&age<.8:mode==='late'?age>.3:false;
+  const steer=driver?(mode==='left'?-1:1):0,drift=mode==='shift'||driver;step(r,dt,{steer,drift});const p=position(c);
+  const angle=Math.abs(p.spinAngle||0);if(firstMotion===null&&angle>.001)firstMotion=c.stunt?c.stunt.elapsed-rampDuration(c.stunt.entrySpeed):age;if(c.stunt)rewind=Math.max(rewind,priorAngle-angle);priorAngle=angle;maxAngle=Math.max(maxAngle,angle);maxRate=Math.max(maxRate,Math.abs(c.stunt?.spinVelocity||0));jump=Math.max(jump,quat(last).angleTo(quat(p)));last=p;
+ }
+ assert.equal(c.gravityRuns,1);assert(jump<.22,`Continuous orientation ${mode}: ${jump}`);return{r,c,maxAngle,maxRate,firstMotion,rewind};
 }
-const transferRun=boost=>{const r=fresh(),c=r.cars[0];c.s=GRAVITY.entry-1;c.lane=0;c.speed=48;for(let f=0;f<900;f++){step(r,fixed,{boost});if(c.gravityRuns)return r.time;}throw Error('Transfer did not finish');};
-assert(transferRun(true)<transferRun(false),'Boost has a real traversal-speed effect');
-const championship=fresh();let old=championship.cars.map(c=>c.s);
-for(let frame=0;frame<14000;frame++){
- const c=championship.cars[0],road=sample(c.s),next=sample(c.s+12),curv=Math.atan2(road.t.z*next.t.x-road.t.x*next.t.z,road.t.dot(next.t))/12;
- let target=0;const pu=PICKUPS.find(p=>wrap(p.s-c.s)<90);if(pu)target=pu.lanes[Math.floor(championship.time/6)%3];const j=JUMPS.find(j=>wrap(j.s-c.s)<70);if(j)target=j.lane;if(wrap(GRAVITY.entry-c.s)<100||c.stunt)target=0;
- const steer=c.stunt?0:Math.max(-1,Math.min(1,(target-c.lane)*.6-c.lat*.2));
- step(championship,fixed,{steer,boost:c.charge>8&&Math.abs(curv)<.006,drift:Math.abs(curv)>.005});
- for(let i=0;i<6;i++){const car=championship.cars[i];assert(Object.values(position(car)).filter(v=>typeof v==='number').every(Number.isFinite));assert(car.charge>=0&&car.charge<=100);assert(car.s>=old[i]);assert(car.s-old[i]<3,'No progress teleport');old[i]=car.s;}
-}
-assert.equal(championship.phase,'results');assert(championship.cars.every(c=>c.finish!==null&&c.s===LENGTH*LAPS));assert.equal(standings(championship)[0].id,0,'Skilled play can win against the same simulated rivals');
-const finish=championship.cars[0].finish;startRace(championship);assert.equal(championship.phase,'countdown');assert(championship.cars.every(c=>c.finish===null));
-console.log(JSON.stringify({passed:true,tests:['boost consumption','pause','barrier collision','jump landing','directed gravity curve','road bypass','continuous takeoff velocity','fixed flight alignment','continuous landing position','steering offset preserved','boost shortens traversal','finite poses and bounded charge','no position teleport','all opponents finish','skilled player can win','restart'],winningTime:finish},null,2));
+const straight=launch('straight'),shift=launch('shift'),held=launch('sustain'),released=launch('release'),late=launch('late');
+assert.equal(shift.maxAngle,0);assert.equal(late.maxAngle,0);assert.equal(straight.maxAngle,0);assert(held.maxAngle>6.28&&held.c.spins>=1);assert(released.maxAngle<held.maxAngle*.65);assert(held.maxRate<=2.6);pass('Shift alone/late input never spins; lip steering drives bounded rotation; release reduces it');
+const leftSpin=launch('left'),grace=launch('grace');
+assert(held.firstMotion<.035&&leftSpin.firstMotion<.035,'No post-takeoff dead zone');
+assert(grace.c.spins===1&&grace.firstMotion<.15,'A deliberate gesture just after the lip is accepted');
+assert.equal(leftSpin.c.spins,1);assert(held.rewind<.002&&leftSpin.rewind<.002,'Completed spin never rewinds into alignment');
+assert(held.maxAngle<=2*Math.PI+.002&&held.c.spins===1,'One sustained gesture produces one controlled turn');
+assert(Math.abs(held.c.airtime-4.1)<.04,'Gravity flight is half a second shorter');
+pass('Immediate left/right rotation, forgiving lip gesture, one smooth turn without rewind, 4.1-second flight');
+for(const sign of[-1,1]){const r=structuredClone(straight.r),c=r.cars[0],start=position(c),initial=c.s;for(let i=0;i<40;i++)step(r,dt,{steer:sign,boost:true});const p=position(c),n=sample(initial).n;assert((p.x-start.x)*n.x*sign+(p.z-start.z)*n.z*sign>1);assert(c.s>initial+5);assert(Math.sign(c.heading)===sign);}
+pass('Both steering directions, acceleration and boost respond immediately after touchdown');
+for(const drift of[false,true]){const r=fresh(),c=r.cars[0];c.s=JUMPS[0].s-15;c.speed=60;for(let i=0;i<210;i++)step(r,dt,{drift});assert.equal(c.landings,1);assert.equal(c.spins,0);}pass('Small jump does not auto-spin from Shift alone');
+const full=fresh();let maxLane=0;
+for(let frame=0;frame<6500&&full.phase!=='results';frame++){const c=full.cars[0],a=sample(c.s),b=sample(Math.min(c.s+4,c.s<GRAVITY.entry?GRAVITY.entry:LENGTH)),curv=Math.atan2(a.t.z*b.t.x-a.t.x*b.t.z,a.t.dot(b.t))/4,drift=Math.abs(curv)>.009;
+ const steer=c.stunt?0:Math.max(-1,Math.min(1,((Math.atan(-c.lane*.14)-c.heading)*3-curv*c.speed+c.heading*.42)/(drift?1.35:.94)));step(full,dt,{steer,drift,boost:!drift&&c.charge>5});maxLane=Math.max(maxLane,Math.abs(c.lane));}
+assert.equal(full.phase,'results');assert.equal(full.cars[0].gravityRuns,1);assert.equal(full.cars[0].landings,2);startRace(full);assert.equal(full.cars[0].spins,0);pass('Complete solo course, separate exit run-out and restart');
+console.log(JSON.stringify({passed:true,checks,landingClearance:clearance,maxLane,heldAngle:held.maxAngle,releasedAngle:released.maxAngle,firstMotionSeconds:held.firstMotion,graceMotionSeconds:grace.firstMotion,largestRewindRadians:held.rewind,gravityAirtime:held.c.airtime},null,2));

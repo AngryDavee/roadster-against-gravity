@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "kind": "Real keyboard approach, deliberate lip gesture, post-touchdown steering and boost",
+  "checks": [
+    "brief wide highlight, close-up and continuous side-to-rear orbit",
+    "20+ actual airborne frames",
+    "driver-triggered rotation",
+    "unobstructed framing",
+    "close thruster descent",
+    "camera behind car before touchdown",
+    "left steering and boost after landing",
+    "right steering after landing",
+    "camera toggle",
+    "no browser errors"
+  ],
+  "motion": {
+    "peakPanDegreesPerSecond": 126.05334762888299,
+    "peakLateDistanceChange": 5.193758172009507
+  },
+  "peakCloud": 109,
+  "errors": []
+}

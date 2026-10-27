@@ -1,0 +1,118 @@
+[
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 827,
+  "tris": 59270,
+  "materials": 11,
+  "size": [
+   2.242,
+   1.228,
+   4.941
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.1679,
+    "edgeDensity": 0.0979
+   },
+   "right": {
+    "coverage": 0.2033,
+    "edgeDensity": 0.14
+   },
+   "back": {
+    "coverage": 0.1477,
+    "edgeDensity": 0.1984
+   },
+   "left": {
+    "coverage": 0.1956,
+    "edgeDensity": 0.1506
+   }
+  },
+  "error": null,
+  "name": "a-fender-shells",
+  "problems": []
+ },
+ {
+  "ok": true,
+  "mounts": null,
+  "meshes": 818,
+  "tris": 59710,
+  "materials": 11,
+  "size": [
+   2.242,
+   1.228,
+   4.941
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.1665,
+    "edgeDensity": 0.1163
+   },
+   "right": {
+    "coverage": 0.2062,
+    "edgeDensity": 0.1506
+   },
+   "back": {
+    "coverage": 0.1488,
+    "edgeDensity": 0.2023
+   },
+   "left": {
+    "coverage": 0.2005,
+    "edgeDensity": 0.1537
+   }
+  },
+  "error": null,
+  "name": "b-extruded-profiles",
+  "problems": []
+ },
+ {
+  "ok": false,
+  "mounts": null,
+  "meshes": 818,
+  "tris": 69750,
+  "materials": 11,
+  "size": [
+   2.242,
+   1.228,
+   4.941
+  ],
+  "groundOffset": 0,
+  "centreOffset": [
+   0,
+   0
+  ],
+  "sides": {
+   "front": {
+    "coverage": 0.1656,
+    "edgeDensity": 0.0985
+   },
+   "right": {
+    "coverage": 0.2034,
+    "edgeDensity": 0.1519
+   },
+   "back": {
+    "coverage": 0.1469,
+    "edgeDensity": 0.1915
+   },
+   "left": {
+    "coverage": 0.1954,
+    "edgeDensity": 0.1475
+   }
+  },
+  "error": null,
+  "name": "c-parametric-coachwork",
+  "problems": [
+   "69750 triangles, far heavier than it needs to be"
+  ]
+ }
+]

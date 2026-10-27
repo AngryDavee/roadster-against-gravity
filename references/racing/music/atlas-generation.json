@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "operation_id": "0e8247c0-6501-454b-ad16-68f7dee445da",
+  "pid": "349e8ac2-a001-4998-b158-d060968e115f",
+  "status": "succeeded",
+  "created_at": 1793093814.3685937,
+  "updated_at": 1793093951.6051946,
+  "response_text": "## MERIDIAN / IGNITION VECTOR — generated\n\n**One ElevenLabs track completed successfully.** No variants or duplicate runs were submitted.\n\n- **Configured:** 96,000 ms (96 seconds), forced instrumental, text-only prompt, no reference audio.\n- **Requested musical direction:** 150 BPM breakbeat/electro-rock/bass hybrid, immediate energy, short airy middle, strong return, loop-compatible ending, no vocals or vehicle effects.\n- **Actual generation charge:** **27 credits**, below the 825-credit maximum reservation.\n- **Output:** available, **2,304,620 bytes**.\n\n### Retained identifiers\n- **Node:** `c6978967`  \n  Full node ID: `c6978967-7943-4487-a45c-8aac2430992f`\n- **Run:** `db95d775-5056-4cae-85a2-2c3cab397259`\n- **Audio file:** `98b0af3d-0b41-4d4d-9f60-856b863d2a89`\n- **Output field:** ``output_audio``\n\nThe displayed result matches current inputs and is not cached. Stored metadata describes an energetic electronic track with a driving beat and repetitive synth melody. **Actual duration, BPM, vocal absence, and loop continuity have not been independently measured or auditioned.** The caller can retrieve the file privately through `get_project_outputs` for those checks.\n\nThe previous configuration 3e3676e6 remains untouched and was not run. No requested execution remains running or failed; no assets were published or sharing enabled.",
+  "error": null,
+  "budget": {
+    "budget_credits": 900,
+    "budget_revision": 24,
+    "cost_credits": 41,
+    "reserved_credits": 0,
+    "remaining_budget_credits": 859,
+    "budget_exhausted": false,
+    "accounting_complete": true,
+    "pending_work_count": 0,
+    "budget_diagnostic": null
+  },
+  "requested_budget_credits": 900,
+  "cost_usd": 0.172095375,
+  "retry_after_seconds": null,
+  "budget_notice": "",
+  "project_url": "https://app.atlas.design/p/edit/349e8ac2-a001-4998-b158-d060968e115f?wid=b739e1c3-2a98-4863-9598-967968451284"
+}

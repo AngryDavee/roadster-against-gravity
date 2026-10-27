@@ -16,28 +16,32 @@ async function observe(page){
 
 try{
  const p=await browser.newPage();p.setDefaultTimeout(120000);p.setDefaultNavigationTimeout(120000);await p.setViewport(process.env.CI?{width:960,height:600}:{width:1280,height:800});p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400)failed.push(r.url());});await observe(p);await p.goto(process.env.ROADSTER_URL||'http://localhost:4175',{waitUntil:'domcontentloaded'});await p.waitForFunction(()=>window.__READY__);await sleep(1500);await p.screenshot({path:out+'/dock.png'});
- await p.click('#start');await p.waitForFunction(()=>window.__RACE__.state.phase==='countdown');await p.screenshot({path:out+'/countdown.png'});await p.waitForFunction(()=>window.__RACE__.state.phase==='race');pass('Real start button and full countdown enter race');
- const boostStart=await p.evaluate(()=>window.__RACE__.state.time);await p.keyboard.down('Space');await p.waitForFunction(t=>window.__RACE__.state.time>=t+2.2,{},boostStart);let stats=await p.evaluate(()=>window.__RACE__.stats());assert(stats.progress>30&&stats.speed>25&&stats.charge<90);await p.screenshot({path:out+'/boost.png'});await p.keyboard.up('Space');pass('Actual keyboard boost moves the car and consumes charge');
- const xBefore=stats.position.x;const steerStart=await p.evaluate(()=>window.__RACE__.state.time);await p.keyboard.down('KeyD');await p.waitForFunction(t=>window.__RACE__.state.time>=t+.4,{},steerStart);await p.keyboard.up('KeyD');stats=await p.evaluate(()=>window.__RACE__.stats());assert(stats.position.x<xBefore);pass('Right steering moves toward screen-right on the opening straight');
+ assert.equal(await p.evaluate(()=>window.__RACE__.stats().vehicleCount),1);
+ await p.click('#start');await p.waitForFunction(()=>window.__RACE__.state.phase==='countdown');await p.screenshot({path:out+'/countdown.png'});await p.waitForFunction(()=>window.__RACE__.state.phase==='race');pass('Solo mode, real start button and full countdown enter race');
+ const boostStart=await p.evaluate(()=>window.__RACE__.state.time);await p.keyboard.down('Space');await p.waitForFunction(t=>window.__RACE__.state.time>=t+2.2,{},boostStart);let stats=await p.evaluate(()=>window.__RACE__.stats());assert(stats.progress>30&&stats.speed>25&&stats.charge<90);await p.keyboard.up('Space');pass('Actual keyboard boost moves the car and consumes charge');
+ const laneBefore=await p.evaluate(()=>window.__RACE__.state.cars[0].lane);const steerStart=await p.evaluate(()=>window.__RACE__.state.time);await p.keyboard.down('KeyD');await p.waitForFunction(t=>window.__RACE__.state.time>=t+.4,{},steerStart);await p.keyboard.up('KeyD');stats=await p.evaluate(()=>window.__RACE__.stats());assert(await p.evaluate(lane=>window.__RACE__.state.cars[0].lane>lane, laneBefore));pass('Right steering changes the driving lane');
  await p.click('#pause');const paused=await p.evaluate(()=>window.__RACE__.stats().time);await sleep(600);assert.equal(await p.evaluate(()=>window.__RACE__.stats().time),paused);await p.click('#resume');pass('Pause and resume freeze/unfreeze race simulation');
+ // Start the complete route fresh after the isolated steering/pause checks.
+ await p.click('#pause');await p.click('#restart');await p.waitForFunction(()=>window.__RACE__.state.phase==='race');
  // Closed-loop driver READS telemetry but only acts through real keyboard events.
  const held=new Set();let peak=0,gotRamp=false;const started=Date.now();
  while(Date.now()-started<(process.env.CI?600000:240000)){
-  const state=await p.evaluate(async()=>{const t=await import('./track.js'),c=window.__RACE__.state.cars[0],r=window.__RACE__.state;const road=t.sample(c.s),next=t.sample(c.s+12),curv=Math.atan2(road.t.z*next.t.x-road.t.x*next.t.z,road.t.dot(next.t))/12;let target=0;const pu=t.PICKUPS.find(p=>t.wrap(p.s-c.s)<95);if(pu)target=pu.lanes[Math.floor(r.time/6)%3];const j=t.JUMPS.find(j=>t.wrap(j.s-c.s)<65);if(j)target=j.lane;if(t.wrap(t.GRAVITY.entry-c.s)<110||c.stunt)target=0;return{phase:r.phase,time:r.time,s:c.s,lane:c.lane,lat:c.lat,charge:c.charge,curv,target,stunt:c.stunt,gravity:c.gravityRuns,stats:window.__RACE__.stats()};});
+  const state=await p.evaluate(async()=>{const t=await import('./track.js'),c=window.__RACE__.state.cars[0],r=window.__RACE__.state,road=t.sample(c.s),next=t.sample(Math.min(c.s+4,c.s<t.GRAVITY.entry?t.GRAVITY.entry:t.LENGTH));const curv=Math.atan2(road.t.z*next.t.x-road.t.x*next.t.z,road.t.dot(next.t))/4;const drift=(c.s>190&&c.s<275)||(c.s>t.GRAVITY.entry-110&&c.s<t.GRAVITY.entry)||!!c.stunt||Math.abs(curv)>.009;return{phase:r.phase,time:r.time,s:c.s,lane:c.lane,heading:c.heading,charge:c.charge,curv,drift,stunt:c.stunt,jump:c.jump,gravity:c.gravityRuns,stats:window.__RACE__.stats()};});
   if(state.phase==='results')break;
-  const force=state.stunt?0:(state.target-state.lane)*.7-state.lat*.25;
-  const want=new Set();if(force>.22)want.add('KeyD');if(force<-.22)want.add('KeyA');if(Math.abs(state.curv)>.005)want.add('ShiftLeft');else if(state.charge>8)want.add('Space');
+  const target=Math.atan(-state.lane*.14),force=state.stunt?0:((target-state.heading)*3-state.curv*state.stats.speed+state.heading*.42)/(state.drift?1.35:.94);
+  const want=new Set();if(force>.12)want.add('KeyD');if(force<-.12)want.add('KeyA');if(state.drift)want.add('ShiftLeft');else if(state.charge>8)want.add('Space');
   for(const key of held)if(!want.has(key)){await p.keyboard.up(key);held.delete(key);}for(const key of want)if(!held.has(key)){await p.keyboard.down(key);held.add(key);}
-  peak=Math.max(peak,state.stats.position.y);
-  if(state.stunt&&state.stunt.elapsed>1.5&&!frames.includes('ascent')){await p.screenshot({path:out+'/ascent.png'});frames.push('ascent');}
-  if(state.stunt&&state.stunt.elapsed>4.3&&!frames.includes('flight')){await p.screenshot({path:out+'/flight.png'});frames.push('flight');}
+  peak=Math.max(peak,state.stats.peakHeight);
+  if(state.stunt&&state.stunt.elapsed>.65&&!frames.includes('ascent')){await p.screenshot({path:out+'/ascent.png'});frames.push('ascent');}
+  if(state.stunt&&state.stunt.elapsed>2.5&&!frames.includes('flight')){await p.screenshot({path:out+'/flight.png'});frames.push('flight');}
   if(state.gravity&&!gotRamp){gotRamp=true;await p.screenshot({path:out+'/landing.png'});console.log('First gravity transfer completed at',state.time.toFixed(2));}
-  if(state.s>1350&&!frames.includes('bridge')){await p.screenshot({path:out+'/bridge.png'});frames.push('bridge');}
-  if(state.s>1930&&!frames.includes('covered')){await p.screenshot({path:out+'/covered.png'});frames.push('covered');}
-  await sleep(180);
+  if(state.jump&&state.jump.elapsed>.55&&!frames.includes('flat-jump')){await p.screenshot({path:out+'/flat-jump.png'});frames.push('flat-jump');}
+  if(state.s>650&&!frames.includes('bridge')){await p.screenshot({path:out+'/bridge.png'});frames.push('bridge');}
+  if(state.s>1150&&!frames.includes('covered')){await p.screenshot({path:out+'/covered.png'});frames.push('covered');}
+  await sleep(70);
  }
  for(const key of held)await p.keyboard.up(key);
- const result=await p.evaluate(()=>({stats:window.__RACE__.stats(),cars:window.__RACE__.state.cars}));assert.equal(result.stats.phase,'results');assert(result.stats.gravityRuns>=1&&peak>30);assert(result.cars[0].pickupCount>0);assert(result.cars[0].driftTime>0);pass('Real-input driver completes two laps with gravity transfer, pickups and drift');await p.screenshot({path:out+'/results.png'});
+ const result=await p.evaluate(()=>({stats:window.__RACE__.stats(),cars:window.__RACE__.state.cars}));await fs.writeFile(out+'/last-run.json',JSON.stringify(result,null,2));assert.equal(result.stats.phase,'results');assert(result.stats.gravityRuns>=1&&peak>30);assert(result.cars[0].pickupCount>0);assert(result.cars[0].driftTime>0);assert.equal(result.cars[0].landings,2,'Both launches land');assert(result.stats.wheelAngles.some(v=>Math.abs(v)>10),'Wheels rotate during driving');pass('Real-input driver completes both launches and the separate receiving road with working controls and rotating wheels');await p.screenshot({path:out+'/results.png'});
  await p.click('#again');await p.waitForFunction(()=>window.__RACE__.state.phase==='countdown');assert.equal(await p.evaluate(()=>window.__RACE__.state.cars[0].finish),null);pass('Race-again resets finish state and countdown');
  await p.keyboard.press('KeyC');assert.equal(await p.evaluate(()=>window.__RACE__.stats().cameraMode),'follow');await p.click('#camera');assert.equal(await p.evaluate(()=>window.__RACE__.stats().cameraMode),'cinematic');pass('C key and Camera button switch between chase and cinematic modes');
  await p.close();

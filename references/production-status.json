@@ -10,9 +10,11 @@
     743
   ],
   "interactive_checks": "passed; evidence/checks/report.json",
-  "asset_verifier": "4/6 clean; two retained heuristic warnings",
+  "asset_verifier": "5/7 clean; pre-existing pavement and ramp heuristic warnings",
   "ship_check": "passed; all modules parse, all paths remain inside app",
   "rendering": "local Three.js, 404 loader/surfaces, Atlas concrete maps",
   "export": "evidence/export/roadster-against-gravity.mp4",
-  "fidelity": "exact frame count and editorial cuts; visual reconstruction of camera, geometry and motion, not pixel identity"
+  "fidelity": "exact frame count and editorial cuts; visual reconstruction of camera, geometry and motion, not pixel identity",
+  "comparison_vehicle": "roadster-precision.js; byte-identical to racing module",
+  "export_status": "Historical MP4 uses previous car; live player and evidence/film-current-roadster stills updated"
 }

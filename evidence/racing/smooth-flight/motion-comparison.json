@@ -1,0 +1,12 @@
+{
+  "before": {
+    "peak_pan_degrees_per_second": 170.81391475915527,
+    "peak_late_distance_change_metres_per_second": 51.97551410110635,
+    "last_air_age": 4.593277504784238
+  },
+  "after": {
+    "peak_pan_degrees_per_second": 126.08638320901234,
+    "peak_late_distance_change_metres_per_second": 5.196104573593364,
+    "last_air_age": 4.09327750478424
+  }
+}

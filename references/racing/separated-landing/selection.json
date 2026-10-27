@@ -1,0 +1,19 @@
+{
+  "reference": "supplied Roadster film and original reference-derived ramp.js",
+  "candidates": [
+    "ramp-10.js",
+    "ramp-14.js",
+    "ramp-18.js"
+  ],
+  "selected": "ramp-14.js",
+  "reason": "Visible narrow vertical curl remains; moderate bend gives ~59m road clearance without the wider cantilever of 18m. 10m gives weaker visual separation. All four-view images inspected.",
+  "canonical_verifier": "3/3 clean",
+  "preserved": [
+    "app/",
+    "racing/assets/roadster.js",
+    "racing/assets/ramp.js",
+    "racing/assetlib.js",
+    "racing/surfaces.js"
+  ],
+  "backup": "../local-backups/meridian-before-separated-landing-20261027.tar.gz"
+}

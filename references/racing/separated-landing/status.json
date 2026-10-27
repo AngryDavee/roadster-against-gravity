@@ -1,0 +1,30 @@
+{
+  "status": "implemented locally; uncommitted",
+  "git_head": "23a3f13",
+  "landing_gap_metres": 58.7558,
+  "ramp_candidate": "ramp-14.js",
+  "driver_spin": "drift + steering at lip; held torque; release stabilization; Shift alone and late input do not rotate",
+  "camera": "brief wide highlight, close shot, eased polar side-to-rear pan from 1.15 to 2.65s; rear chase through landing",
+  "simulation_passed": true,
+  "entry_cases": 20,
+  "full_browser_checks": 9,
+  "focused_landing_checks": 10,
+  "asset_candidates_clean": "3/3",
+  "atlas_review": "0183b1e1-5aaf-4422-9017-288377acf005",
+  "remaining_limits": [
+    "assisted flight/leveling",
+    "route readability and surface detail still partial",
+    "no new MP4 export; older videos historical",
+    "no physical-phone performance claim"
+  ],
+  "flight_seconds": 4.6,
+  "touchdown_speed_mps": 14,
+  "launch_horizontal_speed_mps": 24,
+  "latest_atlas_review": "05323d3b-72c5-423e-b7b8-2bc7dcae5ce3",
+  "wide_highlight_max_seconds": 0.95,
+  "rear_blend_seconds_after_departure": [
+    1.15,
+    2.65
+  ],
+  "measured_wide_seconds": 0.533
+}

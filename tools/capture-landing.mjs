@@ -1,0 +1,9 @@
+// Paused runtime poses for visual inspection; not a driving acceptance test.
+import {TRANSFER} from '../racing/transfer.js';import puppeteer from 'puppeteer';import fs from 'node:fs/promises';
+const out=process.env.CAPTURE_DIR||'evidence/racing/separated-landing';await fs.mkdir(out,{recursive:true});const b=await puppeteer.launch({headless:true,args:['--no-sandbox']});
+try{const p=await b.newPage();p.setDefaultTimeout(60000);await p.setViewport({width:1440,height:900});await p.goto('http://localhost:4175');await p.waitForFunction(()=>window.__READY__);await p.click('#practice');await p.waitForFunction(()=>window.__RACE__.state.phase==='race');
+for(const [name,target] of [['wide',.2],['close',1.05],['pan',1.9],['rear',2.9],['touchdown',TRANSFER.flightTime-.05]]){
+ await p.evaluate(async target=>{const r=window.__RACE__.state,t=await import('./track.js'),f=await import('./transfer.js');r.paused=false;r.time=20;r.events=[];r.cars[0].s=t.GRAVITY.entry;Object.assign(r.cars[0],{stunt:{elapsed:f.rampDuration(48)+target-.3,entrySpeed:48,from:t.GRAVITY.entry,to:t.GRAVITY.exit,trim:0,duration:f.rampDuration(48)+f.TRANSFER.flightTime,spins:0,spinEnabled:false,spinAngle:0},gravityRuns:0,landings:0});window.__POSE_READY__=false;const watch=()=>{const c=r.cars[0];if(c.stunt&&c.stunt.elapsed>=f.rampDuration(48)+target){r.paused=true;window.__POSE_READY__=true;}else requestAnimationFrame(watch);};requestAnimationFrame(watch);},target);
+ await p.waitForFunction(()=>window.__POSE_READY__);await new Promise(r=>setTimeout(r,900));await p.screenshot({path:`${out}/${name}.png`});
+}
+await fs.writeFile(out+'/capture.json',JSON.stringify({kind:'Paused runtime poses; camera and particles settle for visual review',poses:['wide','close','pan','rear','touchdown']},null,2));}finally{await b.close();}

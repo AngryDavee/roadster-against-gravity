@@ -27,18 +27,18 @@ export class RacingVapor{
  }
  update(dt,cars,poses,actors){
   for(let i=0;i<cars.length;i++){
-   const c=cars[i],p=poses[i],clock=this.clocks[i],active=p.air&&c.finish===null;
+   const c=cars[i],p=poses[i],clock=this.clocks[i],active=p.air&&!!c.stunt&&c.finish===null;
    if(active&&dt>0){
     actors[i].group.updateMatrixWorld(true);clock.jet+=dt*(i?45:150);
-    while(clock.jet>=1){clock.jet--;const n=this.serial%4;this.vector.set(n%2?-.82:.82,.08,n<2?-1.5:1.5).applyMatrix4(actors[i].group.matrixWorld);this.spawn(this.vector,false,{x:Math.sin(p.yaw)*c.speed,z:Math.cos(p.yaw)*c.speed},i?.45:1);}
+    while(clock.jet>=1){clock.jet--;const n=this.serial%4;this.vector.set(n%2?-.7872:.7872,.08,n<2?-1.5:1.5).applyMatrix4(actors[i].group.matrixWorld);this.spawn(this.vector,false,{x:Math.sin(p.yaw)*c.speed,z:Math.cos(p.yaw)*c.speed},i?.45:1);}
     if(p.y<10){clock.ground+=dt*(i?16:90)*(1-p.y/14);while(clock.ground>=1){clock.ground--;const a=random(this.serial+1)*Math.PI*2;this.spawn({x:p.x+Math.cos(a)*1.5,y:.35,z:p.z+Math.sin(a)*1.5},true,{x:Math.sin(p.yaw)*c.speed,z:Math.cos(p.yaw)*c.speed},i?.5:1);}}
    }
-   if(c.landings>clock.landings&&dt>0){for(let k=0;k<(i?7:30);k++)this.spawn({x:p.x,y:.35,z:p.z},true,undefined,i?.45:1);}
+   if(c.landings>clock.landings&&dt>0&&c.gravityRuns>0){for(let k=0;k<(i?7:30);k++)this.spawn({x:p.x,y:.35,z:p.z},true,undefined,i?.45:1);}
    clock.landings=c.landings;
   }
   for(let i=0;i<this.count;i++){
    const p=this.parts[i];let alpha=0,size=0,stretch=1;
-   if(p.life>0){p.age+=dt;if(p.age<p.life){const u=p.age/p.life;p.x+=p.vx*dt;p.z+=p.vz*dt;p.y+=p.vy*dt;if(p.ground){p.vx*=Math.exp(-dt*.32);p.vz*=Math.exp(-dt*.32);size=p.size+p.age*1.9;stretch=.95;alpha=Math.min(1,p.age/.12)*Math.pow(1-u,1.5)*.24*p.power;p.y=Math.max(size*.30,p.y);const hero=poses[0],distance=Math.hypot(p.x-hero.x,p.z-hero.z);if(hero.y<1.3&&distance<5)alpha*=.1+.9*(distance/5)**2;}else{size=p.size+p.age*1.9;stretch=1.6;alpha=Math.pow(1-u,1.4)*.12*p.power;p.y=Math.max(.15,p.y);}}else p.life=0;}
+   if(p.life>0){p.age+=dt;if(p.age<p.life){const u=p.age/p.life;p.x+=p.vx*dt;p.z+=p.vz*dt;p.y+=p.vy*dt;if(p.ground){p.vx*=Math.exp(-dt*.32);p.vz*=Math.exp(-dt*.32);size=p.size+p.age*1.9;stretch=.95;alpha=Math.min(1,p.age/.12)*Math.pow(1-u,1.5)*.12*p.power;p.y=Math.max(size*.30,p.y);const hero=poses[0],distance=Math.hypot(p.x-hero.x,p.z-hero.z);if(hero.y<1.3&&distance<7)alpha*=.06+.94*(distance/7)**2;}else{size=p.size+p.age*1.9;stretch=1.6;alpha=Math.pow(1-u,1.4)*.12*p.power;p.y=Math.max(.15,p.y);}}else p.life=0;}
    this.centers.set([p.x||0,p.y||-100,p.z||0],i*3);this.params.set([size,size*stretch,alpha,p.seed||0],i*4);
   }
   this.mesh.geometry.attributes.center.needsUpdate=true;this.mesh.geometry.attributes.particle.needsUpdate=true;

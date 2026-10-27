@@ -1,0 +1,19 @@
+{
+  "original_film_matches_tag": true,
+  "stock_loader_and_surfaces_unchanged": true,
+  "selected_geometry": "references/racing/roadster-rebuild/selected/_verify/report.json",
+  "geometry_result": "1/1 clean",
+  "racing_parse_paths": "38 modules, 1 page, pass",
+  "film_parse_paths": "15 modules, 1 page, pass",
+  "film_browser_suite": "11 checks passed",
+  "real_input_transfer_suite": "10 checks passed; no browser errors",
+  "rehearsal": {
+    "passed": true,
+    "spins": 1,
+    "landings": 2,
+    "finish": 25.69999999999982,
+    "errors": []
+  },
+  "fullscreen_staged": true,
+  "no_commit_or_push": true
+}

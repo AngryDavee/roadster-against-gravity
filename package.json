@@ -16,7 +16,11 @@
     "race:simulation": "node tools/race-simulation-test.mjs",
     "race:test": "node tools/test.mjs --race",
     "race:verify": "node vendor/404-game-recipe/harness/verify.mjs racing/assets --size=400",
-    "race:transfer": "node tools/test.mjs --transfer"
+    "race:transfer": "node tools/test.mjs --transfer",
+    "race:audio": "node tools/test.mjs --audio",
+    "race:rehearse": "node tools/showcase-run.mjs --rehearse",
+    "race:record": "node tools/showcase-run.mjs",
+    "race:record:go": "node tools/showcase-ready.mjs"
   },
   "engines": {
     "node": ">=22.12"

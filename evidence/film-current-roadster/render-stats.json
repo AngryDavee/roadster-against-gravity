@@ -1,0 +1,20 @@
+{
+  "vehicleAsset": "roadster-precision.js",
+  "wheelCount": 4,
+  "calls": 202,
+  "triangles": 286380,
+  "time": 39.5395,
+  "shot": 4,
+  "action": 11.32315789473684,
+  "pose": {
+    "x": 0,
+    "y": 9.143767313019435,
+    "z": -26.723684210526287,
+    "pitch": 0,
+    "turn": 3.141592653589793,
+    "flight": 1,
+    "theta": 2.3
+  },
+  "width": 1280,
+  "height": 720
+}

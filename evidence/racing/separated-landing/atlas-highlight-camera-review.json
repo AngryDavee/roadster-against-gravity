@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "operation_id": "05323d3b-72c5-423e-b7b8-2bc7dcae5ce3",
+  "pid": "349e8ac2-a001-4998-b158-d060968e115f",
+  "status": "succeeded",
+  "created_at": 1793092354.348704,
+  "updated_at": 1793092387.12823,
+  "response_text": "**PASS — framing and readability.** The four views are visually distinct and support the revised camera sequence.\n\n- **Wide departure highlight:** Establishes the curved stunt ramp, airborne car and surrounding terrain. The car is small, but its bright thruster trails make it easy to locate.\n- **Close front-side:** Clearly shows the car’s silhouette and downward thruster plumes, with the ramp still providing context. Strong vehicle emphasis; less useful for judging the landing route.\n- **Early rear chase:** Centers the car over the road and reveals the route well ahead. The elevated angle makes landing alignment readable.\n- **Touchdown:** A lower, closer rear view clearly separates this pose from the airborne chase. The car, road markings and forward acceleration corridor remain readable, though landing haze softens the lower body.\n\nThe sheet supports the intended **wide → close → rear landing/drive-away** framing. Static images cannot verify transition duration, when rear view resumes, actual contact or control responsiveness; those remain findings of your separately reported browser test.",
+  "error": null,
+  "budget": {
+    "budget_credits": 15,
+    "budget_revision": 6,
+    "cost_credits": 4,
+    "reserved_credits": 0,
+    "remaining_budget_credits": 11,
+    "budget_exhausted": false,
+    "accounting_complete": true,
+    "pending_work_count": 0,
+    "budget_diagnostic": null
+  },
+  "requested_budget_credits": 15,
+  "cost_usd": 0.059896099999999994,
+  "retry_after_seconds": null,
+  "budget_notice": "",
+  "project_url": "https://app.atlas.design/p/edit/349e8ac2-a001-4998-b158-d060968e115f?wid=b739e1c3-2a98-4863-9598-967968451284"
+}

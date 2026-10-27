@@ -2,24 +2,30 @@
 
 ## Racing iteration: Meridian Launch Coast
 
-The original film is preserved byte-for-byte in `app/` and tagged **`film-baseline-2026-10-26`**. The new playable adaptation lives independently in `racing/`, on branch **`feature/airborne-racing`**.
+The original film is preserved at **`film-baseline-2026-10-26`**. The comparison player in `app/` now uses the current Roadster while retaining its original timing and camera cuts. The new playable adaptation lives independently in `racing/`, on branch **`feature/airborne-racing`**.
+
+**Recording on another PC? Read [setup, gameplay and AI recording instructions](RECORDING.md).** Clone the racing branch explicitly:
 
 ```sh
+git clone --branch feature/airborne-racing https://github.com/AngryDavee/roadster-against-gravity.git
+cd roadster-against-gravity
 npm ci
 npm run race
 ```
 
-Open **http://localhost:4175**. A/D or arrows steer, Shift drifts, Space boosts; acceleration is automatic. Touch controls are provided on phones. C toggles the wide ramp / landing camera sequence and continuous chase. See [racing setup and status](racing/README.md). `npm start` still opens the original cinematic on port 4174.
+Open **http://localhost:4175**. A/D or arrows steer, Shift + steering at the lip initiates controlled rotation, Space boosts; acceleration is automatic. Touch controls are provided on phones. C toggles the wide ramp / landing camera sequence and continuous chase. See [racing setup and status](racing/README.md). `npm start` still opens the original cinematic on port 4174.
 
-The new circuit includes two laps, five AI rivals, charge pickups, smaller jumps, a covered sector, coastal elevation changes, results and a swept gravity ramp that launches directly onto the return track. This is a playable first racing iteration, not a finished Asphalt-scale game or a competition certification.
+The solo exhibition now includes a canyon approach, drift-triggered flat spins, boost rewards and the tall curved gravity ramp and separate receiving runway with a thruster-assisted landing. A/D steers, Shift drifts, Space boosts and R retries the gravity launch. There are no opponents or road-blocking boundary rails. “Practice Gravity Launch” jumps directly to the stunt approach. This snapshot is published as a separate commit at the user's request; this is an original arcade prototype with further art/handling polish still needed.
 
-![Meridian racing iteration](evidence/racing/final/dock.png)
+![Current close thruster descent](evidence/racing/separated-landing/close.png)
 
 ---
 
 A local, editable Three.js reconstruction of the supplied Roadster ramp film, using the 404 recipe for procedural geometry and Atlas MCP for generated reference images, concrete maps and visual critique. The treatment follows the user's faceted, ink-edged game screenshots.
 
-![Final film contact sheet](evidence/export/contact-sheet.jpg)
+The MP4/contact sheet below are historical exports with the earlier car. The live comparison player uses the updated model; current stills are in `evidence/film-current-roadster/`.
+
+![Historical film contact sheet](evidence/export/contact-sheet.jpg)
 
 **New contributor or AI? Start with [HANDOFF.md](HANDOFF.md).** [Contribution instructions](CONTRIBUTING.md) explain forks and pull requests. The complete source, assets, comparison master and rendered film are included; Git LFS is not required.
 

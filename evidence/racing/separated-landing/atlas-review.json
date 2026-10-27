@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "operation_id": "0183b1e1-5aaf-4422-9017-288377acf005",
+  "pid": "349e8ac2-a001-4998-b158-d060968e115f",
+  "status": "succeeded",
+  "created_at": 1793088830.7604961,
+  "updated_at": 1793088858.8595276,
+  "response_text": "### Visual review\n\n| Requirement | Verdict | Visible assessment |\n|---|---|---|\n| **Ramp bends toward another road** | **Partial** | The wide frame shows two distinct paved strips separated by sand. However, the receiving strip ends prominently in the foreground, and its alignment with the ramp’s launch direction is not obvious. The image establishes separate roads better than it establishes a clear landing route between them. |\n| **Tall hooked ramp—not a bridge** | **Pass** | The steep upturned tip and exposed side supports read as a stunt ramp rather than a bridge. Its upper hook is relatively short and narrow in the wide composition, so the silhouette could communicate the bend more strongly. |\n| **Close-up during thruster descent** | **Pass** | Bottom left is unmistakably closer than the geography shot: the front three-quarter car, wheels, and downward jets are readable. This provides the requested close descent view rather than another distant overview. |\n| **Close-up car legibility** | **Partial** | The car’s outline and orientation are clear, but the nearly black windows and simplified bright body give limited surface detail. Long white thruster plumes dominate the lower frame, while a thin HUD/text line crosses the car’s lower silhouette. Compared with the source, the shot lacks the concentrated ground-level smoke and lighting contrast that make the hovering car feel grounded in the scene. |\n| **Distinct visual camera stages** | **Pass** | The wide geography view, close front three-quarter descent, and rear chase view are clearly different compositions. In the chase frame, however, the ramp and separate-road relationship disappear, weakening spatial continuity with the earlier overview. |\n| **Controls readable at touchdown** | **Partial** | The rear chase view leaves the road and car unobstructed, and the speed readout is prominent. But the actual control instructions are tiny, low-contrast text along the bottom edge; they are not comfortably readable at this review size. This frame is also **before** contact, not evidence of the touchdown presentation itself. |\n\n**Main remaining issues:** clarify the ramp-to-receiving-road trajectory, reduce plume/text competition around the close-up car, and enlarge or strengthen the contrast of touchdown control prompts.\n\nThese paused frames establish composition only—not camera-transition timing, wheel-contact behavior, or control responsiveness. Those require the separate playback/input tests. No assets generated or graph changes made.",
+  "error": null,
+  "budget": {
+    "budget_credits": 25,
+    "budget_revision": 8,
+    "cost_credits": 5,
+    "reserved_credits": 0,
+    "remaining_budget_credits": 20,
+    "budget_exhausted": false,
+    "accounting_complete": true,
+    "pending_work_count": 0,
+    "budget_diagnostic": null
+  },
+  "requested_budget_credits": 25,
+  "cost_usd": 0.0663735,
+  "retry_after_seconds": null,
+  "budget_notice": "",
+  "project_url": "https://app.atlas.design/p/edit/349e8ac2-a001-4998-b158-d060968e115f?wid=b739e1c3-2a98-4863-9598-967968451284"
+}

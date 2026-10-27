@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-27",
+  "git": "23a3f13; local uncommitted work",
+  "mechanics": "solo exhibition; drift flat spins; guided reference curl; thruster landing",
+  "simulation_categories": 10,
+  "ramp_entry_cases": 20,
+  "full_input_browser_checks": 9,
+  "atlas_material_operation": "b5613201-4351-4900-b946-6f1d1ad822da",
+  "atlas_review_operation": "988a4c50-7e2c-4262-a032-29c8f189e354",
+  "limitations": [
+    "assisted trajectory, not rigid-body physics",
+    "no barrel rolls",
+    "terrain repetition and sparse scenery remain",
+    "no physical-device performance or competition-gate claim"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "checks": [
+    "Solo countdown, finite boost, pause",
+    "20 low-speed/off-centre approaches reach separate receiving road without teleport",
+    "Touchdown position, attitude and lane match a physically separate road (>45m centreline gap)",
+    "Shift alone/late input never spins; lip steering drives bounded rotation; release reduces it",
+    "Immediate left/right rotation, forgiving lip gesture, one smooth turn without rewind, 4.1-second flight",
+    "Both steering directions, acceleration and boost respond immediately after touchdown",
+    "Small jump does not auto-spin from Shift alone",
+    "Complete solo course, separate exit run-out and restart"
+  ],
+  "landingClearance": 58.75581106743292,
+  "maxLane": 0.822025032333244,
+  "heldAngle": 6.283185307179586,
+  "releasedAngle": 2.290134657882265,
+  "firstMotionSeconds": 0.011432967938456162,
+  "graceMotionSeconds": 0.0947663012717892,
+  "largestRewindRadians": 0,
+  "gravityAirtime": 4.116666666666657
+}

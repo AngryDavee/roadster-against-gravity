@@ -52,11 +52,13 @@
   "fps": 23.976023976023978,
   "pictureDuration": 45.62891666666666,
   "render": {
-    "calls": 172,
-    "triangles": 83860,
-    "time": 0.11670000000000029,
+    "vehicleAsset": "roadster-precision.js",
+    "wheelCount": 4,
+    "calls": 175,
+    "triangles": 224770,
+    "time": 0.2,
     "shot": 0,
-    "action": 0.11670000000000029,
+    "action": 0.2,
     "pose": {
       "x": 0,
       "y": 0.035,

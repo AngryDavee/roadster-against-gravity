@@ -1,5 +1,7 @@
 # Editing and contributing
 
+For setup, controls, or recording the current build on another PC, read [RECORDING.md](RECORDING.md). The current game is on `feature/airborne-racing`, not the default branch.
+
 Anyone can clone this public repository and edit it locally:
 
 ```sh

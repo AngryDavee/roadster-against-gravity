@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "operation_id": "af0ec804-ee74-462a-aabd-16ff09604cfb",
+  "pid": "349e8ac2-a001-4998-b158-d060968e115f",
+  "status": "succeeded",
+  "created_at": 1793090472.5803359,
+  "updated_at": 1793090508.49817,
+  "response_text": "- **Left—ascent:** The vehicle is prominent enough to locate immediately, and the ramp surface, red edge, and support structure clearly establish its relationship to the ramp. However, the steep viewing angle makes the car’s silhouette less readable; the ramp still dominates. This is a tighter view, though a slightly larger, more oblique vehicle framing would better satisfy the close-perspective request.\n- **Right—descent:** Strong close front/side perspective. The vehicle is large, clearly recognizable, and the visible thrusters read well, while the ramp remains useful background context.\n- **Overall:** Both avoid a distant overview. The descent convincingly meets the requested closeness; the ascent preserves ramp context well but is less effective at showcasing the vehicle.",
+  "error": null,
+  "budget": {
+    "budget_credits": 15,
+    "budget_revision": 6,
+    "cost_credits": 4,
+    "reserved_credits": 0,
+    "remaining_budget_credits": 11,
+    "budget_exhausted": false,
+    "accounting_complete": true,
+    "pending_work_count": 0,
+    "budget_diagnostic": null
+  },
+  "requested_budget_credits": 15,
+  "cost_usd": 0.05833409999999999,
+  "retry_after_seconds": null,
+  "budget_notice": "",
+  "project_url": "https://app.atlas.design/p/edit/349e8ac2-a001-4998-b158-d060968e115f?wid=b739e1c3-2a98-4863-9598-967968451284"
+}

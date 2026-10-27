@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "operation_id": "1ac63f76-6a5d-4e28-a5ce-01f24615d893",
+  "pid": "7d017a90-5f98-4b50-af80-439924061254",
+  "status": "succeeded",
+  "created_at": 1792977436.1330261,
+  "updated_at": 1792977456.8254626,
+  "response_text": "| Criterion | Verdict | Visible evidence |\n|---|---|---|\n| Compact, steep hooked silhouette vs. long bridge | **Pass** | B restores a narrow, near-vertical ramp with a short curled foot and backward-bending upper tip. It reads as the same general hooked structure as A—not a long swept bridge. The upper curl is less pronounced than A’s. |\n| Readability in the wide camera | **Pass** | B shows the complete silhouette clearly against the dusk sky and water. Its steep profile remains recognizable within the illustrated racing environment. |\n| C/D communicate the same ramp and landing | **Partial** | The matching ramp remains identifiable in both views. C shows the airborne car beside it; D shows a car on the landing roadway. However, C’s large separation between car and ramp weakens their visual connection, and D’s dense white plume obscures the touchdown. |\n| Only one vehicle | **Pass** | One vehicle is discernible in each gameplay capture; no obvious duplicate or extra car is visible. D’s plume limits inspection. |\n\n**Most serious visible issue:** D’s oversized opaque plume hides much of the car and its road contact, weakening landing readability. No obvious severe ramp-geometry defect is visible.\n\nThese stills do **not** establish trajectory timing, physics, absence of lateral landing correction, or continuous body attitude; those remain separate simulation-test findings. No assets generated.",
+  "error": null,
+  "budget": {
+    "budget_credits": 25,
+    "budget_revision": 6,
+    "cost_credits": 4,
+    "reserved_credits": 0,
+    "remaining_budget_credits": 21,
+    "budget_exhausted": false,
+    "accounting_complete": true,
+    "pending_work_count": 0,
+    "budget_diagnostic": null
+  },
+  "requested_budget_credits": 25,
+  "cost_usd": 0.060913800000000004,
+  "retry_after_seconds": null,
+  "budget_notice": "",
+  "project_url": "https://app.atlas.design/p/edit/7d017a90-5f98-4b50-af80-439924061254?wid=b739e1c3-2a98-4863-9598-967968451284"
+}

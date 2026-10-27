@@ -1,0 +1,26 @@
+{
+  "success": true,
+  "operation_id": "f5af336d-1d1f-4f30-8865-d52c9c8d9e83",
+  "pid": "349e8ac2-a001-4998-b158-d060968e115f",
+  "status": "succeeded",
+  "created_at": 1793093578.2911072,
+  "updated_at": 1793093704.308225,
+  "response_text": "**Configured and retained, but not generated.** The Stable Audio 3 price check failed, preventing a budget-checked run. The available ElevenLabs alternative quoted **up to 825 credits**, above your 100-credit cap. No generation was attempted.\n\n| Item | Retained configuration |\n|---|---|\n| Working title | MERIDIAN / IGNITION VECTOR |\n| Node ID, shortened | `3e3676e6` |\n| Node type | `simple_create_music` |\n| Provider | Stable Audio 3 |\n| Duration control | **96 seconds**, within its documented 1–120-second range |\n| Seed | `384619` |\n| Run ID | None—never executed |\n| Output file identifiers | None |\n\nThe saved prompt includes your instrumentation, 150 BPM target, stereo request, immediate rhythmic opening, airy midsection, strong return, loop-compatible phrasing, and exclusions. These remain **requested properties**, not measured results. This provider has no exposed stereo or instrumental-only control; those requirements are expressed in the prompt.\n\n**Provenance:** text brief only; no reference recordings, images, or other media attached. The existing node was unchanged. No nodes are running.",
+  "error": null,
+  "budget": {
+    "budget_credits": 100,
+    "budget_revision": 18,
+    "cost_credits": 11,
+    "reserved_credits": 0,
+    "remaining_budget_credits": 89,
+    "budget_exhausted": false,
+    "accounting_complete": true,
+    "pending_work_count": 0,
+    "budget_diagnostic": null
+  },
+  "requested_budget_credits": 100,
+  "cost_usd": 0.130448675,
+  "retry_after_seconds": null,
+  "budget_notice": "",
+  "project_url": "https://app.atlas.design/p/edit/349e8ac2-a001-4998-b158-d060968e115f?wid=b739e1c3-2a98-4863-9598-967968451284"
+}

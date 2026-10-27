@@ -1,7 +1,7 @@
 {
   "tag": "film-baseline-2026-10-26",
   "commit": "13daaed",
-  "film_app_changed": false,
+  "film_app_changed": true,
   "copied_files_identical": {
     "assets/roadster.js": true,
     "assets/ramp.js": true,
@@ -9,5 +9,14 @@
     "surfaces.js": true
   },
   "first_racing_tag": "racing-baseline-2026-10-26",
-  "active_racing_ramp": "assets/transfer-ramp.js (user-authorized swept variant; original ramp.js remains unchanged)"
+  "active_racing_ramp": "assets/ramp-banked.js; 14m progressive bend, three verified source-derived candidates",
+  "current_mode": "solo; separate receiving runway, deliberate drift + steering lip input, close descent camera and chase before touchdown",
+  "git_policy": "Current snapshot authorized for a separate commit/push; no history rewrite.",
+  "film_change_authorization": "User requested current racing Roadster in comparison build, October 27",
+  "film_changes": [
+    "current precision car copied into app/assets",
+    "named wheel/body pivots and reflection/outline settings",
+    "wheel radius and downward jet alignment"
+  ],
+  "film_timeline_unchanged": true
 }
